@@ -1,0 +1,57 @@
+// /**
+//  * Copyright © LG, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+// DO NOT CLONE THIS FILE IN CHILD THEME. ADD CUSTOM STYLES IN FILE EXTEND LESS
+
+//
+//  Theme variables
+//  _____________________________________________
+& when (@media-common = true) {
+    #review-please-wait:before {
+        height: 140px;
+        width: 140px;
+    }
+}
+
+& when (@media-target = 'mobile'), (@media-target = 'all') {
+    @media only screen and (max-width: 767px) {
+        .checkout-index-index #paypal_express + label > .label-text-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+
+            .action-help {
+                margin-left: 0;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 959px) {
+        .paypal-review-items{
+            .table-paypal-review-items{
+                thead{
+                    display:none;
+                }
+                tbody.cart{
+                    > tr{
+                        display:block;
+                    }
+                }
+                td.col{
+                    &.item{
+                        width: 100%;
+                        display: flex;
+                        padding: 0;
+                        align-items: center;
+                    }
+                    &.price{
+
+                    }
+                }
+            }
+        }
+    }
+}
+

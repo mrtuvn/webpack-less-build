@@ -1,0 +1,297 @@
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  body.confirm-step {
+    background: @checkout-mobile-background;
+
+    .customer-info,
+    #payment {
+      display: none;
+    }
+
+    .ship-step {
+      display: none;
+    }
+
+    .dr-term {
+      display: none;
+    }
+    #confirm-container{
+      border:none;
+    }
+  }
+
+  /* confirm */
+  #checkout-step-confirm {
+    color: @color-black;
+
+    .ship-step.section-container {
+      display: none; /* not show shipping step at confirm mobile page */
+    }
+
+    .actions-toolbar .action.primary {
+      display: none;
+    }
+
+    .page-main {
+      padding-left: @checkout-mobile-layout__width-indent;
+      padding-right: @checkout-mobile-layout__width-indent;
+    }
+
+    #payment-container .section-container {
+      margin-top: 0;
+    }
+
+    .customer-info {
+      display: none;
+    }
+
+    .shipping-product-wrapper:not(:first-child) {
+      border-top: none !important;
+    }
+
+    .details-ship {
+      &:after {
+        background: #E4E4E4;
+        opacity: .2;
+        position: absolute;
+        content: '';
+        inset: 0;
+        z-index: 0;
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+      }
+
+      position: relative;
+      border-radius: 2px;
+      padding: 1.5rem 1.6rem 1.6rem;
+      z-index: 1;
+
+      .rates {
+        margin-bottom: 0;
+
+        .shipping-method {
+          margin-bottom: 0;
+        }
+
+        .shipping-method-selector label,
+        .col.col-price {
+          color: @color-black;
+          font-weight: @font-weight__semibold;
+          font-size: 1.4rem;
+          line-height: 150%;
+        }
+      }
+
+    }
+
+    .shipping-products .shipping-product {
+      align-items: flex-start;
+      margin-bottom: 1.3rem;
+
+      .product-photo {
+        flex: 1;
+        min-width: 0;
+        img {
+          max-width: 73px;
+        }
+      }
+
+      .product-name {
+        flex: 2;
+        min-width: 0;
+
+        .sku {
+          font-weight: @font-weight__semibold;
+          color: @color__text--gray-1;
+          font-size: 1.6rem;
+          line-height: calc(19 / 16);
+          margin-bottom: .2rem;
+          opacity: .4;
+        }
+
+        .name {
+          font-weight: @font-weight__semibold;
+          font-size: 1.8rem;
+          line-height: 130%;
+          margin-top: 0;
+          color: @color-lg-gray;
+          padding-right: .5rem;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+
+
+      .product-price {
+        text-align: right;
+        margin-left: auto;
+        margin-right: 0;
+        float: none;
+        flex: 1;
+        white-space: nowrap;
+        display: block; /* show text next to product name at confirm page */
+
+        .multiply-txt,
+        .quantity {
+          font-size: 1.4rem;
+          line-height: 130%;
+          font-weight: @font-weight__regular;
+        }
+
+        span:last-child {
+          white-space: nowrap;
+          font-size: 1.4rem;
+          line-height: 130%;
+          font-weight: @font-weight__bold;
+        }
+
+      }
+    }
+
+    .shipping-products .shipping-method-selector label:before {
+      display: none;
+    }
+
+    .shipping-product-wrapper {
+      border-radius: 2px;
+      padding: 0;
+
+      .delivery-lead-time {
+        padding: 0 18px 10px 16px;
+      }
+
+      .shipping-product {
+        padding: 16px 16px 13px 10px;
+        margin-bottom: 0;
+      }
+
+      .shipping-rate {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .shipping-method {
+        .lib-vendor-prefix-display();
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        padding: 15px 18px 10px 16px;
+        margin: 0;
+        &:before{
+          display:none;
+        }
+        &:after {
+          background: #E4E4E4;
+          opacity: .2;
+          position: absolute;
+          content: '';
+          inset: 0;
+          z-index: 0;
+          display: inline-block;
+          width: 100%;
+          height: 100%;
+        }
+
+        span {
+          font-weight: @font-weight__semibold;
+          font-size: 14px;
+          line-height: calc(21/14);
+          text-transform: capitalize;
+        }
+
+        &:after {
+          display: none;
+        }
+      }
+    }
+
+    .shipping-address-item {
+      background: @color-white; /* shipping information area */
+      border-radius: 2px;
+      text-align: left;
+      position: relative;
+      padding: 14px 16px 14px 43px;
+      width: 100%;
+      margin: 0 0 10px;
+      border: 1px solid #DFDFDF;
+
+      &:before {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background: url('@{baseDir}images/icons/pin.svg') center no-repeat;
+        content: '';
+        position: absolute;
+        top: 2rem;
+        left: 1.6rem;
+        display: inline-block;
+        width: 1.6rem;
+        height: 1.6rem;
+      }
+
+      #confirm-mobile-address-title {
+        font-weight: @font-weight__semibold;
+        font-size: 1.5rem;
+        line-height: 130%;
+        padding-bottom: .6rem;
+      }
+
+      .ship-details {
+        width: 100%;
+        font-size: 1.4rem;
+        font-weight: @font-weight__regular;
+        line-height: 150%;
+        color: unset;
+        text-decoration: none;
+        p {
+          margin-bottom: 5px;
+        }
+
+        .tel {
+          color: @color-lg-carmine;
+          width: 100%;
+          margin-top: 10px;
+          margin-bottom: 0;
+          //text-decoration: underline;
+        }
+
+      }
+    }
+
+
+    .table-totals {
+      background: @color-white;
+      margin-bottom: @indent__s;
+      margin-top: 1rem;
+      border-radius: 2px;
+
+      tr:last-child {
+        display: none;
+      }
+
+      tbody tr td:first-child {
+        font-size: 1.3rem;
+        line-height: 130%;
+        font-weight: @font-weight__regular;
+        text-align: left;
+        padding-left: 1.6rem;
+      }
+
+      .font-bold {
+        text-align: right;
+        font-size: 1.4rem;
+        line-height: 130%;
+        padding-right: 1.6rem;
+      }
+    }
+  }
+
+  @supports not (inset: 0) {
+    #checkout-step-confirm .details-ship:before {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+}

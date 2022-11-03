@@ -1,0 +1,26 @@
+& when (@media-common = true) {
+    .message {
+        overflow-wrap: break-word;
+
+        &.success > *:first-child:before {
+            content: @icon-active-check;
+            font-size: @h1__font-size;
+        }
+        &.info > *:first-child:before {
+            content: @icon-product-issues-m;
+            font-size: (@font-size__xl + 2);
+        }
+        &.warning > *:first-child:before {
+            content: @icon-product-issues-m;
+            font-size: (@font-size__xl + 2);
+        }
+        &.error{
+            color: @color-lg-gray;
+            > *:first-child:before {
+                content: @icon-notice-carmine;
+                font-size: (@font-size__xl + 2);
+                color: @color-lg-carmine;
+            }
+        }
+    }
+}

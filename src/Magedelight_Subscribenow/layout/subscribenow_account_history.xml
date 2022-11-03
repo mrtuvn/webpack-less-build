@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <container name="subscription.actions" htmlClass="subscription-actions" htmlTag="div" before="-">
+                <block name="mobile.order.items.dropdown" template="Magedelight_Subscribenow::subscription/links-dropdown.phtml" after="-" />
+            </container>
+        </referenceContainer>
+
+        <move element="subscription.buttons" destination="subscription.actions" before="-" />
+        <move element="subscription.links" destination="subscription.actions" after="subscription.buttons" />
+    </body>
+</page>

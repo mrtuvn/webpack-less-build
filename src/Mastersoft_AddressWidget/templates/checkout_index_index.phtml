@@ -1,0 +1,28 @@
+<?php 
+	$helper = $this->helper('Mastersoft\AddressWidget\Helper\Data');
+	
+	$licenseKey = $helper->getConfig('licence_key');
+	$url = $helper->getConfig('url');
+	$widgetOptions = $helper->getConfig('widget_options');
+	$widgetOptionsAu = $helper->getConfig('widget_options_au');
+	$widgetOptionsNz = $helper->getConfig('widget_options_nz');
+
+	if($helper -> isEnable()) { 		
+?>
+
+<input type="hidden" id="keyConfig" value="<?php echo $licenseKey; ?>"/>
+<input type="hidden" id="urlConfig" value="<?php echo $url; ?>"/>
+<input type="hidden" id="optionsConfig" value="<?php echo $widgetOptions; ?>"/>
+<input type="hidden" id="optionsAuConfig" value="<?php echo $widgetOptionsAu; ?>"/>
+<input type="hidden" id="optionsNzConfig" value="<?php echo $widgetOptionsNz; ?>"/>
+
+<script type="text/javascript">
+    requirejs(['mastersoftMagento', 'domReady!'], function(customJs) {
+    }); 
+</script>
+
+<?php 
+	}
+
+
+

@@ -1,0 +1,29 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+  a.action {
+    .lib-link-as-button();
+  }
+  .action {
+    &.primary {
+      .lib-button-primary();
+    }
+    &.secondary {
+      .lib-button();
+    }
+    &.third {
+      .lib-button-third();
+    }
+    &.third-light {
+      .lib-button-third-light();
+    }
+    &.large {
+      .lib-button-l();
+    }
+    &.small {
+      .lib-button-s();
+    }
+  }
+}

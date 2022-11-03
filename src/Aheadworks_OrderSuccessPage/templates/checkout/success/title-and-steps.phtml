@@ -1,0 +1,73 @@
+<?php /** @var \Lg\CheckoutHelper\Block\Onepage\Success $block */ ?>
+<?php $order = $block->getOrder(); ?>
+<?php
+$customerName = $block->getCustomerFirstname().' '.$block->getCustomerLastname();
+// because sso user first name and last name have same value full name we need only show one value firstname\
+// have issue when user create from magento have same firstname and lastname
+if($block->getCustomerFirstname() === $block->getCustomerLastname()){
+    $customerName = $block->getCustomerFirstname();
+}
+?>
+<div class="steps-title">
+    <?php if ($block->extensionEnable()):?>
+        <div class="page-title-wrapper">
+            <div class="page-title-icon">
+                <svg width="65" height="64" viewBox="0 0 65 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_4049_3494)">
+                        <path d="M54.5 24C55.8 27.1 56.5 30.5 56.5 34C56.5 48.4 44.9 60 30.5 60C16.1 60 4.5 48.4 4.5 34C4.5 19.6 16.1 8 30.5 8C35.6 8 40.4 9.5 44.4 12" stroke="#A50034" stroke-width="5" stroke-miterlimit="10"/>
+                        <path d="M20.5 26L30.5 36L60.5 6" stroke="#A50034" stroke-width="5" stroke-miterlimit="10" stroke-linecap="square"/>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_4049_3494">
+                            <rect width="64" height="64" fill="white" transform="translate(0.5)"/>
+                        </clipPath>
+                    </defs>
+                </svg>
+            </div>
+
+            <h1 class="page-title">
+                <span><?= $block->setPageTitle(); ?></span>
+            </h1>
+
+        </div>
+        <div class="sub-heading">
+            <h3>
+                <?= __('%1, %2', $customerName, $block->getSuccessPageText()); ?>
+            </h3>
+            <p class="sentto-email">
+                <?= __('Your order details have been sent to your email %1', $block->getCustomerEmail()); ?>
+            </p>
+
+        </div>
+    <?php else:?>
+        <ul class="opc-progress-bar">
+            <li class="opc-progress-bar-item">
+                <span><?= __('Shipping'); ?></span>
+            </li>
+            <li class="opc-progress-bar-item">
+                <span><?= __('Review & Payments'); ?></span>
+            </li>
+            <li class="opc-progress-bar-item _active">
+                <span aria-current="step"><?= __('Order Complete'); ?></span>
+            </li>
+        </ul>
+        <div class="page-title-wrapper">
+            <h1 class="page-title">
+                <span><?= __('Order Complete'); ?></span>
+            </h1>
+        </div>
+        <div class="sub-heading">
+            <h3>
+                <?= __('%1 %2, thank you for your order!', $block->getCustomerFirstname(),$block->getCustomerLastname()); ?>
+            </h3>
+            <p>
+                <?= __('Your order details have been sent to your email %1','<b> '.$block->getCustomerEmail().'</b>');  ?>
+
+            </p>
+            <p>
+                <?= __('You can sign up with you email address you have entered into your order information. If you sign up, you can get updates on various information about LGE products and promotions. Your email address is %1.', $block->getCustomerEmail()); ?>
+            </p>
+        </div>
+    <?php  endif;?>
+
+</div>

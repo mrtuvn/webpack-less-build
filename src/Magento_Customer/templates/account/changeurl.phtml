@@ -1,0 +1,15 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$urlLogoInternal = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')
+    ->getValue(
+        'lg_theme/lg_session_cookie/lg_session_cookie_internal_url',
+        \Magento\Store\Model\ScopeInterface::SCOPE_WEBSITES
+    );
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+if (substr($urlLogoInternal, -1) === '/') {
+    $urlLogoInternal = rtrim($urlLogoInternal, '/');
+}
+?>
+<li class="nav item">
+    <a href="<?= $urlLogoInternal; ?>/my-lg"><?= __('My Account') ?></a>
+</li>

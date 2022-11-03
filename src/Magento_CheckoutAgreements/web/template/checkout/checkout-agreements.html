@@ -1,0 +1,24 @@
+<!-- ko if: isShow($parentContext) -->
+    <div data-role="checkout-agreements">
+        <div class="checkout-agreements" data-bind="visible: isVisible">
+            <!-- ko foreach: agreements -->
+                <div class="checkout-agreement" data-bind="css: { required: $parent.isAgreementRequired($data) }">
+                    <input type="checkbox"
+                           data-bind="css: { 'required-entry': $parent.isAgreementRequired($data) },
+                                        attr: {
+                                            'id': $parent.getCheckboxId($parentContext, agreementId),
+                                            'name': 'agreement[' + agreementId + ']',
+                                            'value': agreementId
+                                        }"/>
+                    <label data-bind="attr: {'for': $parent.getCheckboxId($parentContext, agreementId)}">
+                        <div class="checkbox-text" >
+                            <span data-bind="html: $parent.resolveCheckboxText(checkboxText)"></span>
+                            <span if="$parent.isAgreementRequired($data)" class="required-asterisk">*</span>
+                        </div>
+
+                    </label>
+                </div>
+            <!-- /ko -->
+        </div>
+    </div>
+<!-- /ko -->

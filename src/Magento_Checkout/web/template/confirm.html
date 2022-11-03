@@ -1,0 +1,20 @@
+<li id="confirm-container" data-bind="fadeVisible: isVisible">
+    <div id="checkout-step-confirm"
+         class="step-content"
+         data-role="content">
+
+        <!-- ko foreach: elems() -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- /ko -->
+
+        <form data-bind="submit: placeOrder" novalidate="novalidate" style="display: none">
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button data-role="opc-continue" type="submit" class="button action continue primary">
+                        <span><!-- ko i18n: 'Next'--><!-- /ko --></span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</li>

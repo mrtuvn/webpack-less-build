@@ -1,0 +1,132 @@
+& when (@media-common = true) {
+  .checkout-index-index .opc-wrapper .form.form-shipping-address {
+    padding-top: 0; /* reduce spacing */
+    padding-bottom: 0;
+  }
+
+  .checkout-index-index .opc-wrapper form.form-login {
+    margin-top: 0;
+  }
+
+  .checkout-index-index .opc-wrapper .checkout-shipping-address .step-content {
+    margin-bottom: 0;
+  }
+
+  .checkout-container{
+    min-height: 600px;
+    margin-bottom: 0;
+  }
+
+  .checkout-index-index {
+    background: #fff;
+
+    .column.main {
+      max-width: @layout__max-width;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .field-error {
+      color: @color-lg-carmine;
+    }
+
+    .action-auth-toggle {
+      display: none;
+    }
+
+    .page-title-wrapper {
+      display: none;
+    }
+
+    .opc-after-sidebar {
+      display: none;
+    }
+  }
+
+  .opc-after-sidebar.payment {
+    display: block !important;
+  }
+
+  #place-order-trigger-wrapper {
+    position: relative;
+
+    .note-place-order {
+      position: absolute;
+      text-align: left;
+      width: 36%;
+      right: 0;
+      top: 50px;
+    }
+  }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  .opc-estimated-wrapper {
+    display: none;
+  }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__ms) {
+  body.checkout-index-index .opc-wrapper {
+    padding-right: 0;
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .checkout-index-index {
+    .opc-wrapper {
+      //width: 66.66666667%;
+      //padding-right: @checkout-spacing-width-content-summary;
+      margin-right: 0;
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+  .checkout-index-index {
+    .opc-wrapper {
+      margin-top: 20px;
+      width: 56%;
+    }
+
+    .opc-sidebar {
+      margin-top: 20px;
+      width: 40%;
+    }
+
+    .opc-after-sidebar {
+      padding-right: 5%;
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xls) {
+  .checkout-index-index {
+    .opc-sidebar {
+      margin-top: 20px;
+      width: 23.625%;
+    }
+
+    .opc-wrapper {
+      margin-top: 20px;
+      width: 66.125%;
+    }
+
+    .opc-after-sidebar {
+      width: 75%;
+      padding-right: 10%;
+    }
+  }
+}
+
+
+/* > 1450 */
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xlss) {
+  .checkout-index-index {
+    .opc-wrapper {
+      min-width: 923px;
+    }
+
+    .opc-sidebar {
+      width: @checkout-max-summary-width;
+    }
+  }
+}

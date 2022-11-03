@@ -1,0 +1,47 @@
+<div class="confirm-screen section-container" id="mobile-confirm-delivery-info-container">
+    <div id="delivery-info" class="shipping-products-wrapper">
+        <ul class="shipping-products" data-bind="foreach: { data: confirmItems, as: 'item'}">
+            <li class="shipping-product-wrapper">
+                <div class="shipping-product">
+                    <div class="product-photo"
+                         data-bind="style: { backgroundImage: 'url(\'' + item.thumbnail + '\')' }">
+                    </div>
+                    <div class="product-name">
+                        <span class="sku" data-bind="text: item.model_name"></span>
+                        <span class="name" data-bind="text: item.name"></span>
+                    </div>
+                    <div class="product-price">
+                        <span class="quantity" data-bind="text: item.qty"></span>
+                        <span class="multiply-txt"> x </span>
+                        <span data-bind="text: item.price"></span>
+                    </div>
+                </div>
+                <div class="shipping-rate">
+                    <div class="shipping-method">
+                        <span data-bind="text: item.shipping_name"
+                              class="shipping-method-label"></span>
+                        <span data-bind="text: item.shipping_cost"></span>
+                    </div>
+                </div>
+
+                <!-- ko if: item.delivery_lead_time_min > 0 || item.delivery_lead_time_max > 0-->
+                <div class="delivery-lead-time">
+                    <span class="icon-delivery"></span>
+                    <span data-bind="i18n: 'Arrival within'"></span>
+                    <!-- ko if: item.delivery_lead_time_min > 0 -->
+                    <span class="from delivery_lead_time_min" data-bind="text: item.delivery_lead_time_min"></span>
+                    <!-- /ko -->
+                    <!-- ko if: item.delivery_lead_time_min > 0 && item.delivery_lead_time_max > 0-->
+                    <span class="middle delivery_lead_time">-</span>
+                    <!-- /ko -->
+                    <!-- ko if: item.delivery_lead_time_max > 0-->
+                    <span class="to delivery_lead_time_max" data-bind="text: item.delivery_lead_time_max"></span>
+                    <!-- /ko -->
+                    <span data-bind="i18n: 'days'"></span>
+                </div>
+                <!-- /ko -->
+                <hr>
+            </li>
+        </ul>
+    </div>
+</div>

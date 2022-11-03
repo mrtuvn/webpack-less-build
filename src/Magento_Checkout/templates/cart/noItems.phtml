@@ -1,0 +1,27 @@
+<?php
+// @codingStandardsIgnoreFile
+/**  @var $block \Magento\Checkout\Block\Cart */
+
+?>
+<div class="cart-empty">
+    <?= $block->getChildHtml('checkout_cart_empty_widget') ?>
+    <div class="products-number"><?= /* @escapeNotVerified */ __('Item(s) total: 0'); ?></div>
+    <h4><?= /* @escapeNotVerified */ __('Your cart is empty!') ?></h4>
+
+    <?= $block->getChildHtml('shopping.cart.table.after') ?>
+    <?= $block->getBlockHtml('wishlist.container') ?>
+
+</div>
+<script>
+require([
+    'jquery',
+    'domReady!'
+], function ($) {
+    'use strict';
+
+    var bodyElm = $('body');
+    if (bodyElm && bodyElm != null && !bodyElm.hasClass('cart-empty-page')) {
+        bodyElm.addClass('cart-empty-page');
+    }
+});
+</script>

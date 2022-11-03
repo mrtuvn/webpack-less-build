@@ -1,0 +1,31 @@
+<?php /** @var \Lg\CheckoutHelper\Block\Onepage\Success $block */ ?>
+<ol class="opc-progress-bar">
+    <li class="opc-progress-bar-item">
+        <span><?= __('Shipping') ?></span>
+    </li>
+    <li class="opc-progress-bar-item">
+        <span><?= __('Review & Payments') ?></span>
+    </li>
+    <li class="opc-progress-bar-item _active">
+        <span><?= __('Order Complete') ?></span>
+    </li>
+</ol>
+
+<div class="steps-title">
+    <div class="page-title-wrapper">
+        <h1 class="page-title">
+            <span><?= __('Order Complete') ?></span>
+        </h1>
+    </div>
+    <div class="sub-heading">
+        <h3>
+            <?= __('%1 %2, %3', $block->getCustomerFirstname(),$block->getCustomerLastname(), 'Thank you for your order!'); ?>
+        </h3>
+        <p>
+            <?= __('Your order details have been sent to your email %1','<b>'.$block->getCustomerEmail().'</b>');  ?>
+        </p>
+        <p>
+            <?= __('You can sign up with you email address you have entered into your order information. If you sign up, you can get updates on various information about LGE products and promotions. Your email address is %1.','<b>'.$block->getCustomerEmail().'</b>');  ?>
+        </p>
+    </div>
+</div>

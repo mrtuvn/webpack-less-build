@@ -1,0 +1,103 @@
+& when (@media-common = true) {
+    .screen-reader-text {
+        position: absolute;
+        overflow: hidden;
+        clip: rect(1px, 1px, 1px, 1px);
+        padding: 0;
+        height: 1px;
+        width: 1px;
+    }
+
+    .abs-sidebar-totals {
+        .table-caption {
+            border: 0;
+            clip: rect(0, 0, 0, 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+        }
+    }
+
+    .checkout-cart-index .cart-summary .block.discount .fieldset .field:not(.choice) > .label,
+    .checkout-cart-index .cart-summary .block.discount .fieldset .field .label,
+    .field.street .field .label {
+        display: block;
+        border: 0;
+        clip: rect(0, 0, 0, 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    .billing-address-details, .shipping-address-items {
+        ul {
+            list-style: none;
+            padding: 0px;
+            margin: 0px;
+        }
+    }
+
+
+    // /Magento_Customer/templates/address/book.phtml
+    .block.block-addresses-default .block-title h2 {
+        font-size: 24px;
+        margin: 0px;
+        line-height: .95;
+    }
+
+    // /Magento_Customer/templates/address/book.phtml
+    .box-title h3 {
+        font-weight: 400;
+        font-size: 24px;
+        margin: 0px;
+    }
+
+    //  /Magento_Customer/templates/address/grid.phtml
+    .block.block-addresses-list .block-title h2 {
+        font-size: 24px;
+        margin: 0px;
+        line-height: .95;
+    }
+
+    // /Magento_Theme/templates/html/block.phtml
+    .block-title.wishlist-container-title > h2 {
+        font-size: 24px;
+        margin: 0px;
+    }
+
+    .block-addresses-default .box-title {
+        font-size: 24px;
+        color: #000;
+    }
+
+    .block-addresses-default ul {
+        list-style: none;
+        padding: 0px;
+        margin: 0px;
+        font-size: 14px;
+    }
+
+    button:focus {
+        outline: rgb(59, 153, 252) auto 5px;
+    }
+
+    input[type= "submit"]:focus {
+        outline: rgb(59, 153, 252) auto 5px;
+    }
+
+    #block-shipping label {
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+
+    // module-vault/view/frontend/web./js/customer_account/deleteWidget.js
+    footer.modal-footer button.action.secondary.cancel {
+        color: #a50034;
+    }
+}

@@ -1,0 +1,194 @@
+& when (@media-common = true) {
+    textarea,
+    select,
+    select[multiple],
+    input,
+    input[type="text"],
+    input[type="password"],
+    input[type="url"],
+    input[type="tel"],
+    input[type="search"],
+    input[type="number"],
+    input[type="date"],
+    input[type="email"],
+    input[type="number"],
+    input[type="search"],
+    input[type="checkbox"],
+    input[type="radio"],
+    input[type="button"],
+    input[type="reset"],
+    input[type="submit"] {
+        outline: none;
+        box-shadow: none;
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="url"],
+    input[type="tel"],
+    input[type="search"],
+    input[type="number"],
+    input[type="date"],
+    input[type="email"] {
+        border-color: @color-lg-gray-7;
+    }
+    select {
+        .lib-css(border-radius, 0);
+        .lib-css(background-color, @select__background);
+        .lib-css(background-image, @select__background-image);
+        .lib-css(background-position, @select__background-position);
+        .lib-css(background-size, @select__background-size);
+        .lib-css(background-repeat, @select__background-repeat);
+        .lib-css(padding-right, @select__padding-right);
+        .lib-css(-webkit-appearance, none);
+        .lib-css(-moz-appearance, none);
+        .lib-css(appearance, none);
+
+
+        .ie11 & {
+            .lib-css(padding, @form-element-input__padding);
+        }
+
+        &:focus {
+            .lib-css(background-image, @select__focus__background-image);
+            .lib-css(background-position, @select__background-position);
+            .lib-css(background-size, @select__background-size);
+            .lib-css(background-repeat, @select__background-repeat);
+        }
+    }
+
+    .field {
+        label.checked {
+            background: url('@{baseDir}images/icons/v2checkbox-checked.svg') center left no-repeat;
+            background-size: @form-element-checkbox-size @form-element-checkbox-size;
+        }
+    }
+
+    input[type="checkbox"] {
+        opacity: 0;
+        float: left;
+
+        &:focus + label{
+            box-shadow: 0px 0px 4px 0px #3b99fc;
+        }
+
+        ~ label {
+            display: block;
+            font-size: @font-size__l;
+            line-height: @line-height__l;
+
+            padding: 0 0 0 34px;
+
+            background: url('@{cicons_path}checkbox-unchecked.svg') center left no-repeat;
+            background-size: 24px 24px;
+
+            &:hover {
+                background: url('@{cicons_path}checkbox-unchecked-hover.svg') center left no-repeat;
+            }
+
+            > * {
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+        &:checked {
+            ~ label {
+                background: url('@{cicons_path}checkbox-checked.svg') center left no-repeat;
+
+                &:hover {
+                    background: url('@{cicons_path}checkbox-checked.svg') center left no-repeat;
+                }
+            }
+        }
+    }
+
+    input[type="radio"] {
+        opacity: 0;
+        float: left;
+        width: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+
+        &:focus + label{
+            box-shadow: 0px 0px 4px 0px #3b99fc;
+        }
+        
+        &:not(:checked) {
+            + label {
+                display: block;
+                font-size: @font-size__l;
+                line-height: @line-height__l;
+
+                &:before {
+                    content: "";
+                    display: inline-block;
+                    vertical-align: top;
+                    width: 24px;
+                    height: 24px;
+                    border: 1px solid @color-lg-gray-1;
+                    border-radius: 50%;
+                    margin: 2px 10px 2px 0;
+
+                    .box-sizing();
+                }
+                &:hover:before {
+                    border: 2px solid @color-lg-black;
+                }
+
+                //> * {
+                //    display: inline-block;
+                //    vertical-align: middle;
+                //}
+            }
+        }
+        &:checked {
+            + label {
+                display: block;
+                font-size: @font-size__l;
+                line-height: @line-height__l;
+
+                &:before {
+                    content: "";
+                    display: inline-block;
+                    vertical-align: top;
+                    width: 24px;
+                    height: 24px;
+                    border: 7px solid @color-lg-carmine;
+                    border-radius: 50%;
+                    margin: 2px 10px 2px 0;
+
+                    .box-sizing();
+
+                    &:hover {
+                        border: 7px solid @color-lg-carmine;
+                    }
+                }
+
+                //> * {
+                //    display: inline-block;
+                //    vertical-align: middle;
+                //}
+            }
+        }
+    }
+
+    input[type="submit"]:focus {
+        outline: rgb(59, 153, 252) auto 5px;
+    }
+
+    .fieldset {
+        > .field > .label,
+        > .field.choice .label,
+        > .fields > .field > .label,
+        > .fields > .field.choice .label{
+            display: block;
+            font-size: @font-size__l;
+            line-height: @line-height__l;
+        }
+    }
+}

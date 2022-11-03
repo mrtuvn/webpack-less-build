@@ -1,0 +1,74 @@
+/* custom styles fix styles from app code Lg_CustomMultiCoupon used incorrect size */
+& when (@media-common = true) {
+  .checkout-cart-index {
+
+    .discount .selectBox > select {
+      height: auto;
+      padding: @indent__s 9px 9px;
+    }
+
+    #check-coupon-form {
+      .check-coupon-actions {
+        .action-check {
+          padding: 11px 20px @indent__s;
+        }
+      }
+
+      .input-text {
+        padding: 7px 9px 8px;
+      }
+    }
+
+    .cart-summary .show-list-coupon-btn {
+      font-size: 14px;
+      padding: 11px 4px @indent__s;
+    }
+
+    .cart-summary {
+      .selectBox select{
+        background-image: url('@{baseDir}Lg_CustomMultiCoupon/images/accordion-open-m.svg');
+        background-position: right 18px top 16px;
+      }
+
+      .discount--open{
+        .selectBox select{
+          background-image: url('@{baseDir}Lg_CustomMultiCoupon/images/accordion-close-m.svg');
+          margin: 0px;
+        }
+      }
+    }
+  }
+
+  .checkout-cart-index {
+    .data-tooltip-wrapper {
+      .data-tooltip-tail {
+        box-sizing: content-box;
+      }
+    }
+    .my-coupon {
+      .coupon-box {
+        grid-gap: 10px;
+        .coupon-detail .desc {
+          overflow: visible;
+          line-height: normal;
+          height: auto;
+          text-overflow: inherit;
+          white-space: normal;
+        }
+        .coupon-code {
+          white-space: nowrap;
+          line-height: normal;
+          span {
+            &:last-of-type {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+  //Lg_CustomMultiCoupon
+  .selectBox.multicoupon select{
+    color: @color-lg-gray;
+  }
+}

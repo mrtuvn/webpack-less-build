@@ -1,0 +1,18 @@
+// For majority of projects we do not used page builder and its styles impact performance
+// To restore styles copy content of the corresponding file form theme-blank and place it in your child theme in a file with the same path
+//
+//  Responsive Classes
+//  _____________________________________________
+
+@media all and (min-width: (@screen__m + 1)) {
+    .pagebuilder-mobile-only {
+        display: none !important;
+    }
+}
+
+@media all and (max-width: @screen__m) {
+    .pagebuilder-mobile-hidden {
+        display: none !important;
+    }
+}
+

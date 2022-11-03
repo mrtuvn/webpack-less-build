@@ -1,0 +1,232 @@
+@billing-address-cancel-background: #6D6E71;
+& when (@media-common = true) {
+  .billing-address-form .fieldset.address {
+    .lib-vendor-prefix-display();
+    flex-wrap: wrap;
+    margin: 0;
+  }
+
+  #show-mobile-list-address {
+    background: url('@{baseDir}images/icons/pencil-edit.svg') center no-repeat ;
+    background-size: contain;
+    width: 14px;
+    display: block;
+    height: 14px;
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    text-indent: -99999px;
+    z-index: @z-index-10;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .checkout-index-index #billing-container .field.field-select-billing {
+    padding-left: 15px;
+  }
+
+  .checkout-index-index #billing-container .fieldset > .field.choice input[type='checkbox'] + .label {
+    line-height: 24px;
+
+    > span {
+      line-height: 130%;
+    }
+  }
+
+  .checkout-index-index #billing-container .fieldset > .field.choice {
+    clear: both;
+    float: left;
+    width: 100%;
+
+    &:before {
+      content: '';
+      display: none;
+    }
+
+    text-align: left;
+  }
+
+  .checkout-index-index .opc-wrapper .fieldset > div[name='billingAddressshared.telephone'] {
+    clear: both;
+  }
+
+  .checkout-index-index #billing-container .actions-toolbar .primary,
+  .checkout-index-index #billing-container .collapsible-content > fieldset {
+    margin-bottom: 0;
+  }
+
+  body.checkout-index-index .payment-information-content .billing-address-same-as-shipping-block input[type='checkbox'] + label {
+    background-position: top left;
+  }
+
+  #billing-container {
+    .billing-address-details {
+      .action-edit-address {
+        margin-left: 3rem;
+      }
+    }
+  }
+
+  .checkout-index-index {
+    .payment-information-content #billing  {
+      border: 1px solid #e8e8e8;
+      background: @color-white;
+      margin-bottom: @indent__base;
+      padding: @indent__base @indent__base;
+    }
+
+
+    .billing-address-details {
+      ul {
+        padding-left: 3rem;
+      }
+
+      p {
+        margin-bottom: .2rem;
+      }
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    .billing-address-title {
+      font-weight: @font-weight__semibold;
+      font-size: 2.4rem;
+      line-height: calc(28 / 24);
+    }
+
+    .opc-wrapper {
+      .fieldset > [name~="billingAddressshared.company"] {
+        float: inherit !important;
+      }
+    }
+
+    #opc-new-shipping-address + .field-sns_notification{
+      margin: 0 0 20px;
+    }
+    .field-sns_notification{
+      margin: 0 2% 20px;
+      display: block;
+      width: 100%;
+    }
+
+    #co-payment-form {
+      .checkout-billing-address {
+        .actions-toolbar {
+          max-width: 600px;
+          margin: 0 auto;
+
+          > .primary {
+            float: none;
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+  }
+
+  #billing-container .actions-toolbar {
+    clear: left;
+  }
+
+  #billing-container .actions-toolbar > .primary {
+    .lib-vendor-prefix-display();
+
+    .action-cancel {
+      min-width: 204px;
+      order: 1;
+      background: @billing-address-cancel-background;
+    }
+
+    .action {
+      flex: 0;
+      text-align: center;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-size: 16px;
+      color: @color-white;
+      line-height: calc(18/16);
+      font-weight: @font-weight__bold;
+      text-transform: uppercase;
+
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+    }
+
+    .action-update {
+      min-width: 204px;
+      order: 2;
+      background: @color-lg-carmine;
+      border-color: @color-lg-carmine;
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  body.checkout-index-index #billing-container .field.field-select-billing {
+    padding-left: 0;
+  }
+
+  .checkout-index-index #billing.collapsible-content {
+    padding: 15px 15px 10px 20px;
+    background: @color-white;
+    margin-bottom: 10px;
+  }
+
+  #billing-container .actions-toolbar > .primary {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+
+    .action-cancel {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .action-update {
+      width: 100%;
+    }
+  }
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  #billing-container .actions-toolbar > .primary {
+    justify-content: center;
+    flex-wrap: nowrap;
+
+
+    .action-cancel {
+      order: 1;
+      margin-right: 40px;
+    }
+
+    .action-update {
+      order: 2;
+    }
+  }
+
+  .checkout-index-index {
+    #show-mobile-list-address{
+      display: none;
+    }
+    .billing-address-form {
+
+      form {
+        padding-left: 14px;
+        padding-right: 14px;
+
+        .fieldset {
+          > fieldset.street {
+            padding: 0.1875rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+

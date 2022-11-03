@@ -1,0 +1,26 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!-- ko if: isDisplayed() -->
+<table class="data table table-totals" id="mobile-confirm-summary">
+    <tbody>
+    <!-- ko if: ifShowValue() -->
+    <tr>
+        <td data-bind="i18n: 'Tax'"></td>
+        <td data-bind="text: getEstimatedTax()" class="font-bold" id="mobile-confirm-tax"></td>
+    </tr>
+    <!-- /ko -->
+    <tr>
+        <td data-bind="i18n: 'Discount'"></td>
+        <td data-bind="text: getDiscountAmount()" class="font-bold" id="mobile-confirm-discount"></td>
+    </tr>
+    <tr>
+        <td data-bind="i18n: 'Total'"></td>
+        <td data-bind="text: getGrandTotal()" class="font-bold" id="mobile-confirm-grandtotal"></td>
+    </tr>
+    </tbody>
+</table>
+<!-- /ko -->

@@ -1,0 +1,82 @@
+& when (@media-common = true) {
+    .postalcode-validation, #block-summary {
+        .content {
+            padding: 5px 0 15px;
+            .lib-clearfix();
+        }
+
+        .input-area {
+            position: relative;
+            float: left;
+            width: 65%;
+            margin-right: 10px;
+
+            input {
+                display: block;
+                width: 100%;
+                padding-right: 40px;
+            }
+        }
+
+        .action-area {
+            float: left;
+            width: calc(~"35% - 10px");
+
+            .action {
+                display: block;
+                width: 100%;
+                padding: 14px 1px;
+            }
+        }
+
+
+        .title-text {
+            margin-right: 15px;
+        }
+
+        .status {
+            position: absolute;
+            top: 50%;
+            right: 1px;
+            .transform(translateY(-50%));
+            width: 40px;
+            height: 40px;
+
+            &.verifying {
+                &:before,
+                &:after {
+                    content: "";
+                    position: absolute;
+                    width: 25px;
+                    height: 25px;
+                    top: 50%;
+                    left: 50%;
+                    border: 1px solid @color-lg-carmine;
+                    border-radius: 50%;
+                    opacity: 0;
+
+                    .transform(translateX(-50%) translateY(-50%) scale(0));
+                    .animate(postalcodeVerification, 1s);
+                }
+
+                &:after {
+                    .animate(postalcodeVerification, 1s, 0.6s);
+                }
+            }
+        }
+    }
+}
+
+@keyframes postalcodeVerification {
+    0% {
+        .transform(translateX(-50%) translateY(-50%) scale(0));
+        opacity: 0;
+    }
+    20%, 70% {
+        opacity: 1;
+    }
+    100% {
+        .transform(translateX(-50%) translateY(-50%) scale(1));
+        opacity: 0;
+    }
+}

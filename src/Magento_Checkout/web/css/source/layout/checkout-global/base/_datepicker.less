@@ -1,0 +1,188 @@
+// Date Picker
+& when (@media-common = true) {
+  .ui-datepicker {
+    &.ui-widget-content {
+      box-shadow: none;
+      background: @color-lg-gray-1;
+      border: none;
+      width: 286px;
+
+      .ui-datepicker-header {
+        border-radius: 4px 4px 0 0;
+        background: @color-lg-carmine;
+        color: @color-white;
+
+        .ui-datepicker-title {
+          select {
+            background: transparent;
+            border: none;
+            color: @color-white;
+            .lib-font-size(16);
+            font-weight: @font-weight__bold;
+            padding: 0;
+            width: auto;
+          }
+        }
+
+        .ui-corner-all {
+          background: none;
+          color: @color-white;
+          text-decoration: none;
+          text-align: center;
+          .lib-font-size(16);
+
+          &.ui-datepicker-prev,
+          &.ui-datepicker-next {
+            width: 20px ;
+            height: 20px ;
+            padding: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            span{
+              display:none;
+            }
+            &:before {
+              color: @color-white;
+              font-size: 1.6rem;
+            }
+          }
+
+
+          &.ui-state-hover {
+            border-color: @color-white;
+          }
+
+          &.ui-datepicker-prev {
+            left: 10px;
+            &:before {
+              content: '\e9f0';
+              font-family: @icons__font-name;
+
+            }
+          }
+
+          &.ui-datepicker-next {
+            right: 10px;
+            &:before {
+              content: '\e9eb';
+              font-family: @icons__font-name;
+
+            }
+          }
+        }
+      }
+
+      .ui-datepicker-calendar {
+        background: @color-white;
+        border: none;
+        padding: 0;
+        margin-bottom: 0.2em;
+
+        th {
+          color: @color-lg-carmine;
+          background: @color-white;
+          text-transform: capitalize;
+        }
+
+        td,
+        th {
+          padding: 0;
+          border: none;
+          width: 40px;
+          line-height: 40px;
+          margin: 0;
+        }
+
+        th {
+          border-bottom: solid 1px @color-gray91;
+        }
+
+        td {
+          .ui-state-hover {
+            background: @color-lg-carmine;
+            color: @color-white;
+          }
+
+          a,
+          span {
+            width: 40px;
+            line-height: 40px;
+            height: 40px;
+            padding: 0;
+
+            &.ui-state-active {
+              border-radius: 0;
+            }
+          }
+        }
+
+        .ui-state-disabled {
+          background: @color-gray91;
+        }
+      }
+    }
+
+    &.ui-widget-header,
+    &.ui-widget-content {
+      .ui-state-default {
+        border: none;
+        background: @color-white;
+        text-align: center;
+      }
+    }
+  }
+  .checkout-index-index ._has-datepicker~.ui-datepicker-trigger:before {
+    content: '';
+  }
+
+  /* UI date picker */
+  .checkout-index-index {
+    .input-calendar-container {
+      position: relative;
+
+      button.ui-datepicker-trigger {
+        position: absolute;
+        top: 13.5px;
+        right: 8.5px;
+        bottom: 9.5px;
+        width: 18px;
+        height: 16px;
+        background: url('@{baseDir}images/icons/v2calendar.svg') no-repeat center;
+        background-size: cover;
+      }
+    }
+  }
+
+  .checkout-index-index .ui-datepicker-trigger::before {
+    position: absolute;
+    right: 5px;
+    top: 0px;
+    font-size: 30px !important;
+  }
+  .checkout-index-index .input-control {
+    position: relative;
+    height: 40px;
+    width: 160px;
+  }
+  .checkout-index-index .delivery-calendar-container {
+    display: flex;
+    flex-direction: row;
+
+    > label {
+      font-size: 1.6rem;
+      font-weight: @font-weight__regular;
+    }
+  }
+  .checkout-index-index .input-calendar-container {
+    margin: 0px 10px;
+  }
+  .checkout-index-index .ui-datepicker select.ui-datepicker-month,
+  .checkout-index-index .ui-datepicker select.ui-datepicker-year {
+    background-color:#a50034 !important;
+  }
+}
+// End Data picker

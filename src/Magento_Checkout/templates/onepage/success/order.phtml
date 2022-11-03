@@ -1,0 +1,102 @@
+<?php /** @var \Lg\CheckoutHelper\Block\Onepage\Success $block */ ?>
+<?php $order = $block->getOrder(); ?>
+<?php $subscriptions = $block->getSubscriptions(); ?>
+<?php $subscriptionProfileIds = $block->getSubscriptionProfileIds(); ?>
+<?php $shippingAddress = $block->getShippingAddress(); ?>
+<?php $discountData = $block->getCouponApplied(); ?>
+<div class="checkout-success">
+    <div class="order-ids">
+        <h3>
+            <span><?= __('Order Confirmation:'); ?></span>
+            <span><?= __($order->getIncrementId()); ?></span>
+        </h3>
+        <?php if (!empty($subscriptionProfileIds)) : ?>
+            <h3>
+                <span><?= __('Subscription Plan(s):'); ?></span>
+                <span><?= __('%1', implode(', ', $subscriptionProfileIds)); ?></span>
+            </h3>
+        <?php endif; ?>
+    </div>
+    <div class="order-info-wrapper">
+        <div class="order-info-wrapper-inner">
+            <div class="backgroud-order-summary"
+                 style="float: left; width: 30%; background-color: #f8f8f8">
+                <div class="order-summary-product" style="padding: 30px 20px;">
+                    <h3 class="block-title"><?= __('Order Summary'); ?></h3>
+                    <div class="summary-item subtotal">
+                        <span class="label"><?= __('Subtotal'); ?></span>
+                        <span class="value"><?= $block->getFormattedPrice($order->getSubtotal()) ?></span>
+                    </div>
+                    <div class="summary-item subtotal">
+                        <span class="label"><?= __('Estimated Tax'); ?></span>
+                        <span class="value"><?= $block->getFormattedPrice($order->getTaxAmount()) ?></span>
+                    </div>
+                    <?php if (!empty($discountData)) : ?>
+                        <?php foreach ($discountData as $discount) : ?>
+                            <div class="summary-item discount">
+                                <span class="label"><?= __('Discount') . ' (' . $discount['coupon_code'] . ')'; ?></span>
+                                <span class="value"><?= $block->getFormattedPrice($discount['discount_amount']) ?></span>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="summary-item discount">
+                            <span class="label"><?= __('Discount'); ?></span>
+                            <span class="value"><?= $block->getFormattedPrice($order->getDiscountAmount()) ?></span>
+                        </div>
+                    <?php endif; ?>
+                    <div class="summary-item shipping">
+                        <span class="label"><?= __('Free Shipping'); ?></span>
+                        <span class="value"><?= $block->getFormattedPrice($order->getShippingAmount()) ?></span>
+                    </div>
+                    <div class="summary-item total">
+                        <span class="label"><?= __('Order Total'); ?></span>
+                        <span class="value"><?= $block->getFormattedPrice($order->getGrandTotal()) ?></span>
+                    </div>
+                </div>
+            </div>
+            <div class="order-info shipping-details">
+                <?php if ($shippingAddress instanceof \Magento\Sales\Model\Order\Address) : ?>
+                    <div class="order-info-inner">
+                        <h3 class="block-title"><?= __('Shipping Address'); ?></h3>
+                        <p>
+                            <?= __($shippingAddress->getFirstname()) ?>
+                            <?= __($shippingAddress->getLastname()) ?>
+                            <br/>
+                            <?php foreach ($shippingAddress->getStreet() as $address) :?>
+                                <?= __($address) ?> <br/>
+                            <?php endforeach; ?>
+                            <?php if (!empty($shippingAddress->getRegion())) : ?>
+                                <?= __($shippingAddress->getRegion()) ?> ?>
+                                <br/>
+                            <?php endif; ?>
+                            <?= __($block->getCountryName($shippingAddress->getCountryId())) ?> <br/>
+                            <br/>
+                            <?php if(strlen($shippingAddress->getData("landmark"))) : ?>
+                                <?=  __($shippingAddress->getData("landmark")) ?> <br />
+                            <?php endif; ?>
+                            T:&nbsp;<a href=""
+                                       style="color: #a50034; text-decoration: underline"><?= __($shippingAddress->getTelephone()) ?></a>
+                            <br/>
+                            <?= __($shippingAddress->getEmail()) ?>
+                        </p>
+                    </div>
+                    <div class="box-content">
+                        <h3 class="block-title"><?= __('Payment Method'); ?></h3>
+                        <?= __($block->getPaymentMethodTitle()) ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <div class="order-info need-help">
+                <h3 class="block-title"><?= __('Need Help?'); ?></h3>
+                <div class="order-info-inner need-help-inner">
+                    <?=  $this
+                        ->getLayout()
+                        ->createBlock("Magento\Cms\Block\Block")
+                        ->setBlockId('need_help_support_'. $block->getStoreCode())
+                        ->toHtml(); ?>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .customer-address-form {
+    .form-address-edit {
+      margin: 0 0;
+
+      > .fieldset {
+        float: left;
+        width: calc(~'50% - 2%');
+        margin: 0 2% 2% 0;
+      }
+    }
+    .column {
+      .form-address-edit {
+        .actions-toolbar {
+          clear: both;
+          margin: 0;
+
+          .lib-clearfix();
+
+          > .primary {
+            float: left;
+            width: auto;
+          }
+          > .secondary {
+            float: right;
+            width: auto;
+            padding-top: 7px;
+          }
+        }
+      }
+    }
+  }
+}

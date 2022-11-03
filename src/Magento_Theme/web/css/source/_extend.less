@@ -1,0 +1,13 @@
+& when (@media-common = true) {
+  /* Remove this fixes after Vector update/fix styles from module */
+  [class*='checkout-'] .navigation .row.for-desktop,
+  [class*='checkout-'] .navigation .row.for-mobile {
+    width: auto; /** comment after vector fix global styles **/
+  }
+
+  body .logo {
+    margin: 0;
+  }
+}
+
+@import '_extend-child';

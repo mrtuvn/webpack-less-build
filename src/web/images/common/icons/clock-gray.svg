@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #767676;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="clock_copy" data-name="clock copy" class="cls-1" d="M854,892a10,10,0,1,1,10-10A10,10,0,0,1,854,892Zm0-18a8,8,0,1,0,8,8A7.71,7.71,0,0,0,854,874Zm2.212,11.692-2.9-2.63a0.875,0.875,0,0,1-.293-0.692V877.9a0.993,0.993,0,0,1,1.976,0v4.053l2.671,2.419a0.869,0.869,0,0,1,0,1.315A1.1,1.1,0,0,1,856.212,885.691Z" transform="translate(-844 -872)"/>
+</svg>

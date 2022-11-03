@@ -1,0 +1,39 @@
+//partials
+
+& when (@media-common = true) {
+  .item-options {
+    .warranty-options {
+      position: relative;
+      padding-left: 25px;
+      display: flex;
+      align-items: center;
+      dd {
+        margin-bottom: 0 !important;
+        select {
+          border: 0 !important;
+          font-weight: 700;
+          color: #000;
+          width: auto !important;
+          display: block;
+        }
+      }
+      &:before {
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAZCAYAAAAxFw7TAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFOSURBVHgB1ZXNbYMwFMcfncDXnvAIHoEdugBsANeeUBdIpQ6AO0DVDeos0A+pUo+1emmO5tbj6zMYmqDYGJVD8pP+IU7Mj4c/AGBlkkmbU4Q7MkrqOe+L0lLe9o6jcOMkgnPOhBDAGAP6Dmn65yuKAgIM0k6MSik0xmAI2y8mtkLXP0ySJBDDBazMaQjtpGVZ5v0fYwA36LQK0Ow0otHYNM2xiYkXjrI7gXjDfLMfJzyQXQOapw2WZblA+P160NyX4XODUkrfWvQI7S1ZwY/pEycLLOwXCfBA2+1S9O0d7aqrBu7fE8jzHEKgF6qmqyqisvlbHvh4RPxUsbIz2cvbqqqgbVtYga394BRJD9RunHzA/PjdQv+UH8kompYEaq2XCLU710t9rFqPrJ5W5YPbK9v9O1Q7ESno30OLKa24rutBZNxv/4JTpKuKz3X+BWkUN0gmQWhNAAAAAElFTkSuQmCC);
+        width: 20px;
+        height: 25px;
+        content: "";
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        background-size: 20px auto;
+      }
+    }
+    dt {
+      margin: 0;
+      &:after {
+        content: ':';
+        padding: 0 0 0 3px;
+      }
+    }
+  }
+}

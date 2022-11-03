@@ -1,0 +1,14 @@
+<?php /** @var $block \Magento\Sales\Block\Order\Info */ ?>
+<style>
+    .order-status{
+        display: inline-block;
+        vertical-align: top;
+        padding: 0 50px 0 0;
+        border: none;
+        font-size: 20px;
+        line-height: 24px;
+        margin-bottom: unset;
+    }
+</style>
+
+<span class="order-status"><?= __('Status: ') . $block->escapeHtml($block->getOrder()->getStatusLabel()) ?></span>

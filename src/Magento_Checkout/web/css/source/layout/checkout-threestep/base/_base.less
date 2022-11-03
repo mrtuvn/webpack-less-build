@@ -1,0 +1,79 @@
+& when (@media-common = true) {
+  .checkout-index-index .payment-methods .payment-group .payment-method._active .payment-method-title {
+    border-bottom: 1px solid #dfdfdf;
+    margin-bottom: @lg-spacer--md;
+  }
+  .checkout-cart-index .installment-popup .modal .modal-header {
+    border: none; /* fix issue line header popup */
+    padding-right: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .checkout-index-index .installment-popup .modal .modal-header {
+    padding-right: 0;
+  }
+
+  .page-print {
+    .action.nav-toggle {
+      display: none;
+    }
+
+    .order-status {
+      margin-bottom: 20px;
+    }
+  }
+
+  .checkout-cart-index .cart.table-wrapper .col.subtotal > a:not(:only-child) {
+    white-space: normal; /* line break */
+  }
+}
+/** LGEGPSM-1275 Fix missing edit link address **/
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  .account .table-wrapper .table:not(.cart):not(.totals):not(.table-comparison) > tbody > tr td,
+  .account .table-wrapper .table:not(.cart):not(.totals):not(.table-comparison) > tbody > tr th{
+    flex-wrap: wrap;
+  }
+
+  .checkout-index-index {
+    .opc-wrapper .edit-address-link {
+      &:before {
+        display: none;
+      }
+
+      > span {
+        .lib-visually-hidden-reset();
+      }
+
+      position: unset;
+    }
+  }
+
+  .checkout-index-index.@{cts} {
+    &.shipping-step {
+      .checkout-payment-method {
+        display: none; /* not show payment content at shipping screen threestep */
+      }
+    }
+  }
+}
+/** LGEGPSM-1275 **/
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .checkout-index-index .checkout-top-area {
+    .page-title {
+      visibility: hidden; /*LGEGPSM-3471*/
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  .checkout-index-index .opc-summary-wrapper .actions-toolbar-trigger .primary button {
+    overflow: hidden;
+    text-overflow: ellipsis; /* avoid long text overflow at narrow screen */
+    white-space: nowrap;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+

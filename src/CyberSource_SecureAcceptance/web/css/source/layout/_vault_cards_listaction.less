@@ -1,0 +1,25 @@
+& when (@media-common = true) {
+    .vault-cards-listaction {
+        .table-credit-cards {
+            .col.actions {
+                .action {
+                    font-family: @font-family__lg-smart;
+                    text-transform: none;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .vault-cards-listaction {
+        .table-credit-cards {
+            .col.actions {
+                .form {
+                    display: inline-block;
+                    vertical-align: top;
+                }
+            }
+        }
+    }
+}

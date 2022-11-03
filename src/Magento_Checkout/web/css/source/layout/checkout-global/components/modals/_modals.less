@@ -1,0 +1,71 @@
+// partials
+@import '_modals_shipping';
+& when (@media-common = true) {
+  .checkout-index-index {
+    footer.modal-footer {
+      width: auto;
+    }
+
+    .modal-popup {
+      .modal-footer {
+        .action-save-address {
+          float: none;
+        }
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  .checkout-index-index {
+    .opc-summary-wrapper {
+      .modal-inner-wrap {
+        background: @color-lg-white;
+        width: 100%;
+      }
+
+      .modal-header {
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 50px;
+
+        .action-close {
+          &:before {
+            display: none;
+          }
+
+          span {
+            margin: 0;
+            padding: 0;
+            width: auto;
+            height: auto;
+            position: static;
+            color: @color-lg-carmine;
+            text-decoration: underline;
+            text-transform: none;
+            font-family: @font-family__lg-smart;
+          }
+        }
+      }
+
+      .modal-content {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  body.checkout-index-index._has-modal .modal-popup.modal-slide .modal-footer {
+    text-align: right;
+  }
+
+  .checkout-index-index {
+    .opc-sidebar {
+      .modal-header {
+        padding: 0;
+      }
+    }
+  }
+}

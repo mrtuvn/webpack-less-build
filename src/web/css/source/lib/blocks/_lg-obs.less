@@ -1,0 +1,146 @@
+//DEFAULT
+@import '_lg-base';
+@import 'common/_links';
+@import 'common/_navigation';
+@import 'common/_footer';
+@import 'common/_e-privacy'; // e privacy
+@import 'common/_carousel-default'; // mobile carousel on product thumbnail and .slick-arrow default css ... etc
+
+& when (@media-common = true) {
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  html[dir=rtl] {
+    direction: rtl;
+  }
+
+  html[dir=rtl] body.iw-fullscreen-edit {
+    direction: ltr;
+
+    .component-wrap,
+    .component {
+      direction: rtl;
+    }
+  }
+
+  body {
+    //overflow-x: hidden;
+
+    input::-ms-clear {
+      display: none;
+    }
+
+    //word-break: break-word;
+    //word-wrap: break-word;
+
+    [data-countrycode=jp] & {
+      word-break: break-all;
+    }
+  }
+
+
+  //footer {width:100%;}
+  //[type=reset], [type=submit], button, html [type=button] {
+  //  -moz-appearance: none;
+  //  -webkit-appearance: none;
+  //}
+  //
+  //.visible-sm, .visible-xs {display: none !important;}
+  //@media (max-width: 767px) {
+  //  .visible-xs {display: block !important;}
+  //  .hidden-xs {display: none !important;}
+  //}
+  //
+  //@media (max-width: 991px) {
+  //  .visible-sm {display: block !important;}
+  //  .hidden-sm {display: none !important;}
+  //}
+  //.row {
+  //.lib-clearfix();
+  //}
+  //a {
+  //  color:#000;
+  //  &:hover {
+  //    color:#000;
+  //  }
+  //}
+  //b, strong {font-weight:400;}
+  //.modal-backdrop {
+  //  z-index:10001;
+  //}
+  //.modal {
+  //  z-index:10002;
+  //}
+  //
+  //.btn  {padding:0;border-radius:0;}
+  //button.link-text {padding:0;border-radius:0;background:transparent;border:0;}
+  //
+  //body {
+  //  .close {opacity:1!important;}
+  //}
+}
+
+/* mixins */
+.uppercase() {text-transform:uppercase;}
+.listreset() {margin: 0;padding: 0;list-style: none;}
+.circleDeletebtn() {display:block;overflow:hidden;width:20px;height:20px;padding:0;border-radius:50%;border:1px solid #999999;text-indent:1000px;background:url('@{baseDir}images/common/icons/content-delete.svg') no-repeat 50% 50% @color-white;}
+.linkicon() {content:'';display:inline-block;width:12px;height:12px;}
+
+& when (@media-common = true) {
+
+  // Normalize
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+  }
+
+  ul, ol, li {
+    .listreset();
+  }
+
+}
+
+& when (@media-target = 'mobile'), (@media-target = 'all') {
+  @media (max-width: 1630px) {
+    // fix the layout bug on the PDP page
+    body > .iw_viewport-wrapper > .container-fluid > .container-fluid > .row > .iw_columns > .iw_placeholder > .iw_component > .component-wrap, // for overview
+    body > .iw_viewport-wrapper > .container-fluid > .container-fluid > .row > .iw_columns > .iw_component > .component-wrap, // for spec and... etc.
+    body > .iw_viewport-wrapper > .container-fluid > .container-fluid > .row > .iw_columns > .iw_component > .footer-box { // for footer
+      margin-left: -30px;
+      margin-right: -30px;
+    }
+
+    // for footer in search result page
+    body > .container-fluid > .row > .iw_columns > .iw_component > .container-fluid > .footer-box {
+      margin-left: -30px;
+      margin-right: -30px;
+    }
+  }
+}
+& when (@media-common = true) {
+  //web accessibillity add
+  .visually-hidden {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px) !important; /* for Internet Explorer */
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    height: 1px !important;
+    width: 1px !important;
+    overflow: hidden !important;
+  }
+
+  // firefox large outline
+  a:focus,
+  button:focus {
+    -moz-outline-style: none;
+  }
+}

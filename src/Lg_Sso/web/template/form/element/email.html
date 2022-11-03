@@ -1,0 +1,45 @@
+<!-- ko ifnot: isCustomerLoggedIn() -->
+<!-- ko foreach: getRegion('before-login-form') -->
+<!-- ko template: getTemplate() --><!-- /ko -->
+<!-- /ko -->
+<form class="form form-login" data-role="email-with-possible-login"
+      data-bind="submit:login"
+      method="post">
+    <fieldset id="customer-email-fieldset" class="fieldset" data-bind="blockLoader: isLoading">
+        <div class="field required">
+            <label class="label" for="customer-email">
+                <span data-bind="i18n: 'Email Address'"></span>
+            </label>
+            <div class="control _with-tooltip">
+                <input class="input-text"
+                       type="email"
+                       data-bind="
+                            textInput: email,
+                            hasFocus: emailFocused,
+                            mageInit: {'mage/trim-input':{}},
+                            attr: {'data-msg-required': $t('Email address is required.')}"
+                       name="username"
+                       data-validate="{required:true, 'validate-email':true}"
+                       id="customer-email" />
+                <!-- ko template: 'ui/form/element/helper/tooltip' --><!-- /ko -->
+                <span class="note" data-bind="fadeVisible: isPasswordVisible() == false"><!-- ko i18n: 'You can create an account after checkout.'--><!-- /ko --></span>
+            </div>
+    
+            <div class="actions-toolbar" data-bind="fadeVisible: isPasswordVisible">
+                <input name="context" type="hidden" value="checkout" />
+                <div class="primary">
+                    <button type="submit" id="sso-login-button" class="action login primary" data-bind="click: redirectToLogin"><span data-bind="i18n: 'Login with SSO'"></span></button>
+                </div>
+            </div>
+        </div>
+        
+        <!--Hidden fields -->
+        <fieldset class="fieldset hidden-fields" data-bind="fadeVisible: isPasswordVisible">
+            <!-- ko foreach: getRegion('additional-login-form-fields') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!-- /ko -->
+        </fieldset>
+        <!--Hidden fields -->
+    </fieldset>
+</form>
+<!-- /ko -->

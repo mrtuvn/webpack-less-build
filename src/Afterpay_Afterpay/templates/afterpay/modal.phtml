@@ -1,0 +1,79 @@
+<?php
+/**
+ * Magento 2 extensions for Afterpay Payment
+ *
+ * @author Afterpay
+ * @copyright 2016-2020 Afterpay https://www.afterpay.com
+ */
+$enable_cbt = $this->helper('Afterpay\Afterpay\Helper\Data')->getConfig('payment/afterpaypayovertime/enable_cbt');
+$store_base_currency = $this->helper('Afterpay\Afterpay\Helper\Data')->getConfig('currency/options/default');
+if(!$enable_cbt){
+	$enable_cbt = 0;
+}
+?>
+<div id="afterpay-modal-popup" style="display:none">
+    <a href="https://www.afterpay.com/terms/" target="_blank">
+        <img class="afterpay-modal-image" alt="Afterpay"/>
+    </a>
+</div>
+<script>
+	require(
+        [
+            'jquery',
+			'Magento_Ui/js/modal/modal'
+		],
+        function(
+            $,
+			modal
+        ){
+			var storeCurrency="<?php echo $store_base_currency;?>";
+			var enable_cbt=<?php echo $enable_cbt;?>;
+			var width=$(window).width();
+			
+			if((storeCurrency=="USD" || storeCurrency=="CAD") && !$("#afterpay-modal-container").length){
+    			var filename=(storeCurrency=="CAD")?"ca":"us";
+    			$('head').append('<link rel="stylesheet" href="https://static.afterpay.com/modal/'+filename+'.css" type="text/css" src_type="url"/>');
+    			 $.ajax({
+    				url: 'https://static.afterpay.com/modal/'+filename+'.html',
+    				complete: function(jqXHR, textStatus) {
+    				  if (jqXHR.status == 200) {
+    					$('#maincontent')
+    					  .append(jqXHR.responseText);
+    					}
+    				}
+    			 });	
+			}
+			
+			var options = {
+                responsive: false,
+                innerScroll: false,
+                modalClass: 'afterpay-learn-more'
+            };
+            // register poup
+            var popup = modal(options, $('#afterpay-modal-popup'));
+
+            // register the click to be popup #image
+            $( ".afterpay-modal-popup-trigger" ).on( "click", function() {
+                $('#afterpay-modal-popup').show();
+                $('#afterpay-modal-popup').modal('openModal');
+            });
+
+            // register the click to be popup #html 
+            // Add classname suffix based on currency
+            var suffix=(storeCurrency=="CAD")?"ca":"us";
+            $( ".afterpay-modal-popup-trigger-"+suffix ).on( "click", function() {
+                
+                if($("#afterpay-modal-container").length!=0){
+                    
+					modal(options, $('#afterpay-modal-content'));					
+					$('#afterpay-modal-content').show();
+					$('#afterpay-modal-content').modal('openModal');
+					
+				}
+            });
+
+            
+		}
+	);
+</script>
+

@@ -1,0 +1,22 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/**  @var $block \Magento\Checkout\Block\Cart\Grid */
+?>
+<div id="products-number" class="products-number" data-bind="scope:'products-number'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+    {
+        "#products-number": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "products-number": {
+                        "component": "Magento_Checkout/js/products-number"
+                    }
+                }
+            }
+        }
+    }
+    </script>
+</div>

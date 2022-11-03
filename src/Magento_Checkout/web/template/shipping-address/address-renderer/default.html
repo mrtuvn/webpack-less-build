@@ -1,0 +1,70 @@
+<li class="shipping-address-item" click="selectAddress"
+    css="'selected-item' : isSelected() , 'not-selected-item':!isSelected()" tabindex="0"
+    data-bind="event: { keypress: function (data, event) { if(event.keyCode == 13){ selectAddress() } } }">
+
+    <!-- ko if: (isSelected() && !getAddressListState())-->
+    <div id="shipping-address-title">
+        <span data-bind="i18n: 'Shipping Address'"></span>
+        <span id="show-mobile-list-address"
+              data-bind="click: showAddressList">edit</span>
+    </div>
+    <!-- /ko -->
+
+    <a role="radio" aria-checked="" attr="{'aria-checked' : isSelected()?'true':'false' }" style="width:100%;"
+       data-bind="afterRender: mobileHideNotChosenAddress">
+        <div class="address-item-inner">
+            <p class="addr-name"><text args="address().prefix"/>
+                <text args="address().firstname"/>
+                <text args="address().middlename"/>
+                <text args="address().lastname"/>
+                <text args="address().suffix"/>
+            </p>
+            <p class="addr-street"><text args="_.values(address().street).join(', ')"/>
+            </p>
+            <p class="addr-city">
+                <text args="address().city "/>
+                <if args="address().region">
+                    <if args="address().city">
+                        <span text="', ' + address().region"></span>
+                    </if>
+                    <ifnot args="address().city">
+                        <span text="address().region"></span>
+                    </ifnot>
+                </if>
+                <if args="address().postcode">
+                    <text args="', ' + address().postcode"/>
+                </if>
+            </p>
+            <p class="addr-country"><text args="getCountryName(address().countryId)"/>
+            </p>
+            <p class="addr-attrs">
+                <each args="data: address().customAttributes, as: 'element'">
+                    <each args="data: Object.keys(element), as: 'attribute'">
+                        <if args="typeof element[attribute] === 'object' && attribute !== 'sns_confirmation_status'">
+                            <if args="element[attribute].label">
+                                <text args="element[attribute].label"/>
+                            </if>
+                            <ifnot args="element[attribute].label">
+                                <if args="element[attribute].value">
+                                    <text args="element[attribute].value"/>
+                                </if>
+                            </ifnot>
+                        </if>
+                        <if args="typeof element[attribute] === 'string'">
+                            <if args="element[attribute] !== 'landmark'">
+                                <text args="element[attribute]"/>
+                            </if>
+                        </if>
+                    </each>
+                </each>
+            </p>
+            <p class="tel"><text args="getTelephone(address().countryId,address().telephone)"/></p>
+        </div>
+    </a>
+
+    <button visible="address().isEditable()" type="button"
+            class="action edit-address-link"
+            click="editAddress">
+        <span translate="'Edit Shipping Address'"></span>
+    </button>
+</li>

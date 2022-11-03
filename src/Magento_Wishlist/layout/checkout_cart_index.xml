@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block name="wishlist.container" template="Magento_Theme::html/block.phtml" after="checkout.cart.container">
+                <arguments>
+                    <argument name="block_css" xsi:type="string">wishlist-container</argument>
+                    <argument translate="true" name="block_title" xsi:type="string">Saved for Later</argument>
+                </arguments>
+                <block class="Lg\Wishlist\Block\Title" name="customer.wishlist.title" template="Magento_Wishlist::title.phtml" before="-"/>
+                <block class="Magento\Wishlist\Block\Customer\Wishlist" name="customer.wishlist" template="Magento_Wishlist::view.phtml">
+                    <block class="Magento\Theme\Block\Html\Pager" name="wishlist_item_pager"/>
+                    <block class="Magento\Wishlist\Block\Rss\Link" name="wishlist.rss.link" template="Magento_Wishlist::rss/wishlist.phtml"/>
+                    <block class="Magento\Wishlist\Block\Customer\Wishlist\Items" name="customer.wishlist.items" as="items" template="Magento_Wishlist::item/list.phtml">
+                        <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Image" name="customer.wishlist.item.image" template="Magento_Wishlist::item/column/image.phtml"/>
+                        <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Info" name="customer.wishlist.item.name" template="Magento_Wishlist::item/column/name.phtml"/>
+                        <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Cart" name="customer.wishlist.item.price" template="Magento_Wishlist::item/column/price.phtml">
+                            <block class="Magento\Catalog\Pricing\Render" name="product.price.render.wishlist">
+                                <arguments>
+                                    <argument name="price_render" xsi:type="string">product.price.render.default</argument>
+                                    <argument name="price_type_code" xsi:type="string">wishlist_configured_price</argument>
+                                    <argument name="price_label" xsi:type="boolean">false</argument>
+                                    <argument name="zone" xsi:type="string">item_list</argument>
+                                </arguments>
+                            </block>
+                            <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Options" name="customer.wishlist.item.options"/>
+                        </block>
+                        <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Actions" name="customer.wishlist.item.inner" template="Magento_Wishlist::item/column/actions.phtml">
+                            <arguments>
+                                <argument name="css_class" xsi:type="string">product-item-inner</argument>
+                            </arguments>
+                            <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Cart" name="customer.wishlist.item.cart" template="Magento_Wishlist::item/column/cart.phtml">
+                                <arguments>
+                                    <argument name="title" translate="true" xsi:type="string">Add to Cart</argument>
+                                    <argument name="maximum" xsi:type="number">10</argument>
+                                </arguments>
+                            </block>
+                            <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Actions" name="customer.wishlist.item.actions" template="Magento_Wishlist::item/column/actions.phtml">
+                                <arguments>
+                                    <argument name="css_class" xsi:type="string">product-item-actions</argument>
+                                </arguments>
+                                <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Remove" name="customer.wishlist.item.remove" template="Magento_Wishlist::item/column/remove.phtml"/>
+                            </block>
+                        </block>
+                    </block>
+                </block>
+            </block>
+            <block name="wishlist" template="Magento_Wishlist::wishlist-item-total-price.phtml" after="wishlist.container">
+                <arguments>
+                    <argument name="price_format" xsi:type="object">Lg\CheckoutHelper\ViewModel\Currency\PriceFormat</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <referenceBlock name="checkout.cart.form">
+            <container name="checkout.cart.form.after" htmlTag="div" htmlClass="container-form-after" />
+        </referenceBlock>
+
+        <move element="wishlist.container" destination="checkout.cart.form.after" before="checkout.cart.crosssell"/>
+        <move element="checkout.cart.crosssell" destination="checkout.cart.form.after"/>
+    </body>
+</page>

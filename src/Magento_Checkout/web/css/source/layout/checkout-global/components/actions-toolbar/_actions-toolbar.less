@@ -1,0 +1,159 @@
+// partials
+& when (@media-common = true) {
+  .checkout-index-index {
+    & .column.main .payments .payment-method-content {
+      .actions-toolbar {
+        margin-bottom: 0;
+
+        > .primary {
+          margin-bottom: 0;
+
+          .action{
+            margin-bottom: @indent__base;
+          }
+        }
+      }
+    }
+
+    #customer-email-fieldset {
+      .field > .actions-toolbar {
+
+        .action.login {
+          margin-top: 15px;
+        }
+      }
+
+      .actions-toolbar {
+        .lib-clearfix();
+        clear:both;
+        width: auto;
+
+        .primary {
+          float: none;
+          width: auto;
+          margin-bottom: 0;
+
+          .action.login {
+            border-radius: 2px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+  .checkout-index-index {
+    .opc-wrapper {
+      .form-login {
+        #customer-email-fieldset {
+          .control {
+            float: none;
+            width: auto;
+          }
+
+          .actions-toolbar {
+            padding-top: 0;
+            margin-left: 0;
+            float: none;
+            width: auto;
+
+            button.primary {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  body.checkout-index-index .opc-wrapper .form-login #customer-email-fieldset .actions-toolbar {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .checkout-index-index {
+    .opc-wrapper {
+      .form-login #customer-email-fieldset .actions-toolbar {
+        > .primary {
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .checkout-index-index {
+
+    #customer-email-fieldset {
+      .actions-toolbar {
+        margin-top: 0;
+      }
+    }
+
+    #customer-email-fieldset > .actions-toolbar {
+      .action.login  {
+        margin-left: 15px;
+        margin-top: 15px;
+      }
+    }
+
+    .column:not(.sidebar-main) form .actions-toolbar {
+      margin: 0 0 5px;
+    }
+
+    .actions-toolbar {
+      > .primary,
+      > .secondary {
+        display: block;
+        float: right;
+        clear: right;
+      }
+
+      > .primary {
+        width: 100%;
+        margin-bottom: @indent__m;
+
+        .action {
+          display: block;
+          width: 100%;
+          margin: 0 0 3px;
+          border-radius: 2px;
+        }
+
+        .action.continue {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+/** > 1200 **/
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xls) {
+  .checkout-index-index {
+    #customer-email-fieldset {
+      .actions-toolbar {
+        float: none;
+        width: auto;
+        min-width: 125px;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xls) {
+  .checkout-index-index .opc-wrapper .form-login #customer-email-fieldset {
+    .actions-toolbar {
+      position: unset;
+      float: left;
+      margin: @indent__xs 2%;
+    }
+  }
+}

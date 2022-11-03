@@ -1,0 +1,79 @@
+//TODO: test/verify and remove/clean files in app/code after all tests passed
+// files stay at app/code/Lg/Theme/view/frontend/web/css/source/_module.less
+// files stay at app/code/Lg/Theme/view/frontend/web/css/source/_extend.less
+// Styles can place from module but should place in theme instead
+
+/*[LGOBSSI-2383]- Check all countries */
+& when (@media-common = true) {
+  .checkout-index-index{
+    //Country CH_DE
+    .opc-wrapper div.collapsible-content > .information {
+      margin-bottom: 10px;
+      &:before{
+        content: "";
+        margin: 0;
+      }
+      p:before{
+        padding-left: 0px;
+      }
+    }
+    div.checkout-waste{
+      padding-bottom: 0;
+      margin-bottom:0;
+    }
+  }
+
+  //ADD LOGO ICON FOR VIP
+  //body header.navigation .for-desktop .right-btm .icons .login.is-vip > a {
+  //  width: 22px;
+  //  height: 22px;
+  //  margin-top: -1px;
+  //  background-position: center center;
+  //  background-size: contain;
+  //  background-image: url(//www.lg.com/lg5-common-gp/images/common/icons/login-vip-nero.svg);
+  //}
+  //
+  //body header.navigation .for-desktop .right-btm .icons .login.is-vip > a:focus,
+  //body header.navigation .for-desktop .right-btm .icons .login.is-vip > a:hover {
+  //  background-image: url(//www.lg.com/lg5-common-gp/images/common/icons/login-vip-carmine.svg);
+  //  width: 22px;
+  //  height: 22px;
+  //}
+  //
+  //body header.navigation .for-mobile .right .icons .login.is-vip > a{
+  //  padding-top: 14px;
+  //  text-decoration: none;
+  //  background-position: center center;
+  //  background-size: 22px;
+  //  background-image: url(//www.lg.com/lg5-common-gp/images/common/icons/login-vip-nero.svg);
+  //}
+  //
+  //body header.navigation .for-mobile .right .icons .login.is-vip > a:hover {
+  //  background-image: url(//www.lg.com/lg5-common-gp/images/common/icons/login-vip-carmine.svg);
+  //}
+  //
+  ////Mobile vip icon in dropdown
+  //body header.navigation .for-mobile .menu .menu-wrap .mylg>li.login.is-vip .after-login:before {
+  //  background-image: url(//www.lg.com/lg5-common-gp/images/common/icons/login-vip-nero.svg);
+  //  background-size: 20px;
+  //  background-position: center center;
+  //}
+  //
+  //header.navigation .for-mobile .menu .menu-wrap .mylg>li.login>a:before {
+  //  background: url(//www.lg.com/lg5-common-gp/images/common/icons/login-nero.svg) no-repeat 0 50%;
+  //  background-size: 20px 20px;
+  //}
+  //
+  //header.navigation .for-mobile .right .icons .login>a {
+  //  background-repeat: no-repeat;
+  //  background-position: 50% 50%;
+  //  background-size: 20px 20px;
+  //}
+  //
+  //header.navigation .for-mobile .menu .menu-wrap .mylg>li.login.logged .after-login:before {
+  //  background-position: center center;
+  //  background-image: url(//www.lg.com/lg5-common-gp/images/common/icons/login-fill-nero.svg);
+  //}
+}
+
+@import '_extend-child';

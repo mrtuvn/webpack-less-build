@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="customer-account-navigation-subscription-profile-link">
+            <arguments>
+                <argument name="label" xsi:type="string">My Subscription Plans</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceBlock name="customer-account-navigation-account-link" template="Magento_Customer::account/changeurl.phtml" >
+            <arguments>
+                <argument name="path" xsi:type="string">my-lg/my-support</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceBlock name="customer-account-navigation-delimiter-1" remove="true" />
+        <referenceBlock name="customer-account-navigation-delimiter-2" remove="true" />
+        <referenceBlock name="customer-account-navigation-checkout-sku-link" remove="true" />
+        <referenceBlock name="customer-account-navigation-downloadable-products-link" remove="true" />
+        <referenceBlock name="customer-account-navigation-wish-list-link" remove="true" />
+        <referenceBlock name="customer-account-navigation-account-edit-link" remove="true" />
+        <referenceBlock name="customer-account-navigation-customer-balance-link" remove="true" />
+        <referenceBlock name="customer-account-navigation-gift-card-link" remove="true" />
+        <referenceBlock name="customer-account-navigation-billing-agreements-link" remove="true" />
+        <referenceBlock name="customer-account-navigation-reward-link" remove="true" />
+        <referenceBlock name="customer-account-navigation-giftregistry-link" remove="true" />
+        <referenceBlock name="customer-account-navigation-product-reviews-link" remove="true" />
+        <referenceBlock name="customer-account-navigation-magento-invitation-link-container" remove="true" />
+        <referenceBlock name="customer-account-navigation-return-history-link" remove="true" />
+    </body>
+</page>

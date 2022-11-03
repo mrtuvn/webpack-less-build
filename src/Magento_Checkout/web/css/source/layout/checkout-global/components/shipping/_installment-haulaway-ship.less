@@ -1,0 +1,39 @@
+& when (@media-common = true) {
+  .checkout-index-index {
+    .installation-haulaway-method {
+      .shipping-method-selector {
+        position: relative;
+
+        .field-tooltip {
+          right: -23px;
+          top: -4px;
+        }
+      }
+    }
+  }
+}
+
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__ms) {
+  .checkout-index-index {
+    ul.shipping-products {
+      .shipping-method.installation-haulaway-method {
+        .field-tooltip {
+          .installation-tooltip-content {
+            width: 300px;
+            right: -180px;
+            &:before, &:after {
+              right: 180px;
+            }
+              div {
+                max-height: 300px;
+                overflow: auto;
+                padding-right: 10px;
+                margin-right: -10px;
+              }
+          }
+        }
+      }
+    }
+  }
+}

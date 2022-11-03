@@ -1,0 +1,162 @@
+& when (@media-common = true) {
+  .sales-guest-form {
+    main {
+      &.page-main {
+        .page-title-wrapper {
+          h1 {
+            &.page-title {
+              text-align: center;
+              font-size: 48px;
+              margin-bottom: 10px;
+            }
+          }
+        }
+
+        span {
+          .required {
+            color: #A50034;
+          }
+        }
+
+        .notice-text {
+          color: #6B6B6B;
+          font-weight: 400;
+          font-style: normal;
+          font-size: 16px;
+          line-height: 24px;
+        }
+
+        .row {
+          width: 80%;
+          margin: 35px auto 0;
+
+          .notice-require {
+            text-align: right;
+          }
+        }
+
+        .sub-title {
+          text-align: center;
+          font-weight: 400;
+          font-style: normal;
+          font-size: 18px;
+          margin-bottom: 40px;
+        }
+
+        .form {
+          &.form-orders-search {
+            background-color: rgba(248, 248, 248, 1);
+            box-sizing: border-box;
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgba(228, 228, 228, 1);
+            border-radius: 0px;
+            width: 80%;
+            height: auto;
+            margin: 0 auto;
+            min-width: unset;
+
+            .row {
+              width: 80%;
+              margin: 35px auto 0;
+
+              .field {
+                width: 48%;
+                display: inline-block;
+
+                &#oar-zip {
+                  float: right;
+                }
+
+                &:nth-child(even) {
+                  float: right;
+                }
+
+                label {
+                  width: 100% !important;
+                  text-align: left;
+
+                  span {
+                    color: #333333;
+                    font-size: 16px;
+                    font-weight: 400;
+                    font-family: 'LG Smart SemiBold';
+                  }
+
+                  .required {
+                    color: #A50034;
+                  }
+                }
+              }
+            }
+
+            .de-need-help-support {
+              margin-bottom: 35px;
+
+              .need-help-support {
+                padding: 0;
+                background: none;
+                margin-left: -10px !important;
+              }
+            }
+          }
+        }
+
+        .de-actions-toolbar {
+          margin-top: 40px;
+          text-align: center;
+
+          .primary {
+            display: inline-block;
+
+            &:first-child {
+              margin-right: 5px;
+            }
+
+            &:last-child {
+              margin-left: 5px;
+            }
+
+            button {
+              width: 244px;
+              margin-bottom: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  body {
+    &.sales-guest-form {
+      main {
+        &.page-main {
+          .form {
+            &.form-orders-search {
+              .row {
+                .field {
+                  width: 100%;
+                  margin-bottom: 15px;
+                }
+              }
+            }
+          }
+
+          .de-actions-toolbar {
+            .primary {
+              &:first-child {
+                margin-right: 0;
+              }
+
+              &:last-child {
+                margin-left: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

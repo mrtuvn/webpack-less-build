@@ -1,0 +1,147 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// phpcs:disable Magento2.Templates.ThisInTemplate
+
+/** @var \Magento\Sales\Block\Order\Items $block */
+?>
+<style>
+    .col {
+        word-wrap: break-word;
+    }
+
+    /*.sales-guest-view*/
+    /*.price-including-tax, .price-excluding-tax {*/
+        /*text-align: right !important;*/
+    /*}*/
+
+    .price-including-tax .price, .price-excluding-tax .price {
+        font-size: 1.4rem;
+    }
+
+    .price-including-tax, .price-excluding-tax {
+        text-align: unset !important;
+    }
+
+    .sales-order-view .page-title-wrapper .order-date, .magento_rma-returns-view .page-title-wrapper .order-date, .sales-order-invoice .page-title-wrapper .order-date, .magento_rma-returns-invoice .page-title-wrapper .order-date, .sales-order-shipment .page-title-wrapper .order-date, .magento_rma-returns-shipment .page-title-wrapper .order-date, .sales-order-creditmemo .page-title-wrapper .order-date, .magento_rma-returns-creditmemo .page-title-wrapper .order-date, .sales-order-returns .page-title-wrapper .order-date, .magento_rma-returns-returns .page-title-wrapper .order-date {
+        vertical-align: bottom !important;
+    }
+
+    @media (min-width: 415px) {
+        .account .page-main .data.table td:last-child {
+            padding-right: 15px;
+        }
+    }
+
+    .mark {
+        text-align: right !important;
+    }
+
+    .actions-toolbar .secondary {
+        text-align: right!important;
+    }
+    .order-date{
+        font-size: 20px;
+        padding: 0;
+        margin: 0!important;
+        border: none;
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 24px;
+    }
+</style>
+<div class="table-wrapper order-items">
+    <table class="data table table-order-items" id="my-orders-table"
+           summary="<?= $block->escapeHtml(__('Items Ordered')) ?>">
+        <caption class="table-caption"><?= $block->escapeHtml(__('Items Ordered')) ?></caption>
+        <thead>
+        <?php if ($block->isPagerDisplayed()) : ?>
+            <tr>
+                <td colspan="5" data-block="order-items-pager-top" class="order-pager-wrapper order-pager-wrapper-top">
+                    <?= $block->getPagerHtml() ?>
+                </td>
+            </tr>
+        <?php endif ?>
+        <tr>
+            <th class="col name"><?= $block->escapeHtml(__('Product Name')) ?></th>
+            <th class="col sku"><?= $block->escapeHtml(__('SKU')) ?></th>
+            <th class="col price"><?= $block->escapeHtml(__('Price')) ?></th>
+            <th class="col qty"><?= $block->escapeHtml(__('Qty')) ?></th>
+            <th class="col subtotal"><?= $block->escapeHtml(__('Subtotal')) ?></th>
+            <th class="col status"><?= $block->escapeHtml(__('Status')) ?></th>
+            <th class="col actions"><?= $block->escapeHtml(__('Action')) ?></th>
+        </tr>
+        </thead>
+        <?php $items = $block->getItems(); ?>
+        <?php $giftMessage = '' ?>
+        <tbody>
+        <?php foreach ($items as $item) :
+            if ($item->getParentItem()) :
+                continue;
+            endif;
+            ?>
+            <?= $block->getItemHtml($item) ?>
+            <?php if ($this->helper(\Magento\GiftMessage\Helper\Message::class)->isMessagesAllowed('order_item', $item) && $item->getGiftMessageId()) : ?>
+            <?php $giftMessage = $this->helper(\Magento\GiftMessage\Helper\Message::class)->getGiftMessageForEntity($item); ?>
+            <tr>
+                <td class="col options" colspan="5">
+                    <a href="#"
+                       id="order-item-gift-message-link-<?= (int)$item->getId() ?>"
+                       class="action show"
+                       aria-controls="order-item-gift-message-<?= (int)$item->getId() ?>"
+                       data-item-id="<?= (int)$item->getId() ?>">
+                        <?= $block->escapeHtml(__('Gift Message')) ?>
+                    </a>
+                    <?php $giftMessage = $this->helper(\Magento\GiftMessage\Helper\Message::class)->getGiftMessageForEntity($item); ?>
+                    <div class="order-gift-message" id="order-item-gift-message-<?= (int)$item->getId() ?>"
+                         role="region" aria-expanded="false" tabindex="-1">
+                        <a href="#"
+                           title="<?= $block->escapeHtml(__('Close')) ?>"
+                           aria-controls="order-item-gift-message-<?= (int)$item->getId() ?>"
+                           data-item-id="<?= (int)$item->getId() ?>"
+                           class="action close">
+                            <?= $block->escapeHtml(__('Close')) ?>
+                        </a>
+                        <dl class="item-options">
+                            <dt class="item-sender"><strong
+                                        class="label"><?= $block->escapeHtml(__('From')) ?></strong><?= $block->escapeHtml($giftMessage->getSender()) ?>
+                            </dt>
+                            <dt class="item-recipient"><strong
+                                        class="label"><?= $block->escapeHtml(__('To')) ?></strong><?= $block->escapeHtml($giftMessage->getRecipient()) ?>
+                            </dt>
+                            <dd class="item-message"><?= /* @noEscape */
+                                $this->helper(\Magento\GiftMessage\Helper\Message::class)->getEscapedGiftMessage($item) ?></dd>
+                        </dl>
+                    </div>
+                </td>
+            </tr>
+        <?php endif ?>
+        <?php endforeach; ?>
+        </tbody>
+        <tfoot>
+        <?php if ($block->isPagerDisplayed()) : ?>
+            <tr>
+                <td colspan="5" data-block="order-items-pager-bottom"
+                    class="order-pager-wrapper order-pager-wrapper-bottom">
+                    <?= $block->getPagerHtml() ?>
+                </td>
+            </tr>
+        <?php endif ?>
+        <?= $block->getChildHtml('order_totals') ?>
+        </tfoot>
+    </table>
+</div>
+<?php if ($giftMessage) : ?>
+    <script type="text/x-magento-init">
+    {
+        "a.action.show, a.action.close": {
+            "giftMessage": {}
+        }
+    }
+
+
+    </script>
+<?php endif; ?>

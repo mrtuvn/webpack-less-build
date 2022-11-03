@@ -1,0 +1,91 @@
+<?php
+/** @var Magento\Framework\View\Element\Template $block */
+?>
+<script type="text/javascript">
+    var klarnaDigitalRiverJs;
+    function drKlarnaLoader() {
+        if (!digitalRiverInitiator) {
+            return;
+        }
+        klarnaDigitalRiverJs = digitalRiverInitiator.getDigitalRiverJs();
+    }
+
+    function continueKlarnaOrder() {
+        require(["jquery"], function ($) {
+            var edit = '<?php echo $block->escapeJs($block->escapeHtml(__('Edit')));?>';
+            var title = "<div class='title'>" + $(".payment-methods .payment-group .payment-method._active .payment-method-title .label span").html() + "</div>";
+            var editlink = "<a class='payment-edit' href='javascript:void(0)' id='payment-edit-klarna' onclick='displayKlarnaForm()'>" + edit + "</a>";
+            $("#payment-data_klarna").html(title + editlink);
+            $("#payment-data_klarna").css("display", "block");
+            $("#payment-data_klarna").addClass('payment-active');
+            $(".klarna-btn-first").css("display", "none");
+            $(".klarna-btn-second").css("display", "block");
+            $(".klarna-btn-second .checkout").css("display", "block");
+            $(".payment-methods .payment-group .step-title").css("display", "none");
+            $(".payment-method._active .payment-method-content .payment-method-note").css("display", "none");
+            $(".payment-methods .payment-group .payment-method .payment-method-title").css("display", "none");
+            $(".payment-methods .payment-group .payment-method .details").css("display", "none");
+            $(".payment-methods .payment-group .payment-method .payment-logos").css("display", "none");
+            $(".payment-methods .payment-group .payment-method .payment-icon").css("display", "none");
+            $(".payment-methods .payment-group .payment-method .payment-method-instruction").css("display", "none");
+            $("#payframe").css("display", "none");
+            $('#payment-data_klarna')
+                .parents('.payment-method-content')
+                .find('.checkout-agreements-block')
+                .show();
+            $('#payment-data_klarna')
+                .parents('.payment-method-content')
+                .find('.installment-container')
+                .hide();
+            $('.checkout-tabs .nav-pills li').removeClass('active');
+            $('.checkout-tabs .nav-pills li:nth-child(2)').addClass('active');
+            $('#payment-container .section-container')
+                .css('background', '#e6e6e6')
+                .css('padding', '0 30px');
+            $('.payment-method-content').css('margin-bottom', '50px');
+            if (window.checkoutConfig.quoteData.is_virtual) {
+                $(".billing-address-details .action-edit-address").css("display", "none");
+            } else {
+                $(".billing-address-details .action-edit-address").css("display", "none");
+                $(".payment-method-billing-address .billing-address-same-as-shipping-block").css("display", "none");
+            }
+        });
+    }
+
+    function displayKlarnaForm() {
+        jQuery(".payment-methods .payment-group .step-title").css("display", "block");
+        jQuery(".payment-methods .payment-group .payment-method .payment-method-title").css("display", "");
+        jQuery(".payment-methods .payment-group .payment-method .details").css("display", "inline-block");
+        jQuery(".payment-methods .payment-group .payment-method .payment-logos").css("display", "inline-block");
+        jQuery(".payment-methods .payment-group .payment-method .payment-icon").css("display", "inline-block");
+        jQuery("#drpay-klarna-form").css("display", "block");
+        jQuery("#payment-data_klarna").css("display", "none");
+        jQuery("#payment-data_klarna").removeClass('payment-active');
+        jQuery(".payment-methods .payment-group .payment-method .payment-method-instruction").css("display", "block");
+        jQuery(".payment-methods .payment-group .payment-method .payment-method-content .checkout").css("display", "block");
+        jQuery(".payment-methods .payment-group .payment-method .klarna-btn-first").css("display", "block");
+        jQuery(".payment-methods .payment-group .payment-method .klarna-btn-first .checkout").css("display", "block");
+        jQuery('.checkout-tabs .nav-pills li').removeClass('active');
+        jQuery('.checkout-tabs .nav-pills li:nth-child(1)').addClass('active');
+        jQuery('.payment-method-content').css('margin-bottom', '10px');
+        jQuery(".payment-methods .payment-group .payment-method .checkout").css("display", "none");
+        jQuery(".payment-methods .payment-group .payment-method #drpay-creditcard-form .checkout").css("display", "block");
+        jQuery('#payment-container .section-container')
+            .css('background', 'none')
+            .css('padding', '');
+        jQuery('#payment-data_klarna')
+            .parents('.payment-method-content')
+            .find('.checkout-agreements-block')
+            .hide();
+        jQuery('#payment-data_klarna')
+            .parents('.payment-method-content')
+            .find('.installment-container')
+            .show();
+        if (window.checkoutConfig.quoteData.is_virtual) {
+            jQuery(".billing-address-details .action-edit-address").css("display", "block");
+        } else {
+            jQuery(".billing-address-details .action-edit-address").css("display", "block");
+            jQuery(".payment-method-billing-address .billing-address-same-as-shipping-block").css("display", "block");
+        }
+    }
+</script>

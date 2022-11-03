@@ -1,0 +1,29 @@
+/* styles for tooltip checkout */
+& when (@media-common = true) {
+  /* common tooltip styles */
+  .checkout-index-index {
+    .data-tooltip-wrapper {
+      .data-tooltip-tail {
+        box-sizing: content-box;
+      }
+    }
+
+    .field .field-tooltip .field-tooltip-content {
+      box-sizing: content-box;
+    }
+  }
+}
+
+//& when (@media-target = 'desktop'), (@media-target = 'all') {
+//
+//  @media only screen and (min-width: @screen__m) {
+//    .checkout-index-index .field .field-tooltip .field-tooltip-content:before,
+//    .checkout-index-index .field .field-tooltip .field-tooltip-content:after {
+//      left: -20px;
+//    }
+//
+//    .checkout-index-index .field .field-tooltip .field-tooltip-content:after {
+//      left: -19px;
+//    }
+//  }
+//}

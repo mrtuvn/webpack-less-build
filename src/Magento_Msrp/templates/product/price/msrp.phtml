@@ -1,0 +1,40 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * Template for displaying product price at product view page, gift registry and wish-list
+ *
+ * @var $block \Magento\Msrp\Pricing\Render\PriceBox
+ */
+?>
+<?php
+
+/** @var $product \Magento\Catalog\Model\Product */
+$product = $block->getSaleableItem();
+
+//get final price
+$finalPriceModel = $block->getPriceType('final_price');
+$finalPrice = $product->getFinalPrice();
+
+$schema = ($block->getZone() == 'item_view') ? true : false;
+$idSuffix = $block->getIdSuffix() ?: '';
+
+$price = $block->renderAmount(
+    $finalPriceModel->getCustomAmount($finalPrice),
+    [
+        'price_type' => 'finalPrice',
+        'include_container' => true,
+        'price_id' => $block->getPriceId('product-price-' . $idSuffix),
+        'schema' => $schema
+    ]
+);
+?>
+<?php if ($finalPrice) : ?>
+    <span class="price-final_price"><?= /* @noEscape */
+        $price ?></span>
+    <span class="map-fallback-price normal-price"><?= /* @noEscape */
+        $price ?></span>
+<?php endif; ?>

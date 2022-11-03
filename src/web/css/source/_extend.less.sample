@@ -1,0 +1,81 @@
+/** SAMPLE LESS FILE MAGENTO STANDARD **/
+/** FOR FRONTEND DOCUMENTATION PURPOSES DO-NOT-REMOVE OR USE  **/
+
+// variables definition here
+@sample-variable-color: #abcdef;
+
+// Import another less file in this file less
+// Make sure have underscore "_" (no quotes) before file name. No need add .less at the end
+@import '_another-file-less'; // If file not have underscore magento will raise error compilation
+@import 'fileabc'; // <== DO NOT IMPORT LIKE THIS WAY . Without underscore magento will default mark this as file generation css not import files
+
+/* code between common will add to files styles-m.css */
+/* If code not wrap between this. Styles will be double and magento will add to both files styles-m.css and styles-l.css */
+& when (@media-common = true) {
+     /* Add code here */
+
+     @sample-variable2: 12px; /* variable can declare here too */
+}
+
+/** media queries magento standard **/
+/* <= 959px */
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+
+}
+
+/* group styles for mobile */
+& when (@media-target = 'mobile'), (@media-target = 'all') {
+
+}
+
+/* >= 960px */
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+}
+
+
+// should NOT add styles here without group media queries magento standard (cause duplicate styles)
+
+
+/* group styles for desktop */
+/* will apply styles if viewport >= 960 */
+& when (@media-target = 'desktop'), (@media-target = 'all') {
+
+}
+
+.@{ns}-classname{
+    outline: 2px solid red;
+    width: 100%;
+    margin-inline: auto;
+    font-weight: 900;
+    font-size: 1.6rem;
+    line-height: 40px;
+    padding: .8em 1em;
+    color: limegreen;
+}
+
+=> output css
+
+.lg-classname {
+    outline: 2px solid red;
+    width: 100%;
+    margin-inline: auto;
+    font-weight: 900;
+    font-size: 1.6rem;
+    line-height: 40px;
+    padding: .8em 1em;
+    color: limegreen;
+}
+
+@screen_custom_xl: 1280px;
+/* will apply styles  if viewport < 960 */
+& when (@media-target = 'mobile'), (@media-target = 'all') {
+    @media only screen and (max-width: (@screen_custom_xl - 1)) {
+        // styles for <= 1279px
+    }
+
+    /* >= 768 and <= 1023 */
+    @media only screen and (min-width: @screen__ms) and (max-width: (@screen__l - 1)) {
+
+    }
+}

@@ -1,0 +1,195 @@
+<script type="text/javascript">
+    var reditCardNumber,
+        creditCardDigitalRiverJs,
+        cardNumberOption = getDrCreditCardOptions('cardnumber'),
+        wasteSelector = 'input:radio[name=waste-household-collection]';
+
+    function drCreditCardLoader(){
+        if (!digitalRiverInitiator) {
+            return;
+        }
+        var digitalriverjs = digitalRiverInitiator.getDigitalRiverJs();
+        creditCardDigitalRiverJs = digitalriverjs;
+		if(typeof digitalriverjs != "undefined"){ //If url and key set in admin
+            creditCardNumber = digitalriverjs.createElement('cardnumber', cardNumberOption);
+		    //After append js set Your API Key and Start DigitalRiver.js
+		    var drcreditcardjs = digitalriverjs;
+
+			//Place the Card Number element within the container created above.
+            creditCardNumber.mount('card-number');
+			//Create your Card Expiration element
+			var options = getDrCreditCardOptions('cardexpiration');
+			var cardExpiration = drcreditcardjs.createElement('cardexpiration', options);
+			//Place the Card Expiration element within the container created above.
+			cardExpiration.mount('card-expiration');
+			//Create your Card Security Code element
+			var options = getDrCreditCardOptions('cardcvv');
+			var cardSecurityCode = drcreditcardjs.createElement('cardcvv', options);
+			//Place the Card Security Code element within the container created above.
+			cardSecurityCode.mount('card-security-code');
+		}
+	}
+	function getCreditCardSourceId(drcreditcardjs, cardNumber, payload){
+		drcreditcardjs.createSource(cardNumber,payload).then(function(result) {
+			if(result.error) {
+				document.getElementById('creditcard-message').innerHTML = ""; 
+				document.getElementById('creditcard-message').innerHTML = "<?= $block->escapeJs($block->escapeHtml(__('Unable to process'))); ?>";
+			} else {
+				//Success!  You can now send the token to your server for use in downstream API calls.
+				 var source = result.source;
+				 var creditCardDetails = source.creditCard;
+				 window.checkoutConfig.payment.drpay_creditcard.redirect_url = BASE_URL + 'drpay/payment/success';
+				 if(source.id){
+				     // get value of haul away
+                     var wasteHouseholdCollection = null;
+                     if (jQuery(wasteSelector).offset()) {
+                         wasteHouseholdCollection = jQuery('input[name=waste-household-collection]:checked').val();
+                     }
+					jQuery.ajax({
+						type: 'POST',
+						url: BASE_URL + 'drpay/creditcard/savedrsource',
+						data:{
+						    "source_id":source.id,
+                            "waste_household_collection":wasteHouseholdCollection
+                        },
+						showLoader: true, //use for display loader 
+						success: function (response) {
+							if (!response.success) {
+								document.getElementById('creditcard-message').innerHTML = ""; 
+								document.getElementById('creditcard-message').innerHTML = "<?= $block->escapeJs($block->escapeHtml(__('Unable to process'))); ?>";
+							}
+						}
+					});
+				}
+			}
+		});
+	}
+	function getDrCreditCardOptions(element){
+        var mytext;
+        if (element == 'cardnumber') {
+            mytext = '<?php echo $block->escapeJs($block->escapeHtml(__("Credit Card Number")));?>';
+        } else if (element == 'cardexpiration') {
+            mytext = '<?php echo $block->escapeJs($block->escapeHtml(__("Month/Year")));?>';
+        } else {
+            mytext = '<?php echo $block->escapeJs($block->escapeHtml(__("Card Security Code")));?>';
+        }
+		let response = {
+			classes: {
+				base: "DRElement",
+				complete: "complete",
+				empty: "empty",
+				focus: "focus",
+				invalid: "invalid",
+				webkitAutofill: "autofill"
+	    	},
+	        style: {
+	        	base: {
+	             color: "#555",
+	             fontFamily: "Arial, Helvetica, sans-serif",
+	             fontSize: "16px",
+	             fontSmoothing: "auto",
+	             fontVariant: "normal"
+	             },
+	             empty: {
+	                 color: "#555"
+	             },
+	             complete: {
+	                 color: "#555"
+	             },
+	             invalid: {
+	                 color: "red"
+	             }
+	        }
+		};
+		response['placeholderText'] = mytext;
+		return response;
+	}	
+	function displayDrForm(){
+		jQuery(".payment-methods .payment-group .step-title").css("display","block");
+		jQuery(".payment-methods .payment-group .payment-method .payment-method-title").css("display","block");
+		jQuery(".payment-methods .payment-group .payment-method .details").css("display","inline-block");
+		jQuery(".payment-methods .payment-group .payment-method .payment-logos").css("display","inline-block");
+		jQuery(".payment-methods .payment-group .payment-method .payment-icon").css("display","inline-block"); 
+		jQuery("#drpay-creditcard-form").css("display","block");
+		jQuery("#payment-data").css("display","none");
+		jQuery("#payment-data").removeClass('payment-active');
+		jQuery(".payment-methods .payment-group .payment-method .payment-method-content .checkout").css("display","block");
+		jQuery(".payment-methods .payment-group .payment-method .checkout").css("display","block"); 
+		jQuery('.checkout-tabs .nav-pills li').removeClass('active');
+		jQuery('.checkout-tabs .nav-pills li:nth-child(1)').addClass('active');
+		jQuery('#payment-container .section-container')
+			.css('background','none')
+			.css('padding','');
+		jQuery('.payment-method-content').css('margin-bottom','10px');
+		jQuery(".payment-methods .payment-group .payment-method .checkout").css("display","none");
+		jQuery(".payment-methods .payment-group .payment-method #drpay-creditcard-form .checkout").css("display","block");
+		jQuery('#drpay-creditcard-form').parents('.payment-method-content')
+            .find('.checkout-agreements-block')
+            .hide();
+		if(window.checkoutConfig.quoteData.is_virtual){
+			jQuery(".billing-address-details .action-edit-address").css("display","block");
+		}else{
+			jQuery(".billing-address-details .action-edit-address").css("display","block");
+			jQuery(".payment-method-billing-address .billing-address-same-as-shipping-block").css("display","block");
+		}
+	} 
+	function hideDrForm(creditCardDetails) { 
+		if(creditCardDetails) { 
+			var edit = '<?php echo $block->escapeJs($block->escapeHtml(__('Edit')));?>';
+			var info = '<?php echo $block->escapeJs($block->escapeHtml(__('ending in')));?>';
+			var title = "<div class='title'>"+jQuery(".payment-methods .payment-group .payment-method._active .payment-method-title .label span").html()+"</div>"; 
+			var cartinfo = "<div class='card-info'>"+ creditCardDetails.brand + ' ' + info + ' '+ creditCardDetails.lastFourDigits+"</div>";
+			var editlink = "<a class='payment-edit' href = 'javascript:void(0)' id='payment-edit' onclick='displayDrForm()'>"+edit+"</a>";
+			jQuery("#payment-data").html(title+cartinfo+editlink);						
+			jQuery("#payment-data").css("display","block");
+			jQuery("#payment-data").addClass('payment-active');
+			jQuery(".payment-methods .payment-group .step-title").css("display","none");
+			jQuery(".payment-methods .payment-group .payment-method .payment-method-title").css("display","none");
+			jQuery(".payment-methods .payment-group .payment-method .details").css("display","none");
+			jQuery(".payment-methods .payment-group .payment-method .payment-logos").css("display","none");
+			jQuery(".payment-methods .payment-group .payment-method .payment-icon").css("display","none");
+			jQuery(".payment-methods .payment-group .payment-method .payment-method-instruction").css("display","none");
+			jQuery("#drpay-creditcard-form").css("display","none");
+			jQuery('#drpay-creditcard-form').parents('.payment-method-content')
+                .find('.checkout-agreements-block')
+                .show();
+			jQuery(".payment-methods .payment-group .payment-method .checkout").css("display","block");
+			jQuery('.checkout-tabs .nav-pills li').removeClass('active');
+			jQuery('.checkout-tabs .nav-pills li:nth-child(2)').addClass('active');
+			jQuery('#payment-container .section-container')
+				.css('background','#e6e6e6')
+				.css('padding','0 30px');
+			if(window.checkoutConfig.quoteData.is_virtual){
+				jQuery(".billing-address-details .action-edit-address").css("display","none");
+			}else{
+				jQuery(".billing-address-details .action-edit-address").css("display","none");
+				jQuery(".payment-method-billing-address .billing-address-same-as-shipping-block").css("display","none");
+			}
+		}
+	}
+
+function hideForm(){
+	jQuery("#drpay_creditcard-content .payment-method-instruction").hide();
+	jQuery("#drpay_creditcard-content #drpay-creditcard-form .payment-form-inner").hide();
+}
+function showForm(){
+	jQuery("#drpay_creditcard-content .payment-method-instruction").show();
+	jQuery("#drpay_creditcard-content #drpay-creditcard-form .payment-form-inner").show();
+}
+
+// custom display message error of Haul Away
+require([ 'jquery', 'jquery/ui'], function($){
+    $(document).on("click","#waste-household-collection-yes", function() {
+        if (document.getElementById('se-haul-away').style.display === 'block') {
+            document.getElementById('se-haul-away').style.display = "none";
+            document.getElementById('se-haul-away-msg-error').innerHTML = "";
+        }
+    });
+    $(document).on("click","#waste-household-collection-no", function() {
+        if (document.getElementById('se-haul-away').style.display === 'block') {
+            document.getElementById('se-haul-away').style.display = "none";
+            document.getElementById('se-haul-away-msg-error').innerHTML = "";
+        }
+    });
+});
+</script>

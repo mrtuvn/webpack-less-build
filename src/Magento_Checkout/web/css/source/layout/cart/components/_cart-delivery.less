@@ -1,0 +1,38 @@
+& when (@media-common = true) {
+    .checkout-cart-index {
+        .delivery-lead-time {
+          font-size: 14px;
+          line-height: calc(21/14);
+          font-weight: @font-weight__regular;
+
+
+          .icon-delivery {
+            margin-right: 8px;
+            vertical-align: middle;
+            color: @color-black;
+            background: url('@{baseDir}images/icons/delivery-fast.svg') center no-repeat ;
+            background-size: cover;
+            width: 1.4rem;
+            display: inline-block;
+            height: 1.4rem;
+
+            &:before {
+              display: none;
+            }
+          }
+
+          .middle,
+          .from.delivery_lead_time_min {
+            color: @color-lg-carmine;
+            font-weight: @font-weight__bold;
+          }
+
+          .to.delivery_lead_time_max {
+            color: @color-lg-carmine;
+            font-weight: @font-weight__bold;
+          }
+        }
+
+
+    }
+}

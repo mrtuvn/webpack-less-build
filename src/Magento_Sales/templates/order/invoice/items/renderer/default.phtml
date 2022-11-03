@@ -1,0 +1,82 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<style>
+    .price-including-tax, .price-excluding-tax {
+        font-size: 1.4rem;
+    }
+
+    .sales-order-view .page-title-wrapper .order-date, .magento_rma-returns-view .page-title-wrapper .order-date, .sales-order-invoice .page-title-wrapper .order-date, .magento_rma-returns-invoice .page-title-wrapper .order-date, .sales-order-shipment .page-title-wrapper .order-date, .magento_rma-returns-shipment .page-title-wrapper .order-date, .sales-order-creditmemo .page-title-wrapper .order-date, .magento_rma-returns-creditmemo .page-title-wrapper .order-date, .sales-order-returns .page-title-wrapper .order-date, .magento_rma-returns-returns .page-title-wrapper .order-date {
+        vertical-align: bottom !important;
+    }
+
+    .table-order-items .subtotal, .table-order-items .amount {
+        text-align: right !important;
+    }
+
+    .col {
+        word-wrap: break-word;
+    }
+</style>
+<?php /** @var  $block \Magento\Sales\Block\Order\Item\Renderer\DefaultRenderer */ ?>
+<?php $_item = $block->getItem() ?>
+<?php $_order = $block->getItem()->getOrderItem()->getOrder() ?>
+<tr id="order-item-row-<?= (int)$_item->getId() ?>">
+    <td class="col name" data-th="<?= $block->escapeHtml(__('Product Name')) ?>">
+        <strong class="product name product-item-name"><?= htmlspecialchars_decode($_item->getName()) ?></strong>
+        <?php if ($_options = $block->getItemOptions()) : ?>
+            <dl class="item-options">
+                <?php foreach ($_options as $_option) : ?>
+                    <dt><?= $block->escapeHtml($_option['label']) ?></dt>
+                    <?php if (!$block->getPrintStatus()) : ?>
+                        <?php $_formatedOptionValue = $block->getFormatedOptionValue($_option) ?>
+                        <dd<?= (isset($_formatedOptionValue['full_view']) ? ' class="tooltip wrapper"' : '') ?>>
+                            <?= $block->escapeHtml($_formatedOptionValue['value']) ?>
+                            <?php if (isset($_formatedOptionValue['full_view'])) : ?>
+                                <div class="tooltip content">
+                                    <dl class="item options">
+                                        <dt><?= $block->escapeHtml($_option['label']) ?></dt>
+                                        <dd><?= $block->escapeHtml($_formatedOptionValue['full_view']) ?></dd>
+                                    </dl>
+                                </div>
+                            <?php endif; ?>
+                        </dd>
+                    <?php else : ?>
+                        <dd><?= $block->escapeHtml($_option['print_value'] ?? $_option['value']) ?></dd>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </dl>
+        <?php endif; ?>
+        <?php $addInfoBlock = $block->getProductAdditionalInformationBlock(); ?>
+        <?php if ($addInfoBlock) : ?>
+            <?= $addInfoBlock->setItem($_item->getOrderItem())->toHtml() ?>
+        <?php endif; ?>
+        <?= $block->escapeHtml($_item->getDescription()) ?>
+    </td>
+    <td class="col sku" data-th="<?= $block->escapeHtml(__('SKU')) ?>"><?= /* @noEscape */
+        $block->prepareSku($block->getSku()) ?></td>
+    <td class="col price" data-th="<?= $block->escapeHtml(__('Price')) ?>">
+        <?= $block->getItemPriceHtml() ?>
+    </td>
+    <td class="col qty" data-th="<?= $block->escapeHtml(__('Qty Invoiced')) ?>">
+        <span class="qty summary"><?= (int)$_item->getQty() ?></span>
+    </td>
+    <td class="col subtotal" data-th="<?= $block->escapeHtml(__('Subtotal')) ?>">
+        <?= $block->getItemRowTotalHtml() ?>
+    </td>
+    <td class="col status" data-th="<?= $block->escapeHtml(__('Status')) ?>">
+        <?= $block->escapeHtml($block->getLineStatus($_item->getOrderItemId())) ?>
+    </td>
+    <td class="col actions action-custom" data-th="<?= $block->escapeHtml(__('Action')) ?>">
+        <?php if ($block->checkRenderTracking($_item->getOrderItemId())) { ?>
+            <a class="link" href="<?= $block->getTrackingLink($_item->getOrderItemId()) ?>" target="_blank">
+                <?= $block->escapeHtml(__('<tracking id>')) ?>
+            </a>
+            <?php
+        }
+        ?>
+    </td>
+</tr>

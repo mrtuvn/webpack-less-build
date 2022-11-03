@@ -1,0 +1,700 @@
+& when (@media-common = true) {
+  .payment-method-title input[type="radio"] {
+    &:checked,
+    &:not(:checked) {
+      + label {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        align-items: center;
+        &:before{
+          flex: 0 0 24px;
+        }
+      }
+    }
+
+    &:focus + label {
+      box-shadow: none;
+    }
+  }
+
+  .payment-method-title input[type="radio"]:not(:checked) + label > * {
+    vertical-align: baseline;
+  }
+
+  #checkout-payment-method-load .payment-method .payment-method-title {
+      .lib-vendor-prefix-display();
+
+      > label,
+      > label.control {
+        flex: 1;
+      }
+
+      .payment-logos {
+        margin-left: auto;
+        flex-basis: 20%;
+        .lib-vendor-prefix-display();
+        justify-content: flex-end;
+        padding: 0;
+        .american-express, .master-card, .visa, .jcb {
+          width: 36px;
+          height: 31px;
+          margin-bottom: 0;
+          //background-size: 50px 31px;
+          background-size: contain;
+          padding-right: 0;
+          //float: right;
+        }
+
+        .diners-club,
+        .discover {
+          display: none;
+        }
+        
+        .american-express {
+          background: url('@{baseDir}images/common/payment/amex.svg') no-repeat left top;
+          order: 4;
+        }
+        
+        .jcb {
+          background: url('@{baseDir}images/common/payment/maestro.svg') no-repeat left top;
+          order: 3;
+        }
+        
+        .master-card {
+          background: url('@{baseDir}images/common/payment/master.svg') no-repeat left top;
+          order: 2;
+          width:40px;
+        }
+        
+        .visa {
+          background: url('@{baseDir}images/common/payment/visa.svg') no-repeat left top;
+          order: 1;
+          width:52px;
+        }
+        
+        .paypal {
+          width: 35px;
+          height: 36px;
+          padding:0;
+          box-sizing: border-box;
+          float: right;
+          background: url('@{baseDir}images/common/payment/paypal.svg') no-repeat left top;
+          order: 1;
+        }
+        
+        .klarna {
+          width: 90px;
+          height: 30px;
+          margin-bottom: 0px;
+          margin-right: 0px;
+          box-sizing: border-box;
+          float: right;
+          background: url('@{baseDir}images/common/payment/klarna.svg') no-repeat left top;
+          order: 1;
+        }
+        .hello-bank {
+          background: url('@{baseDir}images/common/payment/hellobank.svg') no-repeat left top;
+          width: 28px;
+          height: 30px;
+          padding: 0;
+        }
+        .valu-bank {
+          background: url('@{baseDir}images/common/payment/valu.svg') no-repeat left top;
+          width: 59px;
+          height: 25px;
+          padding: 0;
+          float: right;
+        }
+        .vnpay-bank {
+          background: url('@{baseDir}images/common/payment/vnpay.svg') no-repeat left top;
+          width: 83px;
+          height: 25px;
+          padding: 0;
+        }
+        .internet-bank{
+          background: url('@{baseDir}images/common/payment/vn-atm.svg') no-repeat left top;
+          width: 29px;
+          height: 25px;
+          padding: 0;
+        }
+        .alepay-bank{
+          background: url('@{baseDir}images/common/payment/vn-alepay.svg') no-repeat left top;
+          width: 25px;
+          height: 25px;
+          padding: 0;
+        }
+      }
+
+  }
+
+  .checkout-index-index .checkout-payment-method .payment-method._active {
+    .payment-method-content {
+      .payment-logos {
+        display: inline-block;
+        padding-left: 20px;
+        .paypal {
+          width: 110px;
+          height: 31px;
+          margin-bottom: 0;
+          margin-right: 0;
+          box-sizing: border-box;
+          float: left;
+          background: url('@{baseDir}images/common/payment/paypal.svg') no-repeat left top;
+          order: 1;
+          background-size: 110px 31px;
+        }
+      }
+    }
+  }
+  .checkout-index-index.payment-step {
+    .ship-step.section-container {
+      display: none;
+    } 
+  }
+
+  .checkout-index-index.shipping-step {
+    .checkout-payment-method {
+      display: none;
+    }
+  }
+
+  .checkout-index-index {
+    .checkout-payment-method .payment-method-content > .actions-toolbar > .primary .action.primary {
+      padding: 12px 20px;
+    }
+
+    & .column.main .payments .payment-method-title {
+      .label span + div,
+      .label .payment-method-logo {
+        padding-right: 0;
+
+        img {
+          padding-right: 0;
+        }
+      }
+    }
+
+    & .column.main .payments .payment-method-content {
+      padding: 0;
+
+      p:empty {
+        display: none;
+      }
+    }
+
+    .payment-method .payment-method-title .control .control__indicator {
+      margin-left: auto;
+    }
+
+    .opc-wrapper .opc {
+      > li {
+        &#payment {
+          border-bottom: none;
+        }
+      }
+    }
+
+    .payment-method-cvv-wrapper {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      p {
+        background: #FFF;
+        border: 1px solid #8e8e8e;
+        color: #3a3b3b;
+        margin: -11px 0 0;
+        padding: 5px 6px;
+        font-size: 8px;
+        line-height: 1.4em;
+
+        strong {
+          display: block;
+          font-size: 9px;
+          color: #0a263c;
+        }
+      }
+
+      li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        width: 130px;
+      }
+    }
+
+    .payment-method {
+      background: #f5f5f5;
+      margin-bottom: 8px;
+    }
+
+    .payment-information-content {
+      .billing-address-same-as-shipping-block {
+
+        input[type='checkbox'] + label {
+          padding-left: 3rem;
+        }
+      }
+    }
+
+    #co-payment-form {
+
+      .payment-information-content {
+        display: flex;
+        flex-flow: column;
+      }
+
+      #checkout-payment-method-load {
+        /*order: 2;*/
+      }
+
+      .checkout-billing-address {
+        /*order: 1;*/
+        padding-bottom: 15px;
+        //border-bottom: 1px solid @color-lg-gray-3;
+        margin-bottom: 20px;
+
+        .field-select-billing {
+          float: none;
+          margin: 0 auto 25px;
+
+        }
+
+        .choice {
+          &.field {
+            float: none;
+            clear: left;
+            width: auto;
+            margin: 0 2% 25px;
+
+            &:before {
+              display: none;
+            }
+
+            .label {
+              display: inline-block;
+              vertical-align: middle;
+            }
+          }
+
+          &.billing-address-same-as-shipping-block {
+            margin-left: 0;
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+
+    .payment-methods-selector {
+      list-style: none;
+      padding: 10px 0;
+
+      li {
+        margin: 0 0 25px;
+        padding: 0;
+
+        span {
+          display: inline-block;
+          vertical-align: middle;
+        }
+
+        .config-details {
+          display: block;
+        }
+      }
+    }
+
+    .checkout-payment-method {
+      .payment-method-content {
+        padding: 15px 0;
+      }
+
+      .payment-method {
+        margin-bottom: 10px;
+        background: @color-white;
+        padding-left: 20px;
+        padding-right: 20px;
+
+        .payment-method-title {
+          display: block;
+          padding: 15px 0;
+          margin: 0;
+        }
+
+        + .payment-method .payment-method-title {
+          border: none;
+        }
+
+        .actions-toolbar {
+          padding: 0 0 0;
+        }
+      }
+
+      .credit-card-types {
+        width: 60%;
+
+        .item {
+          border: 0;
+
+          img {
+            border: 1px solid #6b6b6b;
+            margin: 0 auto;
+          }
+
+          span {
+            display: block;
+            visibility: hidden;
+          }
+        }
+
+        .item._active {
+          span {
+            display: inline-block;
+            visibility: visible;
+
+          }
+        }
+
+        img {
+          display: block;
+        }
+      }
+
+      .ccard {
+        margin-bottom: 0;
+
+        > .field {
+          &.number {
+            float: left;
+            width: 70%;
+          }
+
+          &.date {
+            float: left;
+            clear: left;
+            width: 35%;
+          }
+
+          &.cvv {
+            float: left;
+            width: 31%;
+
+            > .control {
+              padding-right: 0;
+            }
+          }
+        }
+
+        + .choice {
+          margin-bottom: 30px;
+        }
+      }
+
+      .billing-address-form {
+        clear: left;
+        max-width: none;
+        margin: 0 auto;
+      }
+    }
+
+    .payment-method-content {
+      .payment-logos {
+        display: none;// hiden content logo at content. Logo will show next text payment
+      }
+
+      .fieldset{
+        margin-bottom: 5px;
+      }
+      .installment-plans{
+        margin-bottom: 5px;
+      }
+
+      .payment-method-instruction {
+        span:before {
+          font-family: @icons__font-name;
+          float: left;
+          margin-top: 2px;
+          margin-right: 5px;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          font-size: 18px;
+          line-height: 100%;
+          color: #999;
+          content: @icon-product-issues-m;
+          vertical-align: top;
+          display: inline-block;
+          font-weight: 400;
+          overflow: hidden;
+          speak: none;
+          text-align: center;
+        }
+
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 100%;
+      }
+    }
+
+    body& .payment-method-title.field {
+      margin-bottom: 0;
+    }
+
+    #co-payment-form .payment-method._active .actions-toolbar .primary button {
+      display: none;  /* hide button */
+    }
+
+    .opc-block-summary .block.items-in-cart {
+      margin-bottom: 0; /* fix visually spacing make button below itemcart jump */
+    }
+
+    .checkout-payment-method .payment-method-content .payment-method-billing-address {
+      padding-top: 0;
+
+      > *:not(:empty) {
+        padding-top: 20px;
+      }
+    }
+    .checkout-payment-method #drpay-creditcard-form {
+      .form-field #card-expiration {
+        margin-left: 0;
+      }
+      .payment-form-inner {
+        width: 100%;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+& when (@media-target = 'mobile'), (@media-target = 'all') {
+  @media only screen and (max-width: 959px) {
+    .checkout-index-index .payment-method-content .payment-method-instruction {
+      width: 100% !important;
+    }
+  }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__ms) {
+  #payment-container #checkout-payment-method-load .payment-method .payment-method-title {
+      .payment-logos {
+        padding: 0px;
+        .american-express, .master-card, .visa, .jcb {
+          width: 36px;
+          height: 30px;
+          margin-bottom: 0px;
+          background-size: 35px 25px;
+        }
+      }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  body.checkout-index-index {
+
+    &.payment-step {
+      background: @checkout-mobile-background;
+    }
+  }
+
+  .checkout-payment-method .payment-method-content .actions-toolbar .primary {
+    width: 100%;
+  }
+
+  .checkout-payment-method .payment-method-title .label span {
+    min-width: 0;
+  }
+
+  .checkout-index-index .payment-method .payment-method-title .control .control__indicator {
+    padding-right: 0;
+  }
+
+  .checkout-index-index {
+    .checkout-payment-method {
+      .step-title {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .payment-methods {
+        margin: 0;
+      }
+    }
+
+    #co-payment-form .checkout-billing-address .choice.field {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .payment-method-title input[type="radio"] + label {
+      font-size: 1.3rem;
+      line-height: 130%;
+      font-weight: @font-weight__bold;
+    }
+
+    #payment-container {
+      .section-container {
+        margin-top: 2.1rem;
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+  .checkout-index-index {
+    .checkout-payment-method {
+      .credit-card-types {
+        img {
+          width: 35px;
+        }
+      }
+
+      .payment-method {
+        form {
+          margin-left: 0;
+          margin-right: 0;
+        }
+      }
+
+      .ccard {
+        &:not(:last-child) {
+          margin-bottom: 0;
+        }
+
+        > .field {
+          &.number,
+          &.date,
+          &.cvv {
+            float: none;
+            width: auto;
+          }
+        }
+      }
+    }
+  }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l) {
+  .checkout-index-index {
+    .checkout-payment-method {
+      .ccard {
+        &:not(:last-child) {
+          margin-bottom: 0;
+        }
+
+        > .field {
+          &.number {
+            float: none;
+            width: auto;
+          }
+
+          &.date {
+            width: 49%;
+          }
+
+          &.cvv {
+            width: 43%;
+          }
+        }
+      }
+
+      .credit-card-types {
+        width: auto;
+      }
+    }
+  }
+}
+
+& when (@media-target = 'mobile'), (@media-target = 'all') {
+  @media only screen and (max-width: 320px) {
+    #payment-container #checkout-payment-method-load .payment-method .payment-method-title {
+      .payment-logos {
+        padding-top: 3px;
+
+        .american-express, .master-card, .visa, .jcb {
+          width: 30px;
+          height: 20px;
+          margin-bottom: 0px;
+          margin-right: 0px;
+          background-size: 30px 20px;
+        }
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  #checkout-payment-method-load .payment-method .payment-method-title {
+    .payment-logos {
+      .american-express, .master-card, .visa, .jcb {
+        margin-left: 16px;
+      }
+    }
+
+  }
+
+  .checkout-index-index {
+    .payment-information-content {
+      #billing  {
+        border: 1px solid #e8e8e8;
+        background: @color-white;
+        margin-bottom: 20px;
+        padding: 20px 20px;
+      }
+
+      #payment-container {
+        border: 0;
+        border-radius: 5px;
+        padding: 25px 20px;
+        background: #f5f5f5;
+
+        h2:before {
+          top: 34.75px;
+          right: 33.25px;
+          width: 13.5px;
+          height: 8.5px;
+        }
+      }
+    }
+
+    #payment-container {
+      .section-container {
+        margin-top: 2.1rem;
+      }
+    }
+  }
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__ms) {
+  .checkout-payment-method {
+    .payment-method-content {
+      #drpay-creditcard-form {
+        width: 99%;
+
+        .payment-form-inner {
+          .form-field:nth-child(2) {
+            width: 49%;
+            display: inline-block;
+          }
+
+          .form-field:nth-child(3) {
+            width: 49%;
+            display: inline-block;
+            margin-left: 7px;
+          }
+        }
+
+        .actions-toolbar {
+          margin-top: -88px;
+        }
+      }
+    }
+  }
+}

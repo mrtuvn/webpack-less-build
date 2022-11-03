@@ -1,0 +1,64 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Cart $block */
+
+/** @var \Magento\Wishlist\Model\Item $item */
+$item = $block->getItem();
+$product = $item->getProduct();
+$productId = $item->getProduct()->getId();
+?>
+<?php foreach ($block->getChildNames() as $childName): ?>
+    <?= /* @noEscape */ $block->getLayout()->renderElement($childName, false) ?>
+<?php endforeach;?>
+<div class="box-tocart">
+    <fieldset class="fieldset">
+        <?php if ($item->canHaveQty() && $product->isVisibleInSiteVisibility()): ?>
+            <div class="field qty">
+                <label class="label" for="qty[<?= $block->escapeHtmlAttr($item->getId()) ?>]"><span><?= $block->escapeHtml(__('Qty')) ?></span></label>
+                <div class="control">
+
+                    <select id="qty[<?= $block->escapeHtmlAttr($item->getId()) ?>]"
+                            data-role="qty"
+                            data-product-id="<?= $productId ?>"
+                            name="qty[<?= $block->escapeHtmlAttr($item->getId()) ?>]"
+                            title="<?= /* @escapeNotVerified */ __('Qty') ?>"
+                            class="qty"
+                            data-validate="<?= $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
+                            onChange="changeQtyWishlist(this, <?= $productId ?>)">
+                        <?php $i = 1; ?>
+
+                        <?php
+                        $itemsLimit = (int)$block->getData('maximum');
+
+                        while($i <= $itemsLimit) { ?>
+                            <?php $optionSelected = (int)($block->getAddToCartQty($item) * 1) == $i ? ' selected' : ''; ?>
+                            <option value="<?= $i; ?>"<?= $optionSelected; ?>><?= $i; ?></option>
+                            <?php $i++; ?>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+        <?php endif; ?>
+        <?php if ($product->isSaleable()): ?>
+            <div class="product-item-actions">
+                <div class="actions-primary">
+                    <button onclick="eventAddToCart(<?= $productId ?>)" type="button" data-role="tocart" data-post='<?= /* @noEscape */ $block->getItemAddToCartParams($item) ?>' title="<?= $block->escapeHtmlAttr(__('Add to Cart')) ?>" data-item-id="<?= $block->escapeHtmlAttr($item->getId()) ?>" class="action tocart primary">
+                        <span><?= $block->escapeHtml(__('Add to Cart')) ?></span>
+                    </button>
+                </div>
+            </div>
+        <?php else: ?>
+            <?php if ($product->getIsSalable()): ?>
+                <p class="available stock" title="<?= $block->escapeHtmlAttr(__('Availability')) ?>">
+                    <span><?= $block->escapeHtml(__('In stock')) ?></span>
+                </p>
+            <?php else: ?>
+                <p class="unavailable stock" title="<?= $block->escapeHtmlAttr(__('Availability')) ?>">
+                    <span><?= $block->escapeHtml(__('Out of stock')) ?></span>
+                </p>
+            <?php endif; ?>
+        <?php endif; ?>
+    </fieldset>
+</div>

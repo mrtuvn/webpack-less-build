@@ -1,0 +1,53 @@
+& when (@media-common = true) {
+  #billing-container {
+    .billing-address-details {
+      padding-left: 0;
+    }
+  }
+
+  //.methods-shipping .shipping-products + .information {
+  //  margin-top: @indent__s;
+  //}
+
+  #drpay_klarna + .label .action {
+    &:before {
+      --icon-color: #6D6E71;
+      content: '\e970';
+      font-size: 18px;
+      color: var(--icon-color);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: inherit;
+      font-family: @icons__font-name;
+      vertical-align: middle;
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      padding-left: 5px;
+      cursor: pointer;
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  .checkout-index-index .opc-wrapper ol.opc > li {
+    border: none;
+    margin-bottom: 0;
+  }
+
+  //.checkout-index-index.payment-step #co-payment-form .checkout-billing-address {
+  //  border-bottom: none;
+  //}
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  body.checkout-index-index.customer-login .opc-wrapper .opc > li.customer-info {
+    border-bottom: 1px solid #DFDFDF;
+  }
+
+  .checkout-index-index.payment-step #co-payment-form .checkout-billing-address .field-select-billing {
+    margin: 0 0 25px 30px;
+    padding-left: 0;
+  }
+}

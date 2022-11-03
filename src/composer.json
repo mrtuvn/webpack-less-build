@@ -1,0 +1,22 @@
+{
+  "name": "lg/theme-frontend-commonv2",
+  "description": "LG Common Theme V2",
+  "type": "magento2-theme",
+  "version": "1.0.0",
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "require": {
+    "php": "~7.1.3||~7.2.0||~7.3.0",
+    "magento/framework": "102.0.*",
+    "magento/theme-frontend-blank": ">= 100.3.0",
+    "lg/module-theme": "*",
+    "lg/module-innovel": "*"
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ]
+  }
+}

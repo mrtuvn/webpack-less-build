@@ -1,0 +1,80 @@
+@icons__font-path: '@{baseDir}fonts/LgIcons/lg-icons';
+@icons__font-name: 'LG Icons';
+
+//  Font families
+@font-family__sans-serif: "Segoe UI", "Microsoft Sans Serif", sans-serif;
+@font-family__lg-smart: ~"LG Smart, @{font-family__sans-serif}";
+@font-family__lg-smart-italic: ~"LG Smart Italic, @{font-family__sans-serif}";
+@font-family__lg-smart-bold: ~"LG Smart Bold, @{font-family__sans-serif}";
+@font-family__lg-smart-bold-italic: ~"LG Smart Bold Italic, @{font-family__sans-serif}";
+@font-family__lg-smart-semibold: ~"LG Smart SemiBold, @{font-family__sans-serif}";
+@font-family__lg-smart-light: ~"LG Smart Light, @{font-family__sans-serif}";
+
+@font-family__base: ~"@{font-family__lg-smart}";
+@font-weight__medium: 500;
+//
+//  Headings
+//  ---------------------------------------------
+
+@heading__font-family__base: @font-family__lg-smart;
+@heading__font-weight__base: @font-weight__semibold;
+@heading__color__base: @color-black;
+@heading__font-style__base: @font-style__base;
+
+@h1__font-size: ceil((@font-size__base * 3.428)); // 48px
+@h1__line-height: ceil((@font-size__base * 3.571)); // 50px
+@h1__font-size-desktop: @h1__font-size;
+
+@h2__font-size: ceil((@font-size__base * 2.857)); // 40px
+@h2__line-height: ceil((@font-size__base * 3)); // 42px
+
+@h3__font-size: ceil((@font-size__base * 1.714)); // 24px
+@h3__line-height: ceil((@font-size__base * 2.285)); // 32px
+
+@h4__font-color: @color-lg-gray;
+@h4__font-size: ceil((@font-size__base * 1.285)); // 18px
+@h4__line-height: @h3__font-size; // 24px
+
+@h5__font-color: @color-lg-gray;
+@h5__font-family: @font-family__lg-smart;
+@h5__font-weight: @font-weight__bold;
+//@h5__font-size: ceil((@font-size__base * 1.142)); // 16px
+@h5__font-size: 1.7rem; // 24px
+
+@h6__font-color: @color-lg-gray;
+@h6__font-family: @font-family__lg-smart;
+@h6__font-weight: @font-weight__regular;
+@h6__font-size: ceil((@font-size__base * 1.142)); // 16px
+@h6__line-height: @h3__font-size; // 24px
+
+@h1__font-size-mobile: @h3__line-height; // 32px
+@h1__line-height-mobile: ceil((@font-size__base * 2.5)); // 35px
+
+@h2__font-size-mobile: @h3__font-size; // 24px
+@h2__line-height-mobile: @h3__line-height; // 32px
+
+@h3__font-size-mobile: @h4__font-size; // 18px
+@h3__line-height-mobile: @h4__line-height; // 24px
+
+// Links
+@link__color: @color-lg-carmine;
+//@link__text-decoration: underline;
+
+@link__visited__color: @color-lg-carmine;
+@link__visited__text-decoration: underline;
+
+@link__hover__color: @color-lg-carmine;
+
+@link__active__color: @color-lg-carmine;
+
+@font-size__m: ceil(0.857 * @font-size__base); // 12px
+@font-size__l: ceil(1.14 * @font-size__base); // 16px
+@font-size__xl: ceil(1.2857 * @font-size__base); // 18px
+@font-size__xxls: ceil(1.42857 * @font-size__base); // 20px
+@font-size__xxl: ceil(1.71 * @font-size__base); // 24px
+
+@line-height__s: ceil(1.14 * @font-size__base); // 16px
+@line-height__normal: ceil(1.43 * @font-size__base); // 20px
+@line-height__l: ceil(1.71 * @font-size__base); // 24px
+@line-height__xl: ceil(2 * @font-size__base); // 28px
+@line-height__xxl: ceil(2.28 * @font-size__base); // 32px

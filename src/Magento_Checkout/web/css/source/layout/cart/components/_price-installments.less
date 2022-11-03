@@ -1,0 +1,26 @@
+// partials
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .checkout-cart-index {
+        .ic-item-for-mobile {
+          display: block;
+          white-space: normal;
+        }
+        .ic-item-for-desktop {
+          display: none;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .checkout-cart-index {
+    .ic-item-for-mobile {
+      display: none;
+    }
+
+    .ic-item-for-desktop {
+      display: block;
+      white-space: normal;
+    }
+  }
+}

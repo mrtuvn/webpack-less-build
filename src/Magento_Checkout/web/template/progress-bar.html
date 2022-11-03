@@ -1,0 +1,22 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="checkout-top-area">
+    <div class="page-title">
+        <h1><span data-bind="i18n: 'Check out'"></span></h1>
+    </div>
+    <ol class="opc-progress-bar">
+        <!-- ko foreach: { data: steps().sort(sortItems), as: 'item' } -->
+        <li class="opc-progress-bar-item"
+            data-bind="event: { click: $parent.navigateTo, keyup: $parent.navigateTo }, css: item.isVisible() ? '_active' : ($parent.isProcessed(item) ? '_complete' : '')">
+            <span data-bind="i18n: item.title, attr:{ tabindex: item.isVisible() ? -1 : ($parent.isProcessed(item) ? 0 : -1), 'aria-current': item.isVisible() ? 'step' : '' }"></span>
+        </li>
+        <!-- /ko -->
+    </ol>
+    <div class="back-link-wrap">
+        <button data-bind="click: goToPrevStep"><span data-bind="i18n: 'Back'"></span></button>
+    </div>
+</div>

@@ -1,0 +1,160 @@
+// partials
+& when (@media-common = true) {
+  .new-shipping-address-modal {
+    .modal-inner-wrap {
+      border-radius: 5px;
+    }
+
+    .modal-title {
+      .lib-css(border-width, 1px);
+      .lib-css(border-color, #DFDFDF);
+      padding-bottom: 25px;
+    }
+
+    .modal-footer {
+      justify-content: center;
+      display: flex;
+      flex-direction: row;
+      padding-top: 8px;
+      &:before {
+        padding: 0;
+        border: none;
+      }
+
+      button {
+        margin-bottom: 0;
+        min-width: 180px;
+      }
+
+      button.action-save-address {
+        float: none;
+      }
+    }
+
+  }
+  .new-shipping-address-modal .form-shipping-address {
+    max-width: inherit !important;
+    margin: 0 -15px;
+    display: block;
+    overflow: hidden;
+  }
+
+  .new-shipping-address-modal .form-shipping-address {
+    .field {
+      margin-bottom: 20px;
+
+      &.addresses {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    .fieldset > .field {
+      float: left;
+      width: calc(~'50% - 30px');
+      margin: 0 15px 25px;
+
+      .label {
+        font-size: @font-size__base;
+        line-height: @line-height__l;
+      }
+
+      &.street {
+        width: calc(~'100% - 30px');
+
+        .field {
+          margin: 0 0 20px;
+
+          &:last-of-type {
+            margin: 0;
+          }
+        }
+      }
+
+      &.choice{
+        width:100%;
+        &:before {
+          width: auto;
+        }
+      }
+
+      &.required,
+      &._required {
+        > label {
+          display: block;
+          float: none;
+          width: auto;
+          text-align: left;
+          padding: 0;
+
+          &:after {
+            position: static;
+            margin-left: 5px;
+            top: 0;
+          }
+        }
+
+      }
+
+      &:not(.choice) {
+        > label,
+        > .label {
+          display: block;
+          float: none;
+          width: auto;
+          text-align: left;
+          padding: 0;
+          margin: 0;
+          margin-bottom: 8px;
+        }
+
+        > .control {
+          float: none;
+          width: auto;
+        }
+      }
+    }
+
+    .company-individual-block .field {
+      margin-left: 0;
+    }
+
+    .fieldset > .field .note:before,
+    .fieldset > .fields > .field .note:before {
+      content: @icon-arrow-up-black;
+    }
+
+    .action-show-popup {
+      background: none;
+      border: none;
+      padding: 0;
+
+      > span {
+        font-family: @font-family__lg-smart;
+        text-decoration: underline;
+        text-transform: none;
+        color: @color-lg-carmine;
+
+        &:before {
+          display: none;
+        }
+      }
+    }
+
+    .step-content {
+      margin: 0 0 20px;
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  .checkout-index-index {
+    .new-shipping-address-modal {
+      footer.modal-footer button {
+        min-width: 130px;
+        width: 50%;
+      }
+    }
+  }
+}
+

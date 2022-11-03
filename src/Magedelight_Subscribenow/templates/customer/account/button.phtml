@@ -1,0 +1,32 @@
+
+<?php if ($block->canUpdateProfile()) : ?>
+    <?php if ($block->canResume()) : ?>
+        <a href="<?php echo $block->getResumeUrl(); ?>" title="<?php echo __('Resume Profile') ?>" onclick="return confirm('<?php echo __('Are you sure ? You want to resume this subscription profile.') ?>');" class="action primary">
+            <span><?php echo __('Resume Profile') ?></span>
+        </a>
+    <?php endif; ?>
+
+    <?php if ($block->canSkip()) : ?>
+        <a href="<?php echo $block->getSkipUrl(); ?>" title="<?php echo __('Skip Profile') ?>" onclick="return confirm('<?php echo __('Are you sure ? You want to skip this subscription profile for next occurrence.') ?>');" class="action primary">
+            <span><?php echo __('Skip') ?></span>
+        </a>
+    <?php endif; ?>
+
+    <?php if ($block->canPause()) : ?>
+        <a href="<?php echo $block->getPauseUrl(); ?>" title="<?php echo __('Pause Profile') ?>" onclick="return confirm('<?php echo __('Are you sure ? You want to pause this subscription profile.') ?>');" class="action primary">
+            <span><?php echo __('Pause') ?></span>
+        </a>
+    <?php endif; ?>
+
+    <?php if ($block->canCancel()) : ?>
+        <a href="<?php echo $block->getCancelUrl(); ?>" title="<?php echo __('Cancel Profile') ?>" onclick="return confirm('<?php echo __('Are you sure ? You want to cancel this subscription profile.') ?>');" class="action primary">
+            <span><?php echo __('Cancel') ?></span>
+        </a>
+    <?php endif; ?>
+
+    <?php if ($block->canEdit()) : ?>
+        <a href="<?php echo $block->getEditUrl(); ?>" title="<?php echo __('Edit Profile') ?>" onclick="return confirm('<?php echo __('Are you sure ? You want to edit this subscription profile.') ?>');" class="action primary">
+            <span><?php echo __('Edit') ?></span>
+        </a>
+    <?php endif; ?>
+<?php endif; ?>

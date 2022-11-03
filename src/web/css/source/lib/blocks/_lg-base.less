@@ -1,0 +1,127 @@
+// The variables below should be added in accordance with the design guide.
+
+// Color
+@color-carmine: rgba(165,0,52,1); // #a50034
+@color-black: rgba(0,0,0,1); // #000000
+@color-nero: rgba(34,34,34,1); // #222222
+@color-nightrider: rgba(51,51,51,1); // #333333
+@color-dimgray: rgba(107,107,107,1); // #6b6b6b
+@color-gray: rgba(118,118,118,1); // #767676
+@color-white: rgba(255,255,255,1); // #ffffff
+
+// Line Color
+@line-lightgray: rgba(238,238,238,1); // #eeeeee
+@line-gray: rgba(228,228,228,1); // #e4e4e4
+@line-nero: rgba(34,34,34,1); // #222222
+@line-darkgray: rgba(51,51,51,1); // #333333
+@line-dimgray: rgba(107,107,107,1); // #6b6b6b
+@line-carmine: rgba(165,0,52,1); // #a50034
+@line-red: rgba(219,0,0,1); // #db0000
+@line-white: rgba(255,255,255,1); // #ffffff
+@line-input: rgba(107,107,107,1); // #6b6b6b -- WA-GPC0007-11
+@line-black: rgba(0,0,0,1); // #000000
+
+// BG Color
+@bg-carmine: rgba(165,0,52,1); // #a50034
+@bg-orange: rgba(209,91,5,1); // #d15b05
+@bg-nightrider: rgba(51,51,51,1); // #333333
+@bg-dimgray: rgba(107,107,107,1); // #6b6b6b
+@bg-gray: rgba(118,118,118,1); // #767676
+@bg-whitesmoke: rgba(248,248,248,1); // #f8f8f8
+@bg-white: rgba(255,255,255,1); // #ffffff
+@bg-nobel: rgba(153,153,153,1); // #999999
+@bg-black: rgba(0,0,0,1); // #000000
+
+// design size (for contents area)
+@max-design: 1600;
+@max-content: 1280;
+
+// screen size
+@max-xs : 575;
+@min-sm : 576;
+@max-sm : 767;
+@min-md : 768;
+@max-md : 991;
+@min-lg : 992;
+@max-lg : 1199;
+@min-xl : 1200;
+
+.clearfix() {*zoom: 1;&:before, &:after {content: " ";display: table;}&:after {clear: both;}}
+.uppercase() {text-transform:uppercase;}
+.listreset() {margin: 0;padding: 0;list-style: none;}
+//.circleDeletebtn() {display:block;overflow:hidden;width:20px;height:20px;padding:0;border-radius:50%;border:1px solid #999999;text-indent:1000px;background:url('@{baseDir}images/common/icons/content-delete.svg') no-repeat 50% 50% @color-white;}
+.linkicon() {content:'';display:inline-block;width:12px;height:12px;}
+
+// make Circle Carmine Icon (have SVG Img)
+.svgCarmineIcon(@size:44) {
+  width: @size+px;
+  height: @size+px;
+  display: block;
+  background-color: @color-carmine;
+  border-radius: 50%;
+  img {width: 100%;}
+//@include screen(custom, max, @max-sm) {
+//  width: 30px;height: 30px;margin-right: 10px;
+//}
+}
+
+.svgNobelIcon(@size:44) {
+  width: @size+px;
+  height: @size+px;
+  display: block;
+  background-color: @bg-nobel;
+  border-radius: 50%;
+  img {width: 100%;}
+//@include screen(custom, max, @max-sm) {
+//  width: 30px;height: 30px;margin-right: 10px;
+//}
+}
+
+// font-family : use font-family mixin instead of below variable
+@font-bold: 'LG Smart Bold', sans-serif;
+@font-light: 'LG Smart Light', sans-serif;
+@font-regular: 'LG Smart Regular', sans-serif;
+@font-semibold: 'LG Smart SemiBold', sans-serif;
+
+.pseudo(@display: block, @pos: absolute, @content: ''){
+  content: @content;
+  display: @display;
+  position: @pos;
+}
+.truncate(@truncation-boundary, @overflow: ellipsis) {
+  max-width: @truncation-boundary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: @overflow;
+}
+.placeholder(@color) {
+  &::-webkit-input-placeholder { color:@color;}
+  &:-moz-placeholder           { color:@color;}
+  &::-moz-placeholder          { color:@color;}
+  &::placeholder {color:@color;opacity:1;}
+  &:-ms-input-placeholder {color:@color;}
+  &::-ms-input-placeholder {color:@color;}
+}
+
+.list-bullet(@position:10px, @size:4px, @dotColor:@color-carmine){
+  position:relative;
+  padding-left:12px;
+  &:before {
+    content: "";
+    position: absolute;
+    top:@position;
+    left:0;
+    display:block;
+    width: @size;
+    height: @size;
+    background-color: @dotColor;
+    border-radius: 50%;
+  }
+  [dir="rtl"] & {
+    padding-left:0;
+    padding-right:12px;
+    &:before {
+      right:0;
+    }
+  }
+}

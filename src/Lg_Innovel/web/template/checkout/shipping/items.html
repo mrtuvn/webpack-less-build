@@ -1,0 +1,48 @@
+<div class="section-container" id="delivery-info-container">
+    <!-- ko ifnot: isOnlyEw()  -->
+    <h2 class="step-title" data-role="title" data-bind="i18n: 'Shipping Methods'">Delivery Information</h2>
+    <div id="delivery-info" class="collapsible-content" >
+        <ul class="shipping-products" data-bind="foreach: { data: items, as: 'item'}, visible: isVisible()">
+            <!-- ko ifnot: $parent.isEW(item)  -->
+            <li class="shipping-product-wrapper" tabindex="0">
+                <div class="shipping-product">
+                    <div class="product-photo" data-bind="style: { backgroundImage: 'url(\'' + item.thumbnail + '\')' }">
+                    </div>
+                    <div class="product-name">
+                        <span class="sku" data-bind="text: item.product.model_name"></span>
+                        <span class="name" data-bind="text: item.name"></span>
+                    </div>
+                </div>
+                <div class="rates" data-bind="foreach: { data: shippingRates, as: 'rate'}">
+                    <div class="shipping-method">
+                        <div class="shipping-method-selector">
+                            <input type="radio"
+                                   class="radio shipping-method-selector"
+                                   ifnot="error_message"
+                                   data-bind="
+                               checked: $parent.shippingRates.selection,
+                               value: value,
+                               attr: {
+                                   id: identifier,
+                                   name: 'rates[' + item_id + ']'
+                               }
+                    "
+                            />
+                            <label data-bind="i18n: carrier_title, attr: { for: identifier }" class="shipping-method-label"></label>
+                        </div>
+                        <div data-bind="i18n: price > 0 ? formattedPrice : 'Free', css: 'shipping-method-price ' + (price <= 0 ? 'free' : '')" ></div>
+                    </div>
+                </div>
+                <div class="delivery-calendar-wapper">
+                    <each args="$parent.getRegion('shippingItemAdditional_' +  item.item_id)" render=""/>
+                </div>
+            </li>
+            <!--/ko-->
+        </ul>
+
+        <div class="instalation-haulaway-order-container" if="showItemByOrder">
+            <each args="getRegion('shippingAdditional')" render="" />
+        </div>
+    </div>
+    <!--/ko-->
+</div>

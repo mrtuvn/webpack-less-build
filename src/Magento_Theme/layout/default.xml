@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <html>
+        <attribute name="dir" value="ltr"/>
+    </html>
+    <body>
+        <attribute name="id" value="html-body"/>
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_file" xsi:type="string">images/logo.svg</argument>
+                <argument name="logo_img_width" xsi:type="number">160</argument>
+                <argument name="logo_img_height" xsi:type="number">103</argument>
+                <argument name="logo_alt" xsi:type="string"><![CDATA[LG Logo]]></argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceBlock name="webpack">
+            <arguments>
+                <argument name="filename" xsi:type="string">theme</argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

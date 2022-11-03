@@ -1,0 +1,27 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+/** @var \Magento\Wishlist\Pricing\Render\ConfiguredPriceBox $block */
+$schema = ($block->getZone() == 'item_view');
+$idSuffix = $block->getIdSuffix() ?: '';
+/** @var \Magento\Wishlist\Pricing\ConfiguredPrice\ConfigurableProduct $configuredPrice */
+$configuredPrice = $block->getPrice();
+$configuredRegularAmountValue = $configuredPrice->getConfiguredRegularAmount()->getValue();
+$priceLabel = ($block->getPriceLabel() !== null) ? $block->getPriceLabel() : '';
+?>
+<p class="price-as-configured">
+    <?= /* @noEscape */ $block->renderAmount(
+        $configuredPrice->getAmount(),
+        [
+            'display_label'     => $block->escapeHtml($priceLabel),
+            'price_id'          => $block->escapeHtml($block->getPriceId('product-price-' . $idSuffix)),
+            'price_type'        => 'finalPrice',
+            'include_container' => true,
+            'schema' => $schema,
+        ]
+    ); ?>
+</p>

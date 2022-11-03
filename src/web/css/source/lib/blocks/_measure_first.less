@@ -1,0 +1,29 @@
+& when (@media-common = true) {
+  .checkout-cart-index {
+    .cart {
+      .measure-first {
+
+        .actions-toolbar {
+          a {
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+            }
+
+            &:before {
+              color: inherit;
+              margin-right: 6px;
+            }
+
+            & + a {
+              margin-left: 10px;
+            }
+          }
+
+        }
+
+      }
+    }
+  }
+}

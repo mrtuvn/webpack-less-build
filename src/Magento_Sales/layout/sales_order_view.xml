@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="page.main.title">
+            <container name="order.status.date.wrapper" label="Status and Date Wrapper" htmlTag="div" htmlClass="status-date-wrapper" before="-" />
+        </referenceContainer>
+        <move element="order.status" destination="order.status.date.wrapper" />
+        <move element="order.date" destination="order.status.date.wrapper" />
+
+    </body>
+</page>

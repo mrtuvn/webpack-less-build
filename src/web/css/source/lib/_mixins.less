@@ -1,0 +1,80 @@
+.transition(@duration: 0.3s, @property: all, @easing: ease, @delay: 0s) {
+    -webkit-transition: @duration @property @easing @delay;
+    -moz-transition: @duration @property @easing @delay;
+    -ms-transition: @duration @property @easing @delay;
+    -o-transition: @duration @property @easing @delay;
+    transition: @duration @property @easing @delay;
+}
+
+.listreset() {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.circleDeletebtn() {
+    display:block;
+    overflow:hidden;
+    width:20px;
+    height:20px;
+    padding:0;
+    border-radius:50%;
+    border:1px solid #999999;
+    text-indent:1000px;
+    background:url('/lg5-common-gp/images/common/icons/content-delete.svg') no-repeat 50% 50% @color-white;
+}
+
+.linkicon() {
+    content:'';
+    display:inline-block;
+    width:12px;
+    height:12px;
+}
+
+.complexTransition(...) {
+    -webkit-transition: @arguments;
+    -moz-transition: @arguments;
+    -o-transition: @arguments;
+    transition: @arguments;
+}
+.transform(@prop: translateX(-50%) translateY(-50%)) {
+    -webkit-transform: @prop;
+    -moz-transform: @prop;
+    -ms-transform: @prop;
+    -o-transform: @prop;
+    transform: @prop;
+}
+.pseudo(@display: block, @pos: absolute, @content: ''){
+    content: @content;
+    display: @display;
+    position: @pos;
+}
+.truncate(@truncation-boundary, @overflow: ellipsis) {
+    max-width: @truncation-boundary;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: @overflow;
+}
+.box-sizing(@type: border-box) {
+    -webkit-box-sizing: @type;
+    -moz-box-sizing: @type;
+    box-sizing: @type;
+}
+.placeholder(@color) {
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: @color;
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+        color: @color;
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+        color: @color;
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+        color: @color;
+    }
+}
+.animate(@name, @duration: 1s, @delay: 0s, @iterations-count: infinite, @direction: normal) {
+    -webkit-animation: @name @duration @delay @iterations-count @direction;
+    -o-animation: @name @duration @delay @iterations-count @direction;
+    animation: @name @duration @delay @iterations-count @direction;
+}

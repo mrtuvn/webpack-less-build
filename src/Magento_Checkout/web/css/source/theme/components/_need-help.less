@@ -1,0 +1,48 @@
+@help-block-seperate-line-color: #dfdfdf;
+& when (@media-common = true) {
+  .main {
+    .need-help-support {
+      border-radius: 5px;
+
+      h3,
+      .block-title {
+        font-size: 20px;
+        font-weight: @font-weight__semibold;
+        line-height: calc(23/20);
+        color: @color-black;
+        padding-bottom: 8px;
+        border-bottom: 1px solid @help-block-seperate-line-color;
+        margin-bottom: 12px;
+      }
+
+      p {
+        font-size: 13px;
+        color: @color-black;
+        margin-bottom: 8px;
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  .main {
+    .need-help-support {
+      padding: 20px 24px;
+      background: #F5F5F5;
+      h3,
+      .block-title {
+        font-size: 20px;
+        line-height: calc(23 / 20);
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .main {
+    .need-help-support {
+      background: @color-lg-light-2;
+      padding: 25px 15px 20px;
+    }
+  }
+}

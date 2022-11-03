@@ -1,0 +1,453 @@
+// 1 Step checkout styles
+
+//variable global @cos: app/design/frontend/Lg/common_v2/web/css/_styles.less
+/**LGOBSUAT-88 - Luannt4*/
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  .@{cos} div#opc-new-shipping-address form#co-shipping-form div#shipping-new-address-form fieldset.street div.control div.field{
+    display: block;
+    label.label{
+      text-align: left;
+    }
+    div.control{
+      width:100%;
+    }
+  }
+}
+
+// Date Picker
+& when (@media-common = true) {
+  .@{cos} .shipping-method {
+    .delivery-field {
+      clear: both;
+
+      .input-control {
+        .input-text._has-datepicker {
+          height: 44px !important;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 959px) {
+  .@{cos} .payment-method-content .payment-method-instruction {
+    width: 100% !important;
+  }
+}
+
+/*[LGOBSSI-3163] - End]*/
+& when (@media-common = true) {
+  .@{cos} .hidden {
+    display: none;
+  }
+
+  /*[LGOBSSI-3163] - luannt4]*/
+  .@{cos} {
+
+    #drpay-creditcard-form .actions-toolbar > .primary .action.primary{
+      padding: 12px 20px;
+    }
+    .shipping-product-wrapper > div > .delivery-calendar-container{
+      margin-top: 20px;
+    }
+    .delivery-calendar-label{
+      margin: 5px 0 0;
+      display: block;
+    }
+    .delivery-lead-time {
+      font-weight: @font-weight__bold;
+      .icon-delivery{
+        font-size: 2.2rem;
+        vertical-align: middle;
+        margin-right: 7px;
+        color: #000;
+      }
+      .from,
+      .to{
+        color: #a50034;
+      }
+    }
+
+    .shipping-products .haulaway-option-title{
+      font-size: 18px;
+    }
+  }
+
+  .@{cos} .opc-wrapper .fieldset > div[name='billingAddressshared.postcode'] {
+    clear: both;
+  }
+
+  .@{cos} .opc-wrapper .fieldset > div[name='billingAddressshared.telephone'] {
+    clear: both;
+  }
+
+  .@{cos} {
+
+    div#billing-container {
+
+      div#billing {
+        fieldset.address {
+          div.field {
+            label.label {
+              position: unset;
+              width: auto;
+              height: auto;
+            }
+          }
+          fieldset.street{
+            div.field:first-child {
+              label.label {
+                position: unset;
+                width: auto;
+                height: auto;
+                &::after {
+                  content: '*';
+                  color: #e02b27;
+                  font-size: 1.2rem;
+                  margin: 0 0 0 5px;
+                }
+              }
+            }
+          }
+        }
+      }
+
+    }
+
+    .shipping-address-note {
+      color: #e02b27;
+    }
+
+
+    form#co-shipping-form{
+
+      input#shipping-save-in-address-book:disabled{
+        opacity: 0;
+      }
+    }
+
+    form#co-shipping-form {
+      fieldset.street {
+        div._required {
+          label.label {
+            padding-right: 12px!important;
+            &::after {
+              content: '*';
+              color: #e02b27;
+              font-size: 1.2rem;
+              margin: 0 0 0 5px;
+            }
+          }
+        }
+      }
+
+    }
+
+  }
+
+  .@{cos} {
+    .instalation-haulaway-order-container {
+
+      .instalation-service-container,
+      .waste-household-container {
+        display: inline-block;
+        width: calc(~"50%" - 1%);
+
+        .checkbox-container {
+          width: fit-content;
+          position: relative;
+
+          .field-tooltip {
+            top: -3px;
+            right: -30px;
+          }
+        }
+      }
+    }
+
+    .installation-haulaway-method {
+      padding-left: 30px;
+
+      .shipping-method-selector {
+        position: relative;
+
+        .field-tooltip {
+          top: -3px;
+          right: -30px;
+          .installation-tooltip-content {
+            width: 500px;
+            li {
+              list-style: inside;
+            }
+          }
+        }
+      }
+    }
+
+    .checkout-payment-method .payment-method-content #drpay-creditcard-form {
+      margin: 0 0 0 1%;
+    }
+
+    .opc-wrapper {
+      .collapsible-content {
+        .information span {
+          color: #999;
+          font-weight: 700
+        }
+      }
+
+      .opc {
+        > li {
+          padding-bottom: 15px;
+          border-bottom: 1px solid @color-lg-gray-3;
+          margin-bottom: 20px;
+
+          &#payment,
+          &#opc-shipping_method {
+            border-bottom: none;
+          }
+        }
+      }
+
+      .shipping-address-item {
+        line-height: @line-height__l;
+        background: @color-lg-light-1;
+        border-color: @color-lg-light-1;
+        cursor: pointer;
+        width: 46%;
+        margin: 0 2% 2%;
+
+        a {
+          display: inline-block;
+          vertical-align: middle;
+          text-decoration: none;
+          color: @color-lg-gray;
+
+          .tel {
+            padding: 20px 0 10px;
+            display: block;
+          }
+        }
+
+
+        &.selected-item {
+          border-color: @color-lg-carmine;
+
+          &:after {
+            display: none;
+          }
+        }
+      }
+
+      .edit-address-link {
+        margin: 0 5px 0 0;
+        text-transform: none;
+        display: inline-block;
+        vertical-align: middle;
+        font-family: @font-family__lg-smart;
+
+        span {
+          &:after {
+            content: " > ";
+          }
+        }
+      }
+
+    }
+
+    #delivery-info {
+      position: relative;
+
+      .shipping-policy-block {
+        top: -12px;
+        right: 0;
+        .field-tooltip-content{
+          width: 500px;
+        }
+        li {
+          list-style: inside;
+        }
+      }
+    }
+
+    #co-payment-form {
+      .payment-information-content {
+
+        .checkout-billing-address .billing-address-same-as-shipping-block {
+          label {
+            color: #a50034;
+          }
+        }
+      }
+
+
+      .checkout-billing-address {
+        .actions-toolbar {
+          max-width: 600px;
+          margin: 0 auto;
+
+          > .primary {
+            float: none;
+            margin: 0 auto;
+
+            .action-update {
+              margin: 0 0 15px;
+            }
+          }
+        }
+      }
+    }
+
+    .payment-method-content {
+      .payment-logos {
+        display: flex;
+        width: 100%;
+        clear: both;
+        .american-express {
+          background: url('@{baseDir}images/mastercard.svg') no-repeat left top;
+          width: 220px;
+          height: 26px;
+        }
+
+        .paypal {
+          width: 53px;
+          height: 33px;
+          margin-bottom: 20px;
+          margin-right: 10px;
+          box-sizing: border-box;
+          float: left;
+          background: url('@{baseDir}images/paypal.svg') no-repeat left top;
+          order: 1;
+        }
+      }
+
+      .payment-method-instruction {
+        .instruction:before {
+          font-family: 'LG Icons';
+          float: left;
+          margin-top: 2px;
+          margin-right: 5px;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          font-size: 18px;
+          line-height: 100%;
+          color: #999;
+          content: @icon-product-issues-m;
+          vertical-align: top;
+          display: inline-block;
+          font-weight: 400;
+          overflow: hidden;
+          speak: none;
+          text-align: center;
+        }
+
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 100%;
+      }
+    }
+
+    .action-auth-toggle {
+      display: none;
+    }
+
+    #opc-sidebar {
+      .cms-block {
+        padding: 30px 20px;
+        background: @color-lg-light-1;
+        margin: 0 0 20px;
+      }
+
+      #cms-block-need_help_support {
+        h4 {
+          display: none;
+        }
+
+        a {
+          color: @color-lg-gray;
+          text-decoration: none;
+        }
+      }
+    }
+
+    .tel {
+      position: relative;
+      > span {
+        position: absolute;
+        left: 8px;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        margin: auto 0;
+        justify-content: center;
+      }
+      > .tel-display {
+        padding-left: 55px;
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  body.@{cos} {
+    .installation-haulaway-method .shipping-method-selector .field-tooltip .installation-tooltip-content {
+      width: 260px;
+    }
+
+    .shipping-method-selector .field-tooltip {
+      .tooltip-inner-content {
+        max-height: 300px;
+        overflow-y: auto;
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  body.@{cos} {
+    .instalation-haulaway-order-container {
+      .instalation-service-container,
+      .waste-household-container {
+        width: 100%;
+
+        .field-tooltip {
+          &._active {
+            .field-tooltip-content {
+              right: -162px;
+
+              &:before {
+                right: 162px;
+              }
+
+              &:after {
+                right: 162px;
+              }
+            }
+          }
+        }
+      }
+
+      .waste-household-container {
+        padding-top: 15px;
+      }
+    }
+
+    .installation-haulaway-method {
+      .field-tooltip {
+        &._active {
+          .field-tooltip-content {
+            right: -125px;
+
+            &:before {
+              right: 125px;
+            }
+
+            &:after {
+              right: 125px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

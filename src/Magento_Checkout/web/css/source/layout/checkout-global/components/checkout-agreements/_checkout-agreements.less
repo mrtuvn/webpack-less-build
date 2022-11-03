@@ -1,0 +1,55 @@
+& when (@media-common = true) {
+  .checkout-index-index .checkout-agreement input[type="checkbox"] ~ label:hover,
+  .checkout-index-index .checkout-agreement input[type="checkbox"] ~ label {
+    background-position-y: top;
+  }
+
+  .checkout-index-index {
+    .checkout-agreements-block {
+      clear: both;
+      width: 100%;
+      .checkout-agreements {
+        margin: 0;
+        overflow: hidden;
+      }
+
+      .checkout-agreement {
+        margin: 0 0 25px;
+
+        input:focus + label {
+          box-shadow: none; /* not show focus when check input */
+        }
+      }
+
+      .checkbox-text {
+        span {
+          font-size: 14px;
+          line-height: calc(16/14);
+          font-weight: @font-weight__regular;
+        }
+
+        a {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    & .column.main .payments .payment-method-content {
+      .checkout-agreements-block {
+        padding-top: @indent__s + 5;
+      }
+    }
+
+    .checkout-agreements-items .checkout-agreements-item-title {
+      font-family: @font-family__lg-smart;
+      font-weight: @font-weight__semibold;
+      border: none;
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  //.checkout-index-index {
+  //
+  //}
+}

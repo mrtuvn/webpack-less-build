@@ -1,0 +1,206 @@
+// override lib-button (to add text-transform & border-radius properties)
+.lib-button(
+    @_button-font-family: @button__font-family,
+    @_button-font-size: @button__font-size,
+    @_button-font-weight: @button__font-weight,
+    @_button-cursor: @button__cursor,
+    @_button-display: @button__display,
+    @_button-disabled-opacity: @button__disabled__opacity,
+    @_button-line-height: @button__line-height,
+    @_button-width: @button__width,
+    @_button-margin: @button__margin,
+    @_button-padding: @button__padding,
+    @_button-color: @button__color,
+    @_button-background: @button__background,
+    @_button-border: @button__border,
+
+    @_button-color-hover: @button__hover__color,
+    @_button-background-hover: @button__hover__background,
+    @_button-border-hover: @button__hover__border,
+    @_button-color-active: @button__active__color,
+    @_button-background-active: @button__active__background,
+    @_button-border-active: @button__active__border,
+
+    @_button-gradient: @button__gradient,
+    @_button-gradient-direction: @button__gradient-direction,
+    @_button-gradient-color-start: @button__gradient-color-start,
+    @_button-gradient-color-end: @button__gradient-color-end,
+    @_button-gradient-color-start-hover: @button__hover__gradient-color-start,
+    @_button-gradient-color-end-hover: @button__hover__gradient-color-end,
+    @_button-gradient-color-start-active: @button__active__gradient-color-start,
+    @_button-gradient-color-end-active: @button__active__gradient-color-end,
+
+    @_button-icon-use: @button-icon__use,
+    @_button-font-content: @button-icon__content,
+    @_button-icon-font: @button-icon__font,
+    @_button-icon-font-size: @button-icon__font-size,
+    @_button-icon-font-line-height: @button-icon__line-height,
+    @_button-icon-font-color: @button-icon__color,
+    @_button-icon-font-color-hover: @button-icon__hover__font-color,
+    @_button-icon-font-color-active: @button-icon__active__font-color,
+    @_button-icon-font-margin: @button-icon__margin,
+    @_button-icon-font-vertical-align: @button-icon__vertical-align,
+    @_button-icon-font-position: @button-icon__position,
+    @_button-icon-font-text-hide: @button-icon__text-hide,
+
+    @_button-text-transform: @button__text-transform,
+    @_button-border-radius: @button__border-radius
+) {
+    background-image: none; // Reset unusual Firefox-on-Android default style
+    .lib-css(background, @_button-background);
+    .lib-background-gradient(
+        @_button-gradient-color-start,
+        @_button-gradient-color-end,
+        @_button-gradient-direction,
+        @_button-gradient
+    );
+    .lib-css(border, @_button-border);
+    .lib-css(border-radius, @_button-border-radius);
+    .lib-css(color, @_button-color);
+    .lib-css(cursor, @_button-cursor);
+    .lib-css(display, @_button-display);
+    .lib-css(font-family, @_button-font-family);
+    .lib-css(font-weight, @_button-font-weight);
+    .lib-css(text-transform, @_button-text-transform);
+    .lib-css(margin, @_button-margin);
+    .lib-css(padding, @_button-padding);
+    .lib-css(width, @_button-width);
+    .lib-font-size(@_button-font-size);
+    .lib-line-height(@_button-line-height);
+    box-sizing: border-box;
+    vertical-align: middle;
+
+    ._lib-button-icon (
+        @_button-icon-use: @_button-icon-use,
+        @_icon-font-content: @_button-font-content,
+        @_icon-font: @_button-icon-font,
+        @_icon-font-size: @_button-icon-font-size,
+        @_icon-font-line-height: @_button-icon-font-line-height,
+        @_icon-font-color: @_button-icon-font-color,
+        @_icon-font-color-hover: @_button-icon-font-color-hover,
+        @_icon-font-color-active: @_button-icon-font-color-active,
+        @_icon-font-margin: @_button-icon-font-margin,
+        @_icon-font-vertical-align: @_button-icon-font-vertical-align,
+        @_icon-font-position: @_button-icon-font-position,
+        @_icon-font-text-hide: @_button-icon-font-text-hide
+    );
+
+    &:focus {
+        outline: rgb(59, 153, 252) auto 5px;
+    }
+
+    &:focus,
+    &:active {
+        .lib-css(background, @_button-background-active);
+        .lib-background-gradient(
+            @_button-gradient-color-start-active,
+            @_button-gradient-color-end-active,
+            @_button-gradient-direction,
+            @_button-gradient
+        );
+        .lib-css(border, @_button-border-active);
+        .lib-css(color, @_button-color-active);
+    }
+
+    &:hover {
+        .lib-css(background, @_button-background-hover);
+        .lib-background-gradient(
+            @_button-gradient-color-start-hover,
+            @_button-gradient-color-end-hover,
+            @_button-gradient-direction,
+            @_button-gradient
+        );
+        .lib-css(border, @_button-border-hover);
+        .lib-css(color, @_button-color-hover);
+    }
+
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        .lib-css(opacity, @_button-disabled-opacity);
+        cursor: default;
+        pointer-events: none; // Disabling of clicks
+    }
+}
+
+// Mixin for third button (outline)
+.lib-button-third(
+    @_button-color: @button-third__color,
+    @_button-background: @button-third__background,
+    @_button-border: @button-third__border,
+
+    @_button-color-hover: @button-third__hover__color,
+    @_button-background-hover: @button-third__hover__background,
+    @_button-border-hover: @button-third__hover__border,
+
+    @_button-color-active: @button-third__active__color,
+    @_button-background-active: @button-third__active__background,
+    @_button-border-active: @button-third__active__border
+) {
+    .lib-button(
+        @_button-font-family: @button__font-family,
+        @_button-font-size: @button__font-size,
+        @_button-font-weight: @button__font-weight,
+        @_button-line-height: @button__line-height,
+        @_button-width: @button__width,
+        @_button-margin: @button__margin,
+        @_button-padding: @button__padding,
+        @_button-color: @_button-color,
+        @_button-background: @_button-background,
+        @_button-border: @_button-border,
+        @_button-color-hover: @_button-color-hover,
+        @_button-background-hover: @_button-background-hover,
+        @_button-border-hover: @_button-border-hover,
+        @_button-color-active: @_button-color-active,
+        @_button-background-active: @_button-background-active,
+        @_button-border-active: @_button-border-active,
+        @_button-gradient: @button__gradient,
+        @_button-gradient-direction: @button__gradient-direction,
+        @_button-gradient-color-start: @button__gradient-color-start,
+        @_button-gradient-color-end: @button__gradient-color-end,
+        @_button-gradient-color-start-hover: @button__hover__gradient-color-start,
+        @_button-gradient-color-end-hover: @button__hover__gradient-color-end,
+        @_button-gradient-color-start-active: @button__active__gradient-color-start,
+        @_button-gradient-color-end-active: @button__active__gradient-color-end
+    );
+}
+.lib-button-third-light(
+    @_button-color: @button-third-light__color,
+    @_button-background: @button-third-light__background,
+    @_button-border: @button-third-light__border,
+
+    @_button-color-hover: @button-third-light__hover__color,
+    @_button-background-hover: @button-third-light__hover__background,
+    @_button-border-hover: @button-third-light__hover__border,
+
+    @_button-color-active: @button-third-light__active__color,
+    @_button-background-active: @button-third-light__active__background,
+    @_button-border-active: @button-third-light__active__border
+) {
+    .lib-button(
+        @_button-font-family: @button__font-family,
+        @_button-font-size: @button__font-size,
+        @_button-font-weight: @button__font-weight,
+        @_button-line-height: @button__line-height,
+        @_button-width: @button__width,
+        @_button-margin: @button__margin,
+        @_button-padding: @button__padding,
+        @_button-color: @_button-color,
+        @_button-background: @_button-background,
+        @_button-border: @_button-border,
+        @_button-color-hover: @_button-color-hover,
+        @_button-background-hover: @_button-background-hover,
+        @_button-border-hover: @_button-border-hover,
+        @_button-color-active: @_button-color-active,
+        @_button-background-active: @_button-background-active,
+        @_button-border-active: @_button-border-active,
+        @_button-gradient: @button__gradient,
+        @_button-gradient-direction: @button__gradient-direction,
+        @_button-gradient-color-start: @button__gradient-color-start,
+        @_button-gradient-color-end: @button__gradient-color-end,
+        @_button-gradient-color-start-hover: @button__hover__gradient-color-start,
+        @_button-gradient-color-end-hover: @button__hover__gradient-color-end,
+        @_button-gradient-color-start-active: @button__active__gradient-color-start,
+        @_button-gradient-color-end-active: @button__active__gradient-color-end
+    );
+}

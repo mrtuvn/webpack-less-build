@@ -1,0 +1,22 @@
+// DO NOT OVERRIDE THIS IN CHILD THEME
+// CUSTOM STYLES AT CHILD THEME WRITE IN FILE _extend-child
+
+@import '_mixins';
+
+//SHOPPING CART (Global)
+@import 'layout/cart/_styles';
+
+//CHECKOUT (Global)
+@import 'layout/checkout-global/_styles'; /* checkout global */
+@import 'layout/checkout-threestep/_styles'; /* checkout 3steps */
+@import 'layout/checkout-onestep/_styles'; /* checkout 1step */
+
+//CHECKOUT SUCCESS (Global)
+@import 'layout/_checkout_onepage_success';
+
+@import 'theme/_styles';
+
+//
+//  Minor customisation at child
+//  ---------------------------------------------
+@import '_extend-child'; /* Styles from theme child */

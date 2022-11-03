@@ -1,0 +1,57 @@
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .page-header .header.panel,
+    .header.content {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: @screen__xxl;
+        padding-left: 0;
+        padding-right: 0;
+        width: auto;
+
+        .box-sizing();
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-header .header.panel,
+    .header.content {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: @screen__xxl;
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+
+        .box-sizing();
+    }
+    .navigation {
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 0;
+        padding-right: 0;
+        max-width: 100%;
+        width: 100%;
+
+        .box-sizing();
+    }
+    .breadcrumbs,
+    .footer.content,
+    .page-wrapper > .widget,
+    .page-wrapper > .page-bottom,
+    .block.category.event,
+    .top-container,
+    .page-main {
+        max-width: @layout__max-width + 2 * @layout__width-xxs-indent; /* include content + 2 * padding */
+        padding-left: @layout__width-xxs-indent;
+        padding-right: @layout__width-xxs-indent;
+        width: 100%;
+        .box-sizing();
+    }
+}

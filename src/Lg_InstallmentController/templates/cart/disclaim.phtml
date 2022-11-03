@@ -1,0 +1,19 @@
+<?php
+/** @var $block \Lg\InstallmentController\Block\Cart\DisclaimText */
+$websiteDisclaimerText = $block->getWebsiteDisclaimText();
+/* Remove js only keep html content */
+/* use XML approaches instead JS DOM manipulation */
+?>
+<?php if ($websiteDisclaimerText || count($block->getDisclaimText()) > 0) : ?>
+<div id="disclaimer-block" class="block disclaimer-section wishlist-container">
+    <!-- website disclaimer text -->
+    <p><?= $websiteDisclaimerText ?></p>
+    <?php if (count($block->getDisclaimText()) > 0) : ?>
+        <!-- PG disclaimer text -->
+        <?php foreach ($block->getDisclaimText() as $item) : ?>
+            <p><?= $item ?></p>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</div>
+
+<?php endif; ?>

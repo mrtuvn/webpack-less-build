@@ -1,0 +1,204 @@
+//wtf
+
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+  /* latest webfonts LG */
+  .lib-font-face(
+    @family-name: @font-family-name__base,
+    @font-path: '@{baseDir}webfonts/LG_Smart_Bold',
+    @font-format: woff2,
+    @font-weight: 700,
+    @font-style: normal,
+    @font-display: swap,
+    @font-type: 'woff2'
+  );
+
+  .lib-font-face(
+    @family-name: @font-family-name__base,
+    @font-path: '@{baseDir}webfonts/LG_Smart_Regular',
+    @font-format: woff2,
+    @font-weight: 400,
+    @font-style: normal,
+    @font-display: swap,
+    @font-type: 'woff2'
+  );
+
+  .lib-font-face(
+    @family-name: @font-family-name__base,
+    @font-path: '@{baseDir}webfonts/LG_Smart_SemiBold',
+    @font-format: woff2,
+    @font-weight: 600,
+    @font-style: normal,
+    @font-display: swap,
+    @font-type: 'woff2'
+  );
+
+  //.lib-font-face(
+  //  @family-name: 'LG Smart',
+  //  @font-path: '@{baseDir}fonts/LgSmart/LG_Smart_Regular',
+  //  @font-weight: 400,
+  //  @font-style: normal,
+  //  @font-display: swap
+  //);
+  //
+  //.lib-font-face(
+  //  @family-name: 'LG Smart',
+  //  @font-path: '@{baseDir}fonts/LgSmart/LG_Smart_Regular_Italic',
+  //  @font-weight: 400,
+  //  @font-style: italic,
+  //  @font-display: swap
+  //);
+  //
+  //.lib-font-face(
+  //  @family-name: 'LG Smart',
+  //  @font-path: '@{baseDir}fonts/LgSmart/LG_Smart_Bold',
+  //  @font-weight: 700,
+  //  @font-style: normal,
+  //  @font-display: swap
+  //);
+  //
+  //.lib-font-face(
+  //  @family-name: 'LG Smart',
+  //  @font-path: '@{baseDir}fonts/LgSmart/LG_Smart_Bold_Italic',
+  //  @font-weight: 700,
+  //  @font-style: italic,
+  //  @font-display: swap
+  //);
+  //
+  //.lib-font-face(
+  //  @family-name: 'LG Smart',
+  //  @font-path: '@{baseDir}fonts/LgSmart/LG_Smart_SemiBold',
+  //  @font-weight: 600,
+  //  @font-style: normal,
+  //  @font-display: swap
+  //);
+  //
+  .lib-font-face(
+    @family-name: @font-family-name__base,
+    @font-path: '@{baseDir}fonts/LgSmart/LG_Smart_Light',
+    @font-format: woff2,
+    @font-weight: 300,
+    @font-style: normal,
+    @font-display: swap,
+    @font-type: 'woff2'
+  );
+
+  .lib-font-face(
+    @family-name: @icons__font-name,
+    @font-path: '@{baseDir}fonts/LgIcons/lg-icons',
+    @font-format: woff2,
+    @font-weight: normal,
+    @font-style: normal,
+    @font-display: block,
+    @font-type: 'woff2'
+  );
+
+  //[data-countrycode="bg"] *,
+  //[data-countrycode="kz"] *,
+  //[data-countrycode="ru"] *,
+  //[data-countrycode="ua"] * {
+  //  font-family: "LG Smart RU", Tahoma, Arial, sans-serif;
+  //}
+  //[data-countrycode="ir"] * {
+  //  font-family: IRANYekan, sans-serif;
+  //}
+  //
+  //[data-countrycode="gr"] * {
+  //  font-family: "Trebuchet MS", sans-serif;
+  //}
+  //[data-countrycode="cn"] * {
+  //  font-family: "Microsoft YaHei", sans-serif, Arial;
+  //}
+  //[data-countrycode="tw"] * {
+  //  font-family: "Microsoft JhengHei", sans-serif, Arial;
+  //}
+  //[data-countrycode="jp"] * {
+  //  font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Yu Gothic', 'メイリオ', 'Meiryo', 'Osaka', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+  //}
+  //
+  //@font-face {
+  //  font-family: "LG Smart RU";
+  //  font-display: swap;
+  //  font-weight: 700;
+  //  font-style: normal;
+  //  src: local("☺"), url("https://www.lg.com/lg5-common-gp/webfonts/LG_Smart_Bold_RU.woff2") format("woff2"), url("https://www.lg.com/lg5-common-gp/webfonts/LG_Smart_Bold_RU.woff") format("woff");
+  //}
+  //@font-face {
+  //  font-family: "LG Smart RU";
+  //  font-display: swap;
+  //  font-weight: 300;
+  //  font-style: normal;
+  //  src: local("☺"), url("https://www.lg.com/lg5-common-gp/webfonts/LG_Smart_Light_RU.woff2") format("woff2"), url("https://www.lg.com/lg5-common-gp/webfonts/LG_Smart_Light_RU.woff") format("woff");
+  //}
+  //@font-face {
+  //  font-family: "LG Smart RU";
+  //  font-display: swap;
+  //  font-weight: 400;
+  //  font-style: normal;
+  //  src: local("☺"), url("https://www.lg.com/lg5-common-gp/webfonts/LG_Smart_Regular_RU.woff2") format("woff2"), url("https://www.lg.com/lg5-common-gp/webfonts/LG_Smart_Regular_RU.woff") format("woff");
+  //}
+  //@font-face {
+  //  font-family: "LG Smart RU";
+  //  font-display: swap;
+  //  font-weight: 600;
+  //  font-style: normal;
+  //  src: local("☺"), url("https://www.lg.com/lg5-common-gp/webfonts/LG_Smart_SemiBold_RU.woff2") format("woff2"), url("https://www.lg.com/lg5-common-gp/webfonts/LG_Smart_SemiBold_RU.woff") format("woff");
+  //}
+  //@font-face {
+  //  font-family: IRANYekan;
+  //  font-display: swap;
+  //  font-weight: 700;
+  //  font-style: normal;
+  //  src: local("☺"), url("https://www.lg.com/lg5-common-gp/webfonts/iranyekanwebbold.woff2") format("woff2"), url("https://www.lg.com/lg5-common-gp/webfonts/iranyekanwebbold.woff") format("woff");
+  //}
+  //@font-face {
+  //  font-family: IRANYekan;
+  //  font-display: swap;
+  //  font-weight: 300;
+  //  font-style: normal;
+  //  src: local("☺"), url("https://www.lg.com/lg5-common-gp/webfonts/iranyekanweblight.woff2") format("woff2"), url("https://www.lg.com/lg5-common-gp/webfonts/iranyekanweblight.woff") format("woff");
+  //}
+  //@font-face {
+  //  font-family: IRANYekan;
+  //  font-display: swap;
+  //  font-weight: 400;
+  //  font-style: normal;
+  //  src: local("☺"), url("https://www.lg.com/lg5-common-gp/webfonts/iranyekanwebregular.woff2") format("woff2"), url("https://www.lg.com/lg5-common-gp/webfonts/iranyekanwebregular.woff") format("woff");
+  //}
+  //@font-face {
+  //  font-family: IRANYekan;
+  //  font-display: swap;
+  //  font-weight: 600;
+  //  font-style: normal;
+  //  src: local("☺"), url("https://www.lg.com/lg5-common-gp/webfonts/iranyekanwebmedium.woff2") format("woff2"), url("https://www.lg.com/lg5-common-gp/webfonts/iranyekanwebmedium.woff") format("woff");
+  //}
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  //h1 {
+  //  .lib-css(font-size, @h1__font-size-desktop);
+  //  .lib-css(margin-bottom, @h1__margin-bottom__desktop);
+  //}
+}
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+  .items {
+    .lib-list-reset-styles();
+  }
+}

@@ -1,0 +1,143 @@
+//this file is intentionally left blank to be re-written by a child theme
+& when (@media-common = true) {
+    .aw_osp-block-order-summary {
+        .order-details-items{
+            width: 65.5%;
+            padding: 0;
+            border:none;
+        }
+        .order-details-info{
+            width: 30%;
+            .shipping-billing-info{
+                a{
+                    text-decoration: underline;
+                }
+            }
+        }
+        .order-summary-title{
+            font-size: 24px;
+            line-height: 32px;
+            &:after{
+                display: none;
+            }
+        }
+        table.table-order-items:not(.cart):not(.totals):not(.table-totals){
+            strong{
+                font-weight: normal;
+                vertical-align: middle;
+            }
+            tbody > tr > td.qty{
+                text-align:right ;
+            }
+            tbody > tr > td.name{
+                padding: 8px 0;
+                text-align:left ;
+            }
+        }
+    }
+    .checkout-status--wapper{
+        font-size: 1.3rem;
+    }
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xls) {
+    .aw_osp-block-newsletter.block.newsletter{
+        width:auto;
+    }
+    .aw_osp-blocks .content-left, .aw_osp-blocks .content-right{
+        width: 100%;
+        clear: both;
+    }
+    .table-wrapper .table:not(.cart):not(.totals):not(.table-comparison) > tbody > tr td[data-th]:before, .table-wrapper .table:not(.cart):not(.totals):not(.table-comparison) > tbody > tr th[data-th]:before{
+        font-family: @font-family__lg-smart;
+        font-weight: 600;
+    }
+    .aw_osp-block-order-summary {
+        .order-summary-title{
+            display:none;
+        }
+        div.order-details-items{
+            width: 100%;
+
+        }
+        div.order-details-info{
+            width: 100%;
+
+        }
+
+        table.table-order-items:not(.cart):not(.totals):not(.table-totals){
+            .price-including-tax, .price-excluding-tax{
+                display:inline-block;
+            }
+            thead{
+                display:none;
+            }
+            tbody > tr > td.col.name{
+                display: table;
+                &:before,
+                strong{
+                    width:100%;
+                    text-align: center;
+                    padding: 0;
+
+                }
+                strong{
+                    font-weight: 700;
+                }
+
+            }
+            tbody > tr > td.col{
+                &:before{
+                    text-align:right;
+                    font-family: @font-family__lg-smart;
+                    font-weight: 600;
+                }
+                width: 100%;
+                display: grid;
+                grid-template-columns: 50% 50%;
+                justify-content: space-around;
+                text-align: left !important;
+            }
+            tbody > tr td[data-th]:before {
+                padding-right: 24px;
+                content: attr(data-th) ': ';
+                display: inline-block;
+                color: #333333;
+                font-weight: 700;
+                line-height: 24px;
+                font-size: 1.6rem;
+            }
+            td.col > * {
+                display:inline-block;
+
+            }
+            tfoot{
+                .mark,.amount{
+                    text-align: center !important;
+                }
+            }
+            tr.subtotal{
+                th{
+                    strong{
+                        font-weight:700;
+                    }
+
+                }
+
+            }
+            tr.grand_total{
+                th,td{
+                    strong{
+                        font-weight:700;
+                    }
+                }
+            }
+        }
+        .order-details-items .table-wrapper .table > tbody > tr td.col.name{
+            width:100%;
+        }
+
+
+    }
+}

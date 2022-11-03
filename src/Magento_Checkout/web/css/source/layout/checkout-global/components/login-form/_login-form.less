@@ -1,0 +1,111 @@
+& when (@media-common = true) {
+  .checkout-index-index {
+    .opc-wrapper {
+      .form-login {
+        max-width: none;
+
+        &.sso-form {
+          padding-top: 0;
+        }
+
+        .hidden-fields {
+          width: 46%;
+          margin-right: 5%;
+
+          .field {
+            float: none;
+            width: 100%;
+            margin-right: 0;
+          }
+        }
+
+
+        &.sso-form {
+          padding-bottom: 0;
+          margin-top: 0;
+          margin-bottom: 0;
+
+          .additional-sso {
+            margin-bottom: 0;
+            margin-left: 2%;
+            margin-right: 2%;
+
+            > * {
+              margin-bottom: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__ms) {
+  body.checkout-index-index .opc-wrapper .form-login #customer-email-fieldset {
+    .field {
+      float: none;
+      width: 100%;
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+  .checkout-index-index {
+    .opc-wrapper {
+      .form-login {
+        border: none;
+        margin: 0;
+      }
+
+      .form-login {
+        .hidden-fields {
+          width: 100%;
+          margin-right: 0;
+        }
+
+        #customer-email-fieldset {
+          .control {
+            float: none;
+            width: auto;
+          }
+        }
+      }
+    }
+
+
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  body.checkout-index-index {
+    &.shipping-step.customer-login.not-have-address,
+    &.shipping-step.customer-notlogin {
+      background: @checkout-background;  /* customer not-have-address or not login will have white background at mobile shipping step */
+    }
+
+    &.shipping-step.customer-login {
+      background: @checkout-mobile-background;
+      background: @checkout-background;
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .checkout-index-index {
+    .opc-wrapepr {
+      .form-login {
+        padding: @indent__base 0 @indent__base;
+      }
+    }
+
+    .opc-wrapper form.form-login,
+    .opc-wrapper .sso-form {
+      margin-left: -15px;
+      margin-right: -15px;
+      margin-bottom: 0;
+      padding-top: @indent__base;
+      padding-bottom: 0;
+    }
+  }
+}

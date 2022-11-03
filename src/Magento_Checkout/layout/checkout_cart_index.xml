@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <script src="Magento_Checkout::js/qty-loading.js" />
+    </head>
+    <body>
+        <referenceContainer name="checkout.cart.container">
+            <block name="products.number" template="Magento_Checkout::cart/products-number.phtml" before="-" />
+
+            <container name="cart.aside" label="Cart Aside Container" htmlTag="div" htmlClass="cart-aside" after="products.number">
+                <container name="cart.summary" label="Cart Summary Container" htmlTag="div" htmlClass="cart-summary" before="-">
+                    <block name="checkout.cart.coupon.dropdown.disable" template="Magento_Checkout::cart/coupon-dropdown-disable.phtml" after="-" />
+
+                </container>
+                <block class="Lg\CheckoutHelper\Block\Cms\BlockContent" after="-">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">need_help_support</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+
+        <referenceBlock name="checkout.cart.item.renderers.default">
+            <arguments>
+                <argument name="maximum" xsi:type="number">10</argument>
+            </arguments>
+            <block class="Magento\Cms\Block\Block" name="checkout.cart.installation.haulaway.default" as="installation_haulaway" after="-">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">installation_haulaway</argument>
+                </arguments>
+            </block>
+            <block class="Lg\CheckoutHelper\Block\Item\MeasureFirst" template="Lg_CheckoutHelper::item/measure-first.phtml" as="measure_first" after="-"/>
+        </referenceBlock>
+
+        <referenceBlock name="checkout.cart.item.renderers.configurable">
+            <arguments>
+                <argument name="maximum" xsi:type="number">10</argument>
+            </arguments>
+            <block class="Magento\Cms\Block\Block" name="checkout.cart.installation.haulaway.configurable" as="installation_haulaway" after="-">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">installation_haulaway</argument>
+                </arguments>
+            </block>
+            <block class="Lg\CheckoutHelper\Block\Item\MeasureFirst" template="Lg_CheckoutHelper::item/measure-first.phtml" as="measure_first" after="-"/>
+        </referenceBlock>
+
+        <referenceBlock name="checkout.cart.item.renderers.simple">
+            <arguments>
+                <argument name="maximum" xsi:type="number">10</argument>
+            </arguments>
+            <block class="Magento\Cms\Block\Block" name="checkout.cart.installation.haulaway.simple" as="installation_haulaway" after="-">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">installation_haulaway</argument>
+                </arguments>
+            </block>
+            <block class="Lg\CheckoutHelper\Block\Item\MeasureFirst" template="Lg_CheckoutHelper::item/measure-first.phtml" as="measure_first" after="-"/>
+        </referenceBlock>
+
+        <referenceBlock name="checkout.cart.summary.title">
+            <arguments>
+                <argument translate="true" name="text" xsi:type="string">Order Summary</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceBlock name="checkout.cart.giftcardaccount" remove="true"/>
+        <referenceBlock name="checkout.cart.shipping">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="block-summary" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="block-rates" xsi:type="array">
+                                    <item name="config" xsi:type="array">
+                                        <item name="componentDisabled" xsi:type="boolean">true</item>
+                                    </item>
+                                </item>
+                                <item name="block-shipping" xsi:type="array">
+                                    <item name="config" xsi:type="array">
+                                        <item name="componentDisabled" xsi:type="boolean">true</item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

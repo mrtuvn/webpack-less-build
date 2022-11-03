@@ -1,0 +1,17 @@
+<svg id="play_" data-name="play " xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        opacity: 0.75;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #fff;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <circle class="cls-1" cx="12.5" cy="12.5" r="11.5"/>
+  <path id="Line" class="cls-2" d="M814.5,5389a12.5,12.5,0,1,1-12.5,12.5A12.5,12.5,0,0,1,814.5,5389Zm0.015,1.33a11.185,11.185,0,1,1-11.187,11.19A11.189,11.189,0,0,1,814.515,5390.33Z" transform="translate(-802 -5389)"/>
+  <path id="Play" class="cls-3" d="M812,5397v9l7-4.5Z" transform="translate(-802 -5389)"/>
+</svg>

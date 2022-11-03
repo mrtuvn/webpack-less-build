@@ -1,0 +1,63 @@
+/** LOADER GLOBAL CHECKOUT CART + CHECKOUT PAGE **/
+& when (@media-common = true) {
+  .checkout-index-index {
+    ._block-content-loading [data-role='loader'].loading-mask {
+      display: none;
+    }
+
+    .loading-mask-medium,
+    .loading-mask {
+      background: rgba(255,255,255,0.6);
+
+      .loader {
+        .lib-loading-mask();
+        display: inline-block;
+        z-index: @loader-lg-overlay__z-index;
+        width: @loader-lg-icon-md__width;
+        height: @loader-lg-icon-md__width;
+        background: @loader-icon__background-image no-repeat center;
+        background-size: cover;
+      }
+    }
+  }
+
+  .checkout-index-index{
+    .loading-mask-medium {
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      position: fixed;
+      right: 0;
+      top: 0;
+      z-index: 900;
+      .loader {
+        > img {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .checkout-index-index{
+    .loading-mask {
+      .loader {
+        > img {
+          display: none;
+        }
+
+        &:after {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  /** Fix jump cart count only in checkout at mobile **/
+  .checkout-index-index {
+    & .opc-estimated-wrapper._block-content-loading {
+      position: unset;
+    }
+  }
+}

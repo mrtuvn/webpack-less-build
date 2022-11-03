@@ -1,0 +1,45 @@
+& when (@media-common = true) {
+    .pages {
+        a.page,
+        strong.page {
+            width: 30px;
+            font-size: @font-size__base;
+        }
+        .item {
+            font-size: @font-size__base;
+            span {
+                line-height: inherit;
+            }
+        }
+        .action {
+            border: none;
+            text-align: center;
+            width: 30px;
+
+            &.next {
+                margin-left: 0;
+
+                &:before,
+                &:visited:before,
+                &:hover:before{
+                    content: @icon-arrow-right-nightrider;
+                    font-size: @font-size__base;
+                    margin: 0;
+                    color: @color-lg-carmine;
+                }
+            }
+            &.previous {
+                margin-right: 0;
+
+                &:before,
+                &:visited:before,
+                &:hover:before{
+                    content: @icon-arrow-left-nightrider;
+                    font-size: @font-size__base;
+                    margin: 0;
+                    color: @color-lg-carmine;
+                }
+            }
+        }
+    }
+}

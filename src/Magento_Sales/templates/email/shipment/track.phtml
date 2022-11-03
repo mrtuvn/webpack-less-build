@@ -1,0 +1,95 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+// tracker #1628
+
+?>
+<?php $_shipment = $block->getShipment() ?>
+<?php $_order = $block->getOrder() ?>
+<?php $disabledShipmentTrack = true; //disable shipment's track for order and replace it with order item track?>
+<?php if ($_shipment && $_order && !$disabledShipmentTrack): ?>
+    <?php $trackCollection = $_order->getTracksCollection($_shipment->getId()) ?>
+    <?php if ($trackCollection) : ?>
+        <?php
+// ref : http://www.erchov.com/ShipmentTracking.asp
+        $shippers = [
+            'usps' => [
+                'title' => 'USPS',
+                'url' => 'https://www.usps.com',
+                'track_url' => 'https://tools.usps.com/go/TrackConfirmAction?tLabels='
+            ],
+            'ups' => [
+                'title' => 'UPS',
+                'url' => 'https://www.ups.com',
+                'track_url' => 'http://wwwapps.ups.com/WebTracking/track?track=yes&trackNums='
+            ],
+            'fedex' => [
+                'title' => 'Fedex',
+                'url' => 'https://www.fedex.com',
+                'track_url' => 'http://www.fedex.com/Tracking?action=track&tracknumbers=',
+            ],
+            'dhl' => [
+                'title' => 'DHL',
+                'url' => 'https://www.logistics.dhl/us-en/home.html',
+                'track_url' => 'http://track.dhl-usa.com/TrackByNbr.asp?ShipmentNumber=',
+            ],
+            'canada' => [
+                'title' => 'Canada Post',
+                'url' => 'https://www.canadapost.ca/cpc/en',
+                'track_url' => 'http://www.canadapost.ca/cpotools/apps/track/personal/findByTrackNumber?trackingNumber=',
+            ],
+        ];
+        ?>
+        <br/>
+        <table class="shipment-track">
+            <thead>
+            <tr>
+                <th><?= /* @escapeNotVerified */
+                    __('Shipped By') ?></th>
+                <th><?= /* @escapeNotVerified */
+                    __('Tracking Number') ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($trackCollection as $_item): ?>
+                <?php
+                $title = $block->escapeHtml($_item->getTitle());
+                $track = $block->escapeHtml($_item->getNumber());
+                $shipper = null;
+
+                foreach ($shippers as $search => $_shipper) {
+                    if (preg_match('#' . $search . '#i', $title)) {
+                        $shipper = $_shipper;
+                        break;
+                    }
+                }
+
+                if ($shipper) {
+                    $title = sprintf(
+                        '<a href="%s" target="_blank">%s</a>',
+                        $shipper['url'],
+                        $shipper['title']
+                    );
+
+                    $track = sprintf(
+                        '<a href="%s" target="_blank">%s</a>',
+                        $shipper['track_url'] . $track,
+                        $track
+                    );
+                }
+
+
+                ?>
+                <tr>
+                    <td><?= $title ?></td>
+                    <td><?= $track ?></td>
+                </tr>
+            <?php endforeach ?>
+            </tbody>
+        </table>
+    <?php endif; ?>
+<?php endif; ?>

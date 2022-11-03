@@ -1,0 +1,471 @@
+& when (@media-common = true) {
+    .order-details-items {
+        overflow-x: auto;
+    }
+    .order-details-items .action.track{
+        display: none;
+    }
+    .sales-guest-view{
+        .column.main{
+            .data.table th:first-child {
+                white-space:nowrap;
+            }
+            .data.table th:nth-child(2) {
+                width: 20% !important;
+                white-space: normal;
+            }
+            .block-order-details-view {
+                .block-content {
+                    .box.box-order-billing-method {
+                        .box-content .payment-method .content {
+                            display: none;
+                        }
+                    }
+                }
+            }
+            .data.table .col.status {
+                word-break: initial;
+            }
+        }
+    }
+    .account .page-main {
+        .data.table th:first-child {
+            white-space: nowrap;
+        }
+        .box.box-order-billing-method {
+            .box-content .payment-method .content {
+                display: none;
+            }
+        }
+    }
+    .sales-order, .magento_rma-returns {
+        &-view, &-invoice, &-shipment, &-creditmemo, &-returns, &-history {
+            .page-title-wrapper {
+                margin-bottom: 30px;
+
+                .status-date-wrapper {
+                    text-align: center;
+                }
+
+                .order-status {
+                    display: inline-block;
+                    vertical-align: top;
+                    padding: 10px 50px 0 0;
+                    border: none;
+                    font-size: @font-size__xxls;
+                    line-height: @line-height__l;
+
+                    > * {
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+                }
+                .order-date {
+                    padding: 0;
+                    margin: 0;
+                    border: none;
+                    display: inline-block;
+                    vertical-align: bottom;
+                    font-size: @font-size__xxls;
+                    line-height: @line-height__l;
+
+                    > * {
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+                }
+
+                .order-actions-toolbar {
+                    margin-bottom: 5px;
+                    float: right;
+                    padding: 0px;
+                }
+            }
+
+            .page-main > .page-title-wrapper .page-title {
+                margin-bottom: 20px;
+                vertical-align: middle;
+            }
+
+            .return-status,
+            .order-status {
+                display: inline-block;
+                vertical-align: top;
+                margin-bottom: 0;
+                padding: 5px 15px;
+                border: 1px solid @color-lg-gray-1;
+            }
+
+            .order-links-dropdown {
+                display: none;
+            }
+
+            .order-links {
+                border-bottom: 1px solid @color-lg-gray;
+
+                .see-more-text {
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-right: 15px;
+                    font-family: @font-family__lg-smart-semibold;
+                }
+                .item {
+                    border-bottom: 1px solid @color-lg-gray;
+                    border-top: 1px solid @color-lg-gray-3;
+                    border-left: 1px solid @color-lg-gray-3;
+                    border-right: 1px solid @color-lg-gray-3;
+                    margin: 0 5px -1px;
+                    padding: 7px 15px;
+                    font-size: @font-size__l;
+                    line-height: @line-height__l;
+
+                    strong {
+                        font-family: @font-family__lg-smart-semibold;
+                    }
+
+                    a {
+                        color: @color-lg-gray-3;
+                        text-decoration: none;
+                    }
+
+                    &.current {
+                        border-color: @color-lg-gray;
+                        border-bottom-color: @color-lg-white;
+                        background-color: @color-lg-white;
+                    }
+                }
+            }
+
+            .order-title {
+                padding-top: 15px;
+                margin-bottom: 15px;
+
+                a {
+                    position: relative;
+                    margin-right: 20px;
+                    font-family: @font-family__lg-smart-semibold;
+                    text-transform: uppercase;
+
+                    &:after {
+                        content: ">";
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin: 0 0 0 5px;
+                    }
+                }
+                strong {
+                    display: block;
+                    margin: 0;
+                }
+            }
+
+            .data.table {
+                td.col {
+                    &.name, &.sku {
+                        text-align: left;
+                    }
+                    &.price {
+                        text-align: right;
+                    }
+                }
+                .col {
+                    &.sku, &.price, &.qty, &.subtotal, &.status, &.actions {
+                        width: 1%;
+                        white-space: nowrap;
+                    }
+                }
+            }
+            .item-options,
+            .item.options {
+                margin: 0;
+
+                dt {
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin: 0;
+
+                    &:after {
+                        content: ": ";
+                    }
+                }
+                dd {
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin: 0;
+                }
+            }
+
+            .actions-toolbar {
+                a {
+                    font-family: @font-family__lg-smart-semibold;
+                    text-transform: uppercase;
+
+                    .lib-clearfix();
+
+                    > span,
+                    > strong {
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+                    &:after {
+                        content: ">";
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin: 0 0 0 2px;
+                    }
+                }
+
+
+                .action.cancel-disable{
+                        &:after {
+                            color: grey;
+                        }
+                }
+
+                .action.print {
+                    float: right;
+                    //margin-left: 20px;
+                }
+            }
+            
+        }
+    }
+
+    .sales-order-print {
+        .data.table {
+            tfoot {
+                tr {
+                    &.subtotal, &.shipping, &.totals, &.grand_total {
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .sales-order, .magento_rma-returns {
+        &-view, &-invoice, &-shipment, &-creditmemo, &-returns {
+            .page-main > .page-title-wrapper .page-title {
+                margin-bottom: 0;
+                vertical-align: middle;
+            }
+
+            .order-actions-toolbar {
+                .lib-clearfix();
+
+                .action {
+                    float:none;
+                    &.print {
+                        float: right;
+                    }
+                }
+            }
+
+            .page-main .order-links-dropdown {
+                display: block;
+                position: relative;
+                z-index: 2;
+                padding: 10px 40px 10px 10px;
+                border: 1px solid @color-lg-gray;
+                margin: 0;
+                font-family: @font-family__lg-smart-semibold;
+
+                &:after {
+                    content: @icon-accordion-open;
+                    font-family: @icons__font-name;
+                    font-size: @font-size__base;
+
+                    position: absolute;
+                    top: 50%;
+                    right: 10px;
+
+                    color: @color-lg-gray;
+
+                    .transform(translateY(-50%));
+                }
+            }
+            .page-main .order-links {
+                position: relative;
+                display: none;
+                margin: 0 0 25px;
+                text-align: center;
+                border: none;
+                z-index: 1;
+
+                li.see-more-text {
+                    display: none;
+                }
+
+                .item {
+                    position: relative;
+                    display: block;
+                    margin: -1px 0 0;
+                    border: 1px solid @color-lg-gray-4-5;
+                    font-size: @font-size__base;
+                    line-height: @line-height__l;
+                    strong {
+                        font-weight: 400;
+                    }
+                    &.current {
+                        z-index: 1;
+                        border-color: @color-lg-gray-4-5;
+                        background: @color-lg-light-2;
+                    }
+                }
+            }
+        }
+    }
+
+    .table:not(.cart):not(.totals):not(.table-totals) > thead > tr > th, .table:not(.cart):not(.totals):not(.table-totals) > thead > tr > td {
+        font-size: 14px;
+    }
+}
+.table-wrapper .table:not(.totals):not(.table-comparison) tfoot tr td{
+    text-align: right;
+}
+.table-order-items .subtotal{
+    text-align: right!important;
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .sales-order, .magento_rma-returns {
+        &-view, &-invoice, &-shipment, &-creditmemo, &-returns {
+            .page-main > .page-title-wrapper .page-title {
+                margin-right: 0;
+                margin-bottom: 12px;
+                display: block;
+                text-align: center;
+            }
+            .data.table {
+                .col {
+                    line-height: @line-height__l;
+
+                    &.name,
+                    &.sku {
+                        width: auto;
+                    }
+                    &.qty {
+                        &:before {
+                            vertical-align: top;
+                        }
+                    }
+
+                    .item-options,
+                    .item.options {
+                        dt {
+                            font-family: @font-family__lg-smart-semibold;
+                        }
+                    }
+                    .product.name {
+                        margin-bottom: 0;
+                    }
+                    .price-including-tax,
+                    .price-excluding-tax {
+                        font-size: @font-size__base;
+                    }
+                }
+            }
+            .order-title {
+                strong {
+                    margin-bottom: 10px;
+                }
+                .action {
+                    display: block;
+                    margin: 0 0 5px;
+                }
+            }
+            .order-actions-toolbar .action {
+                display: block;
+                float: none;
+                margin: 0 0 5px;
+
+                &.print {
+                    float: none;
+                    margin: 0 0 5px;
+                }
+            }
+        }
+    }
+
+    .sales-order-view, .sales-order-creditmemo {
+        .page-main > .page-title-wrapper {
+            .order-actions-toolbar{
+                float: unset;
+                text-align: center;
+            }
+            .order-status{
+                padding: 0 20px;
+            }
+        }
+        .table-wrapper .table:not(.cart):not(.totals):not(.table-comparison) > tbody > tr td,
+        .table-wrapper .table:not(.cart):not(.totals):not(.table-comparison) > tbody > tr th{
+            flex-wrap: wrap;
+        }
+        .table-wrapper .table:not(.totals):not(.table-comparison) tfoot{
+            display: block !important;
+        }
+    }
+
+    .table-order-items {
+        .subtotal{
+            text-align: left!important;
+        }
+        &.creditmemo{
+            .total{
+                text-align: left!important;
+            }
+        }
+        tfoot tr td{
+            &:nth-last-child(1), &:nth-last-child(2){
+                display: none;
+            }
+        }
+    }
+    .account .page-main .table-wrapper .table:not(.cart):not(.totals):not(.table-comparison) tfoot td:first-child {
+        text-align: right;
+    }
+
+    .order-details-items.creditmemo{
+        .actions-toolbar{
+            a{
+                position: unset;
+                right: unset;
+                top: unset;
+            }
+        }
+    }
+
+    body #popup-modal-return .button-wrapper,
+    body #popup-modal-return-ew .button-wrapper{
+        flex-direction: row;
+        flex-wrap: initial;
+        max-width: inherit;
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+.sales-order, .magento_rma-returns {
+&-view, &-invoice, &-shipment, &-creditmemo, &-returns {
+&.account {
+    .page-main .page-title-wrapper .order-date {
+        margin: 0;
+    }
+}
+.order-links {
+    display: block !important;
+}
+}
+}
+}
+
+
+#order-details-gst {
+display: none !important;
+}
+
+@media print {
+body.sales-order-print {
+@page {
+size: landscape;
+}
+}
+}

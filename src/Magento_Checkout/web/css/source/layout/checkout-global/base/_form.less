@@ -1,0 +1,47 @@
+// partials
+& when (@media-common = true) {
+
+  /* Custom checkbox minor modify default*/
+  input[type="checkbox"] {
+    ~ label {
+      background: url('@{cicons_path}v2checkbox-unchecked.svg') center left no-repeat;
+      background-size: @form-element-checkbox-size @form-element-checkbox-size;
+
+      &:hover {
+        background: url('@{cicons_path}v2checkbox-unchecked-hover.svg') center left no-repeat;
+        background-size: @form-element-checkbox-size @form-element-checkbox-size;
+      }
+
+    }
+
+    &:checked {
+      ~ label {
+        background: url('@{cicons_path}v2checkbox-checked.svg') center left no-repeat;
+        background-size: @form-element-checkbox-size @form-element-checkbox-size;
+
+        &:hover {
+          background: url('@{cicons_path}v2checkbox-checked.svg') center left no-repeat;
+          background-size: @form-element-checkbox-size @form-element-checkbox-size;
+        }
+      }
+    }
+  }
+
+  input[type="checkbox"]:disabled {
+    opacity: 0;
+  }
+
+
+  select,
+  input[type="text"],
+  input[type="password"],
+  input[type="url"],
+  input[type="tel"],
+  input[type="search"],
+  input[type="number"],
+  input[type="date"],
+  input[type='email'] {
+    border-color: @checkout-border-gray-color;
+  }
+}
+

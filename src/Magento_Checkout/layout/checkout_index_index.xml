@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Checkout</title>
+        <script src="Magento_Checkout::js/pto-component.js" />
+    </head>
+    <body>
+        <referenceBlock name="api.header" remove="true" />
+        <referenceBlock name="api.header.js" remove="true" />
+        <referenceBlock name="top.search" remove="true" />
+        <referenceBlock name="header.panel" remove="true" />
+        <referenceBlock name="minicart" remove="true" />
+        <referenceBlock name="api.footer" remove="true" />
+        <referenceBlock name="footer" remove="true" />
+
+        <referenceContainer name="page.wrapper">
+            <container name="page.header" htmlTag="header" htmlClass="page-header" before="-">
+                <container name="header-wrapper" label="Page Header" as="header-wrapper" htmlTag="div" htmlClass="header content" before="-" />
+            </container>
+        </referenceContainer>
+        <referenceBlock name="checkout.root">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="checkout" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="steps" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <item name="shipping-step" xsi:type="array">
+                                            <item name="children" xsi:type="array">
+                                                <item name="shippingAddress" xsi:type="array">
+                                                    <item name="config" xsi:type="array">
+                                                        <item name="popUpForm" xsi:type="array">
+                                                            <item name="options" xsi:type="array">
+                                                                <item name="modalClass" xsi:type="string">new-shipping-address-modal</item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="shipping-address-fieldset" xsi:type="array">
+                                                            <item name="children" xsi:type="array">
+                                                                <item name="region_id" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">Magento_Checkout/js/view/region</item>
+                                                                </item>
+                                                                <item name="telephone" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">Lg_CheckoutHelper/js/form/element/telephone</item>
+                                                                    <item name="config" xsi:type="array">
+                                                                        <item name="elementTmpl" xsi:type="string">Lg_CheckoutHelper/form/element/telephone</item>
+                                                                    </item>
+                                                                </item>
+                                                            </item>
+                                                        </item>
+                                                        <item name="shippingItems" xsi:type="array">
+                                                            <item name="component" xsi:type="string">Lg_Innovel/js/view/shipping/items</item>
+                                                            <item name="displayArea" xsi:type="string">shippingMethodAdditional</item>
+                                                            <item name="config" xsi:type="array">
+                                                                <item name="template" xsi:type="string">Lg_Innovel/checkout/shipping/items</item>
+                                                            </item>
+                                                        </item>
+                                                        <item name="shipping-additional-section" xsi:type="array">
+                                                            <item name="component" xsi:type="string">uiComponent</item>
+                                                            <item name="displayArea" xsi:type="string">shipping-additional-section</item>
+                                                            <item name="children" xsi:type="array">
+                                                                <!--Additional section for shipping-->
+                                                            </item>
+                                                        </item>
+                                                        <item name="shipping-methods-after-section" xsi:type="array">
+                                                            <item name="component" xsi:type="string">uiComponent</item>
+                                                            <item name="displayArea" xsi:type="string">shipping-methods-after-section</item>
+                                                            <item name="children" xsi:type="array">
+                                                                <!--Additional section after shipping methods-->
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                        <item name="billing-step" xsi:type="array">
+                                            <item name="children" xsi:type="array">
+                                                <item name="payment" xsi:type="array">
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="afterMethods" xsi:type="array">
+                                                            <item name="children" xsi:type="array">
+                                                                <item name="discount" xsi:type="array">
+                                                                    <item name="componentDisabled" xsi:type="boolean">true</item>
+                                                                </item>
+                                                                <item name="giftCardAccount" xsi:type="array">
+                                                                    <item name="componentDisabled" xsi:type="boolean">true</item>
+                                                                </item>
+                                                                <!-- Pay attention that you need to set form validators for each payment method-->
+                                                                <item name="billing-address-form" xsi:type="array">
+                                                                    <item name="children" xsi:type="array">
+                                                                        <item name="form-fields" xsi:type="array">
+                                                                            <item name="children" xsi:type="array">
+                                                                                <item name="postcode" xsi:type="array">
+                                                                                    <item name="validation" xsi:type="array">
+                                                                                        <item name="common-postcode" xsi:type="boolean">true</item>
+                                                                                    </item>
+                                                                                </item>
+                                                                            </item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+                                                                <!-- Billing forms end -->
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                        <item name="confirm-step" xsi:type="array">
+                                            <item name="component" xsi:type="string">Magento_Checkout/js/view/confirm</item>
+                                            <item name="sortOrder" xsi:type="string">3</item>
+                                            <item name="children" xsi:type="array">
+                                                <item name="confirmAddress" xsi:type="array">
+                                                    <item name="component" xsi:type="string">Magento_Checkout/js/view/confirm/address</item>
+                                                    <item name="displayArea" xsi:type="string">confirmAddressAdditional</item>
+                                                    <item name="config" xsi:type="array">
+                                                        <item name="template" xsi:type="string">Magento_Checkout/confirm/address</item>
+                                                    </item>
+                                                </item>
+                                                <item name="confirmShippingItems" xsi:type="array">
+                                                    <item name="component" xsi:type="string">Magento_Checkout/js/view/confirm/items</item>
+                                                    <item name="displayArea" xsi:type="string">confirmShippingMethodAdditional</item>
+                                                    <item name="config" xsi:type="array">
+                                                        <item name="template" xsi:type="string">Magento_Checkout/confirm/items</item>
+                                                    </item>
+                                                </item>
+                                                <item name="confirmSummary" xsi:type="array">
+                                                    <item name="component" xsi:type="string">Magento_Checkout/js/view/confirm/summary</item>
+                                                    <item name="displayArea" xsi:type="string">confirmSummaryAdditional</item>
+                                                    <item name="config" xsi:type="array">
+                                                        <item name="template" xsi:type="string">Magento_Checkout/confirm/summary</item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                                <item name="sidebar" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <item name="summary" xsi:type="array">
+                                            <item name="children" xsi:type="array">
+                                                <item name="totals" xsi:type="array">
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="amount-saved" xsi:type="array">
+                                                            <item name="config" xsi:type="array">
+                                                                <item name="componentDisabled" xsi:type="boolean">true</item>
+                                                            </item>
+                                                        </item>
+                                                        <item name="weee" xsi:type="array">
+                                                            <item name="config" xsi:type="array">
+                                                                <item name="componentDisabled" xsi:type="boolean">true</item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                        <item name="shipping-information" xsi:type="array">
+                                            <item name="config" xsi:type="array">
+                                                <item name="componentDisabled" xsi:type="boolean">true</item>
+                                            </item>
+                                        </item>
+                                        <item name="customCheckoutButtons" xsi:type="array">
+                                            <item name="component" xsi:type="string">Magento_Checkout/js/view/sidebar/next-button</item>
+                                            <item name="displayArea" xsi:type="string">summary</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="template" xsi:type="string">Magento_Checkout/sidebar/next-button</item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                                <item name="afterSidebar" xsi:type="array">
+                                    <item name="config" xsi:type="array">
+                                        <item name="componentDisabled" xsi:type="boolean">true</item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

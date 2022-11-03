@@ -1,0 +1,174 @@
+//
+//  Common DR Payment styles
+//  _____________________________________________
+
+& when (@media-common = true) {
+  /*  Checkout Payment  */
+
+  #drpay_creditcard-content .checkout-agreements-block .checkbox-text a {
+    text-decoration: underline;
+  }
+
+  #drpay-creditcard-form {
+    .save-future-use{
+      margin-left: 2%;
+    }
+    #creditcard-message{
+      margin-top: 0;
+      padding-bottom: 10px;
+    }
+    .field {
+      background-color: #fff;
+      padding: 7px 5px;
+      font-size: 14px;
+      border-bottom: 1px solid #d1d3d4;
+      outline: medium none;
+      vertical-align: baseline;
+      line-height: normal;
+    }
+    label {
+      color: #333;
+      font-weight: normal;
+      display: none;
+    }
+    .form-field {
+      #card-expiration{
+        margin-left: 4.5%;
+      }
+    }
+
+    .payment-form-inner {
+      margin-bottom: 0;
+      padding: 15px 0 5px;
+    }
+
+    .invalid {
+      border-bottom: 1px solid red;
+    }
+    .empty {
+      border-bottom: 1px solid #d1d3d4;
+    }
+    .focus {
+      border-bottom: 1px solid #66afe9;
+    }
+    .complete {
+      border-bottom: 1px solid #ccc;
+    }
+    input[type="checkbox"] {
+      opacity: 1;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .DRGooglePayElement {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .DRApplePayElement {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .payment-button {
+      margin: 15px 0px;
+      height: 45px;
+      overflow: hidden;
+    }
+    .actions-toolbar > .primary .action.primary {
+      padding: @indent__s 17px;
+    }
+  }
+  //.checkout-payment-method {
+  //  .payment-method-content {
+  //    .payment-active {
+  //      margin: 15px 15px 15px 0;
+  //      border-bottom: 1px solid #ccc;
+  //      padding: 20px 20px 15px 0px;
+  //    }
+  //    .actions-toolbar {
+  //      .primary {
+  //        margin-right: 0px;
+  //      }
+  //    }
+  //    .payment-method-billing-address {
+  //      padding-top: @indent__l;
+  //    }
+  //  }
+  //
+  //  .checkout-billing-address {
+  //    margin: 0px 20px 20px 0px;
+  //  }
+  //}
+
+  .checkout-payment-method .payment-method-content #drpay-creditcard-form .actions-toolbar {
+    margin-top: -30px;
+  }
+
+  //#checkout-payment-method-load .payment-method-title.field.choice label.control {
+  //  display: flex;
+  //  align-items: end;
+  //}
+
+  //#checkout-payment-method-load .payment-method-title.with-logo {
+  //  display: flex;
+  //
+  //  .payment-logos {
+  //    display: flex;
+  //    clear: both;
+  //
+  //    .klarna {
+  //      width: 90px;
+  //      height: 20px;
+  //      float: left;
+  //      background: url(../images/klarna.svg) no-repeat left top;
+  //      order: 1;
+  //    }
+  //  }
+  //}
+
+  //.payment-method {
+  //  .payment-method-title {
+  //    label.control {
+  //      input[type=radio]:checked+label a {
+  //        cursor: pointer;
+  //      }
+  //
+  //      input[type=radio]:checked+label a:before {
+  //        content: '\e970';
+  //        font-size: 18px;
+  //        line-height: 32px;
+  //        padding-left: 10px;
+  //        color: #4e4e4e;
+  //        -webkit-font-smoothing: antialiased;
+  //        -moz-osx-font-smoothing: grayscale;
+  //        line-height: inherit;
+  //        font-family: @icons__font-name;
+  //        vertical-align: middle;
+  //        display: inline-block;
+  //      }
+  //    }
+  //  }
+  //}
+}
+
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .checkout-payment-method .payment-method-content #drpay-creditcard-form .actions-toolbar {
+    margin-top: -50px;
+  }
+}
+
+& when (@media-target = 'mobile'), (@media-target = 'all') {
+  @media only screen and (max-width: 639px) {
+    #drpay-creditcard-form .form-field #card-expiration {
+      margin-left: 2%;
+    }
+
+    #drpay-creditcard-form .save_name {
+      margin-left: 8px;
+    }
+  }
+}
+

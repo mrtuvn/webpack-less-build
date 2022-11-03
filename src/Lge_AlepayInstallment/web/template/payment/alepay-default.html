@@ -1,0 +1,129 @@
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="payment-method alepay-installment-vn-new" id="alepay-installment-div" data-bind="css: {'_active': (getCode() == isChecked())}">
+    <div class="payment-method-title field choice">
+        <input type="radio"
+               name="payment[method]"
+               class="radio"
+               data-bind="attr: {'id': getCode()}, value: getCode(), checked: isChecked, click: selectPaymentMethod, visible: isRadioButtonVisible()"/>
+
+        <label data-bind="attr: {'for': getCode()}" class="label">
+            <span data-bind="text: getTitle()"></span>
+            <div class="payment-logos" >
+                <div class="alepay-bank"></div>
+            </div>
+        </label>
+    </div>
+    <div class="choose-banking-payment">
+        <div data-bind="html: window.checkoutConfig.alepay_installment_image_vn"></div>
+    </div>
+    <div class="payment-method-content">
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <div class="payment-method-billing-address">
+            <!-- ko foreach: $parent.getRegion(getBillingAddressFormName()) -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+        <p data-bind="html: getInstructions()"></p>
+        <div class="checkout-agreements-block">
+            <!-- ko foreach: $parent.getRegion('before-place-order') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+
+        <div class="checkout-agreements-block">
+            <!-- ko foreach: getRegion('test') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button class="action primary checkout"
+                        type="submit"
+                        data-bind="
+                        click: continueToAlePay,
+                        attr: {title: $t('Place Order')},
+                        css: {disabled: !isPlaceOrderActionAllowed()},
+                        enable: (getCode() == isChecked())
+                        "
+                        disabled>
+                    <span data-bind="i18n: 'Continue'"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--modal-->
+<div style="display: none;" data-bind="mageInit: {
+        'Magento_Ui/js/modal/modal':{
+            'type': 'popup',
+            'title': 'Ưu đãi trả góp 0% lãi suất',
+            'trigger': '[data-trigger=trigger-klarna-info]',
+            'responsive': true,
+            'modalClass': 'installment-popup',
+            'innerScroll': true,
+            'clickableOverlay': false,
+            'focus': 'none',
+            'modalWrapperClass': 'modal modal-with-pay',
+            'buttons': [{
+                text: jQuery.mage.__('Close'),
+                click: function () {
+                    this.closeModal();
+                }
+            }]
+        }}">
+    <div class="modal-body">
+        <h4 class="top-text">Trải nghiệm mua sắm trả góp 0% lãi suất</h4>
+        <div class="box-area">
+            <h5 class="area-title">Các bước thanh toán trả góp:</h5>
+            <ol class="step-how-to-shop">
+                <li>
+                    <span class="step-icon">
+                        <img data-bind="attr: {src: window.checkoutConfig.installment.icons['klama-Step1']}" aria-hidden="true" alt="Bước 1"/>
+                    </span>
+                    <strong>Bước 1</strong>
+                    <p>Chọn sản phẩm muốn mua cho vào giỏ hàng sau đó lựa chọn hình thức thanh toán trả góp.</p>
+                </li>
+                <li>
+                    <span class="step-icon">
+                        <img data-bind="attr: {src: window.checkoutConfig.installment.icons['klama-Step2']}" aria-hidden="true" alt="Bước 2"/>
+                    </span>
+                    <strong>Bước 2</strong>
+                    <p>Quý khách lựa chọn ngân hàng, loại thẻ và kỳ hạn thanh toán trả góp. Số tiền cố định phải trả hàng tháng sẽ được hiển thị. Sau đó quý khách sẽ được điều hướng sang cổng thanh toán Alepay (Ngân Lượng) để nhập thông tin thẻ và sang trang của Ngân hàng phát hành thẻ để nhập OTP. Thẻ tín dụng của quý khách sẽ được trừ số tiền tương ứng với giá trị sản phẩm mua trả góp.</p>
+                </li>
+                <li>
+                    <span class="step-icon">
+                        <img data-bind="attr: {src: window.checkoutConfig.installment.icons['klama-Step3']}" aria-hidden="true" alt="Bước 3"/>
+                    </span>
+                    <strong>Bước 3</strong>
+                    <p>Sau khi thanh toán thành công hệ thống sẽ gửi email xác nhận về địa chỉ email của quý khách.</p>
+                </li>
+            </ol>
+        </div>
+        <div class="box-area bg-whitesmoke how-to-work">
+            <dl>
+                <dt>Quy định chung:</dt>
+                <dd>
+                    <ul class="mt-2">
+                        <li>Thời gian trả góp: 3 tháng hoặc 6 tháng.</li>
+                        <li>Danh sách ngân hàng áp dụng hình thức trả góp: Sacombank, VPBank, Shinhan Bank, Techcombank, Eximbank, VIB, Citibank, Seabank, HSBC, TPbank, Saigon Commercial Bank, Standard Chartered, Nam A, Kien Long Bank, OCB, SHB, VCB, Vietinbank, BIDV, MBBank, Vietcapital Bank, ACB, Homecredit, PVCombank, HDBank, Lienvietpostbank.</li>
+                        <li>Hiệu lực còn lại của thẻ phải lớn hơn kì hạn trả góp.</li>
+                        <li>Đảm bảo hạn mức thẻ tín dụng của quý khách lớn hơn hoặc bằng số tiền trả góp.</li>
+                        <li>Ngân hàng tự chuyển đổi thành giao dịch trả góp, trong quá trình chuyển đổi ngân hàng có thể liên hệ chủ thẻ để xác nhận thêm thông tin, do dó chủ thẻ vui lòng nghe máy để ngân hàng có thể hoàn thành thủ tục chuyển đổi trả góp. Sau khi giao dịch chuyển đổi trả góp thành công, khoản tiền phải trả hàng tháng sẽ được lên sao kê. Quý khách cần thanh toán số tiền này cho Ngân hàng phát hành thẻ.</li>
+                        <li>Không giới hạn số lần mua trả góp.</li>
+                        <li>Về việc hủy đơn hàng đã giao dịch thanh toán trả góp: Quý khách sẽ không mất phí khi hủy đơn hàng trong vòng 2 ngày (48 tiếng) kể từ khi giao dịch mua hàng thành công. Sau thời gian này nếu hủy đơn hàng quý khách sẽ phải chịu phí chuyển đổi trả góp là 3% trên giá trị đơn hàng trả góp.</li>
+                        <li>Nếu có bất kỳ vấn đề gì thắc mắc liên quan dịch vụ trả góp, vui lòng liên hệ hotline OBS LG số 18001590 hoặc hotline Alepay (Ngân lượng) số 1900585899.</li>
+                    </ul>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<!--end modal-->

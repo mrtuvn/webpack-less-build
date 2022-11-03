@@ -1,0 +1,63 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var Lg\CustomerHelper\Block\Widget\Telephone $block */
+?>
+<?php $isEnableCountryCode = $block->IsEnableCountryCodeTelephone(); ?>
+<div class="field telephone <?= $block->isRequired() ? 'required' : '' ?>">
+    <label for="telephone" class="label">
+        <span>
+            <?= $block->escapeHtml(__('Phone Number')) ?>
+        </span>
+    </label>
+    <div class="control tel">
+        <?php
+        $_validationClass = $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('telephone'));
+        ?>
+        <?php if ($isEnableCountryCode) : ?>
+            <span class="country-code"></span>
+        <?php endif; ?>
+        <input type="hidden"
+               name="telephone"
+               id="telephone"
+               value="<?= $block->escapeHtmlAttr($block->getTelephone()) ?>"
+        >
+        <input type="number"
+               name="tele"
+               id="tele"
+               value=""
+               title="<?= $block->escapeHtmlAttr(__('Phone Number')) ?>"
+               class="input-text <?= $isEnableCountryCode ? 'tel-display' : ''?> <?= $_validationClass ?: '' ?>"
+               data-validate="{'required-telephone':true, 'telephone-number': true, 'telephone':true}"
+        >
+    </div>
+</div>
+<script>
+    window.isEnableCountryCode = "<?= $block->IsEnableCountryCodeTelephone() ?>";
+    require([
+        'jquery',
+        'Magento_Checkout/js/model/country-code',
+    ], function($, countryCode) {
+        var countryId = $('.form-address-edit select[name="country_id"]:visible').val()
+        var prefixTele = countryCode.getContryCodeByIOSCode(countryId);
+        window.prefixTele = prefixTele;
+        $(".form-address-edit .country-code").html(prefixTele);
+        var telephone = $('.form-address-edit input[name="telephone"]').val();
+        if (telephone.indexOf(prefixTele) !== -1) {
+            $('.form-address-edit input[name="tele"]').val(telephone.replace(prefixTele, ''));
+        } else {
+            $('.form-address-edit input[name="tele"]').val(telephone);
+        }
+
+        // when country change reupdate prefix
+        $('.form-address-edit select[name="country_id"]').change(function () {
+            var countryId = $('.form-address-edit select[name="country_id"]:visible').val();
+            $(".form-address-edit .country-code").html(countryCode.getContryCodeByIOSCode(countryId));
+        })
+    });
+</script>

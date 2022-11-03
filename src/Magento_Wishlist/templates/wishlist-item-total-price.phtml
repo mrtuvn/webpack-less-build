@@ -1,0 +1,18 @@
+<?php
+
+/** @var Magento\Framework\View\Element\Template $block */
+/** @var Lg\CheckoutHelper\ViewModel\Currency\PriceFormat $priceFormatObj */
+$priceFormat = "{}";
+if ($priceFormatObj = $block->getPriceFormat()) {
+    $priceFormat = $priceFormatObj->getPriceFormatJson();
+}
+?>
+<script type="text/x-magento-init">
+    {
+        ".wishlist-container": {
+            "Magento_Wishlist/js/wishlist-item-total-price": {
+                "priceFormat" : <?= $priceFormat ?>
+             }
+        }
+    }
+</script>

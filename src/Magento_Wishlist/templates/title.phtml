@@ -1,0 +1,18 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/** @var \Lg\Wishlist\Block\Title $block */
+$itemCount = $block->getWishlistItemsCount();
+?>
+
+<div class="block-title wishlist-container-title">
+    <h2> <?= __("Saved for Later") ?></h2>
+    <?php if ($itemCount > 0) : ?>
+        <?php if ($itemCount == 1) : ?>
+            <span class="number-with-text"><?= __("(%1 item)", $itemCount) ?></span>
+        <?php else : ?>
+            <span class="number-with-text"><?= __("(%1 items)", $itemCount) ?></span>
+        <?php endif; ?>
+    <?php endif; ?>
+</div>

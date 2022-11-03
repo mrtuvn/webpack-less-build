@@ -1,0 +1,192 @@
+& when (@media-common = true) {
+    .innovel-postalcode-validation {
+        .page-title-wrapper {
+            text-align: center;
+        }
+
+        .form-postalcode-validation {
+            width: 100%;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .sub-heading {
+            text-align: center;
+            font-size: @font-size__xxls;
+            line-height: @line-height__xl;
+            margin-bottom: 25px;
+        }
+
+        .products-number {
+            font-family: @font-family__lg-smart-semibold;
+            font-size: @font-size__xxls;
+            line-height: @line-height__l;
+            text-align: left;
+            padding-bottom: 10px;
+        }
+
+        #postalcode-validation {
+            margin-bottom: 60px;
+
+            .title {
+                display: none;
+            }
+        }
+
+        .products-list {
+            margin: 0 0 20px;
+        }
+        .product-items {
+            margin: 0;
+            border-top: 1px solid @color-lg-gray-3;
+
+            .product-item {
+                display: block;
+                width: 100%;
+                padding: 20px 0;
+                border-bottom: 1px solid @color-lg-gray-3;
+            }
+
+            .product-item-info {
+                display: block;
+                width: 100%;
+                letter-spacing: -4px;
+
+                > * {
+                    display: inline-block;
+                    vertical-align: middle;
+                    letter-spacing: 0;
+
+                    .box-sizing();
+                }
+            }
+
+            .product-item-photo {
+                width: calc(~"17% - 20px");
+                padding-top: 15.5%;
+                margin-right: 20px;
+                position: relative;
+
+                .product-image-container {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    .transform(translateX(-50%) translateY(-50%));
+                    max-width: 100%;
+                    max-height: 100%;
+                }
+            }
+
+            .product-item-details {
+                width: 65%;
+                padding-right: 20px;
+                word-break: break-word;
+
+                a, span {
+                    color: @color-lg-black;
+                    text-decoration: none;
+                }
+            }
+
+            .product-item-name,
+            .product-item-price {
+                font-family: @font-family__lg-smart-semibold;
+                font-size: @font-size__xxl;
+                line-height: @line-height__xxl;
+            }
+
+            .product-item-price {
+                width: 18%;
+                text-align: right;
+            }
+
+            .product-links {
+                display: block;
+                text-align: right;
+                > a {
+                    margin-left: 10px;
+                }
+            }
+        }
+
+        .totals {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            padding: 0;
+
+            .label, .value {
+                .lib-heading(@_heading_level: h3);
+                display: block;
+                margin-top: 0;
+                margin-bottom: 0;
+                width: 40%;
+            }
+
+            .label {
+                text-align: left;
+            }
+
+            .value {
+                text-align: right;
+            }
+        }
+
+        .actions {
+            text-align: center;
+
+            button {
+                margin: 0 10px;
+            }
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .innovel-postalcode-validation {
+        .sub-heading {
+            text-align: center;
+            font-size: @font-size__l;
+            line-height: @line-height__l;
+        }
+        #postalcode-validation {
+            margin-bottom: 25px;
+        }
+        .product-items {
+            .product-item-info {
+                position: relative;
+            }
+
+            .product-item-photo {
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding-top: 0;
+            }
+            .product-item-details,
+            .product-item-price {
+                display: block;
+                width: 100%;
+                padding: 0 0 0 17%;
+                text-align: left;
+            }
+            .product-item-name {
+                font-size: @font-size__xl;
+                line-height: @line-height__l;
+            }
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .innovel-postalcode-validation {
+        .product-items {
+            .product-item-photo {
+                width: 31%;
+            }
+            .product-item-details,
+            .product-item-price {
+                padding: 0 0 0 33%;
+            }
+        }
+    }
+}

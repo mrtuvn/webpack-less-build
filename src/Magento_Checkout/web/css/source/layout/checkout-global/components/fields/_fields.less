@@ -1,0 +1,69 @@
+& when (@media-common = true) {
+  .checkout-index-index .opc-wrapper .form-login,
+  .checkout-index-index .opc-wrapper .form-shipping-address {
+    padding-bottom: 0;
+  }
+
+  #customer-email-fieldset > .fieldset.hidden-fields {
+    margin-bottom: 0;
+  }
+}
+
+& when (@media-common = true) {
+  .checkout-index-index.customer-login.shipping-step {
+    .opc-wrapper {
+      .shipping-address-items .shipping-address-item {
+        display: inline-block;
+        padding: 20px; /* LGEGPSM-7354 fix shipping phone visual TODO MIRAGE */
+
+        a {
+          padding-left: 23px;
+          height: auto;
+
+          .tel {
+            margin-top: 0;
+            margin-bottom: 0;
+          }
+        }
+
+        .edit-address-link {
+          margin: 10px 0 0 0;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          width: 100%;
+          text-align: left;
+
+          span {
+            text-decoration: underline;
+
+            &:after {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__ms) {
+  .checkout-index-index.customer-login.shipping-step .opc-summary-wrapper.modal-custom #choose-mobile-shipping-address {
+    width: 50%;
+
+    > button {
+      overflow: hidden; /* button mobile confirm shipping address */
+      text-overflow: ellipsis;
+      padding-left: 10px;
+      padding-right: 10px; /* LGEGPSM-7354 fix shipping phone visual end */
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+}

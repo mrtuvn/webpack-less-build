@@ -1,0 +1,166 @@
+/** PAYMENTS LIST **/
+/*[LGEGPSM-2587] - Luannt4 */
+& when (@media-common = true) {
+  .checkout-cart-index {
+    .cart-payment-row{
+      clear: both;
+    }
+    .cart-payment-toolbar{
+      padding: 20px 20px;
+      border-top: 1px solid silver;
+      clear: both;
+      width:100%;
+      box-sizing: border-box;
+      > * {
+        padding-right:20px;
+        box-sizing: content-box;
+      }
+      .cart-payment-title{
+        min-width: 60px;
+        color: @color-black;
+        font-weight: @font-weight__semibold;
+        font-size: 1.6rem;
+        line-height: 1;
+        padding: 5px 0;
+      }
+      .cart-payment-blank{
+        padding: 5px 0;
+        cursor: pointer;
+        color:@color-lg-carmine;
+      }
+
+      .cart-payment-banking{
+        display: flex;
+        align-items: center;
+        padding: 0;
+        img{
+          max-height: 27px;
+        }
+      }
+
+      //Only Country PL
+      .cart-payment-services{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin-bottom: 0;
+        > * {
+          padding-right:20px;
+          box-sizing: content-box;
+        }
+      }
+    }
+
+
+    .paymentBank-popup{
+      .modal-footer{
+        display: none;
+      }
+      .modal-inner-wrap{
+        border-radius: 4px;
+      }
+      .action-close{
+        padding: 2.5rem;
+        &:before{
+          color:@color-lg-gray;
+          font-size: 14px;
+        }
+      }
+      .modal-title{
+        font-size: 32px;
+        border:none;
+        font-weight: 600;
+      }
+      .cartBlank-content{
+        display:grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        grid-gap: 30px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+    }
+
+  }
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xls) {
+  .checkout-cart-index {
+    .paymentBank-popup .modal-inner-wrap{
+      width: 500px;
+    }
+    .cart-payment-toolbar .cart-payment-title{
+      padding-right: 15px;
+    }
+  }
+
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__ms) {
+  .checkout-cart-index {
+    .paymentBank-popup h1.modal-title{
+      font-size: 24px;
+    }
+
+    //Only Country PL
+    .cart-container{
+      .cart-payment-toolbar{
+        display: block;
+        padding: 20px 0;
+        text-align: center;
+        .cart-payment-banking{
+          display: block;
+          text-align: center;
+        }
+        .cart-payment-services{
+          margin-bottom: 15px;
+          > * {
+            padding-right: 10px;
+
+          }
+        }
+
+      }
+      .cart-payment-title{
+        display: block;
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__ms) {
+  .checkout-cart-index {
+    .paymentBank-popup h1.modal-title{
+      font-size: 24px;
+    }
+
+    div.cart-payment-toolbar{
+      display: block;
+      padding: 20px 0;
+      text-align: center;
+      .cart-payment-banking{
+        display: block;
+        text-align: center;
+      }
+
+      .cart-payment-services{
+        margin-bottom: 15px;
+      }
+
+    }
+    .cart-payment-title{
+      display: block;
+      text-align: center;
+      padding: 0 0 10px;
+    }
+  }
+}
+/*[End]*/
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .checkout-cart-index {
+    .cart-payment-toolbar {
+      display: flex;
+    }
+  }
+}

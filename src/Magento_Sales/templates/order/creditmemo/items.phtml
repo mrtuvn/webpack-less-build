@@ -1,0 +1,64 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<style>
+    .price-including-tax, .price-excluding-tax{
+        font-size: 1.4rem !important;
+    }
+
+    .sales-order-view .page-title-wrapper .order-date, .magento_rma-returns-view .page-title-wrapper .order-date, .sales-order-invoice .page-title-wrapper .order-date, .magento_rma-returns-invoice .page-title-wrapper .order-date, .sales-order-shipment .page-title-wrapper .order-date, .magento_rma-returns-shipment .page-title-wrapper .order-date, .sales-order-creditmemo .page-title-wrapper .order-date, .magento_rma-returns-creditmemo .page-title-wrapper .order-date, .sales-order-returns .page-title-wrapper .order-date, .magento_rma-returns-returns .page-title-wrapper .order-date{
+        vertical-align: bottom !important;
+    }
+</style>
+<?php $_order = $block->getOrder() ?>
+<div class="actions-toolbar">
+    <a href="<?= $block->escapeUrl($block->getPrintAllCreditmemosUrl($_order)) ?>"
+       onclick="this.target='_blank'"
+       class="action print">
+        <span><?= $block->escapeHtml(__('Print All Refunds')) ?></span>
+    </a>
+</div>
+<?php foreach ($_order->getCreditmemosCollection() as $_creditmemo) : ?>
+    <div class="order-title">
+        <strong><?= $block->escapeHtml(__('Refund #')) ?><?= $block->escapeHtml($_creditmemo->getIncrementId()) ?> </strong>
+        <a href="<?= $block->escapeUrl($block->getPrintCreditmemoUrl($_creditmemo)) ?>"
+           onclick="this.target='_blank'"
+           class="action print">
+            <span><?= $block->escapeHtml(__('Print Refund')) ?></span>
+        </a>
+    </div>
+
+    <div class="table-wrapper order-items-creditmemo">
+        <table style="table-layout: auto;" class="data table table-order-items creditmemo" id="my-refund-table-<?= (int) $_creditmemo->getId() ?>">
+            <caption class="table-caption"><?= $block->escapeHtml(__('Items Refunded')) ?></caption>
+            <thead style="display: table-row-group;">
+                <tr>
+                    <th class="col name"><?= $block->escapeHtml(__('Product Name')) ?></th>
+                    <th class="col sku"><?= $block->escapeHtml(__('SKU')) ?></th>
+                    <th class="col price"><?= $block->escapeHtml(__('Price')) ?></th>
+                    <th class="col qty"><?= $block->escapeHtml(__('Qty')) ?></th>
+                    <th class="col subtotal"><?= $block->escapeHtml(__('Subtotal')) ?></th>
+                    <th class="col discount"><?= $block->escapeHtml(__('Discount Amount')) ?></th>
+                    <th class="col total"><?= $block->escapeHtml(__('Row Total')) ?></th>
+                    <th class="col status"><?= $block->escapeHtml(__('Status')) ?></th>
+                    <th class="col actions"><?= $block->escapeHtml(__('Action')) ?></th>
+                </tr>
+            </thead>
+            <?php $_items = $_creditmemo->getAllItems(); ?>
+            <?php foreach ($_items as $_item) : ?>
+                <?php if (!$_item->getOrderItem()->getParentItem()) : ?>
+                    <tbody>
+                        <?= $block->getItemHtml($_item) ?>
+                    </tbody>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            <tfoot style="display: table-row-group;">
+                <?= $block->getTotalsHtml($_creditmemo) ?>
+            </tfoot>
+        </table>
+    </div>
+    <?= $block->getCommentsHtml($_creditmemo) ?>
+<?php endforeach; ?>

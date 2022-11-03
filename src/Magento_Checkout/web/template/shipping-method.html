@@ -1,0 +1,38 @@
+<!--Shipping method template-->
+<li id="opc-shipping_method"
+    class="checkout-shipping-method"
+    data-bind="fadeVisible: visible(), blockLoader: isLoading"
+    role="presentation">
+
+    <!--Shipping method template-->
+    <div class="checkout-shipping-method" data-bind="fadeVisible: visible()">
+        <div id="checkout-step-shipping_method"
+             class="step-content"
+             data-role="content"
+             role="tabpanel"
+             aria-hidden="false">
+            <form id="co-shipping-method-form"
+                  class="form methods-shipping"
+                  submit="setShippingInformation"
+                  novalidate="novalidate">
+
+                <div id="onepage-checkout-shipping-method-additional-load">
+                    <each args="getRegion('shippingMethodAdditional')" render=""/>
+                </div>
+
+                <div role="alert"
+                     if="errorValidationMessage().length"
+                     class="message notice">
+                    <span text="errorValidationMessage()"/>
+                </div>
+                <div class="actions-toolbar" id="shipping-method-buttons-container" style="display: none;">
+                    <div class="primary">
+                        <button data-role="opc-continue" type="submit" class="button action continue primary">
+                            <span translate="'Next'"/>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</li>

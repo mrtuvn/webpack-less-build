@@ -1,0 +1,55 @@
+& when (@media-common = true) {
+  .checkout-cart-index {
+    .installation-haulaway-container {
+      .lib-clearfix();
+
+      .innovel-installation-haul {
+        float: right;
+        width: 37%;
+        padding: 0 0 20px;
+      }
+      .innovel-install-haul {
+        .lib-clearfix();
+
+        > * {
+          font-size: @font-size__l;
+          line-height: @line-height__l;
+        }
+        .label {
+          float: left;
+        }
+        .value {
+          float: right;
+        }
+      }
+      .instalation-haulaway-tooltip-container {
+        float: right;
+        clear: right;
+      }
+      .installation-haulaway-tooltip-trigger {
+        color: @color-lg-carmine;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__ms) {
+  .checkout-cart-index {
+    .installation-haulaway-container {
+      padding: 0 0 0 75px;
+
+      .innovel-installation-haul {
+        padding-top: 10px;
+        border-top: 1px solid @color-lg-gray-6;
+        float: none;
+        width: auto;
+      }
+      .instalation-haulaway-tooltip-container {
+        float: left;
+      }
+    }
+  }
+}

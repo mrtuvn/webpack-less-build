@@ -1,0 +1,271 @@
+/* styles mobile fixed bottom panel at checkout  */
+/* mobile fixed button actions */
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__ms) {
+  .checkout-cart-index .cart-summary .cart-totals .grand.totals .mark {
+    width: 45%;
+
+    strong {
+      .lib-text-overflow();
+    }
+  }
+
+  .checkout-cart-index .cart-summary .cart-totals .grand.totals .amount {
+    @space-between-price: 10px;
+    margin-left: @space-between-price;
+    width: 55%; /* priority show more space for price */
+
+    strong {
+      overflow-wrap: break-word;
+      white-space: normal;
+    }
+  }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  .checkout-index-index.shipping-step.customer-notlogin {
+    .opc-summary-wrapper.modal-custom {
+      .modal-content {
+        padding-left: 20px;
+        padding-right: 20px;
+
+        div #custom-continue-to-payment-trigger-wrapper {
+          width: calc(~'100%'); /* full */
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+  /* confirm screen mobile */
+  .checkout-index-index.mobile-confirm-step {
+    .opc-summary-wrapper.modal-custom {
+      .modal-content {
+        #choose-mobile-shipping-address {
+          display: none;
+        }
+
+        #place-order-trigger-wrapper {
+          display: none;
+        }
+
+        #custom-save-billing {
+          display: none;
+        }
+      }
+    }
+  }
+
+    /** shipping step **/
+  .checkout-index-index.shipping-step {
+    .opc-summary-wrapper.modal-custom {
+      .modal-content {
+        #mobile-confirm-checkout-order {
+          display: none;
+        }
+
+        #custom-save-billing {
+          display: none;
+        }
+
+        #place-order-trigger-wrapper {
+          display: none;
+        }
+      }
+    }
+  }
+
+  /** payment step **/
+  .checkout-index-index.payment-step {
+    .opc-summary-wrapper.modal-custom {
+      .modal-content {
+
+        #choose-mobile-shipping-address {
+          display: none;
+        }
+
+        /* hide button confirm */
+        #mobile-confirm-checkout-order {
+          display: none;
+        }
+
+        .opc-block-summary {
+          display: block;
+
+          .grand.totals {
+            * {
+              display: block !important;
+            }
+          }
+        }
+
+        //div #custom-continue-to-payment-trigger-wrapper {
+        //  width: calc(~'100% - 40px');
+        //  margin-left: 5px;
+        //}
+      }
+    }
+  }
+
+  .checkout-index-index .opc-summary-wrapper.modal-custom {
+    .lib-visually-hidden-reset();
+    overflow-x: hidden;
+    overflow-y: hidden;
+    visibility: visible;
+    opacity: 1;
+    left: 0;
+    right: 0;
+    position: fixed;
+    top: unset;
+    min-height: 0;
+    max-height: 77px;
+    bottom: 0;
+    width: 100%;
+    z-index: @z-index-10;
+    background: @color-white;
+    box-shadow: 0px -6px 16px rgba(0, 0, 0, 0.05);
+
+    .modal-inner-wrap {
+      transform: none;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .modal-content {
+      margin-top: @indent__base;
+      margin-bottom: @indent__s + @indent__xs;
+      padding-left: 8px;
+      padding-right: 8px;
+
+      > div {
+        .lib-vendor-prefix-display();
+        align-items: center;
+      }
+
+      > div .cms-block {
+        display: none !important;
+      }
+
+      #choose-mobile-shipping-address,
+      #custom-save-billing,
+      #mobile-confirm-checkout-order,
+      #place-order-trigger-wrapper {
+        flex: 1;
+
+        > button {
+          width: 100%;
+          margin: 0;
+        }
+      }
+
+      .opc-block-summary {
+        background: none;
+        flex: 0;
+        min-width: 0;
+        flex-basis: 50%;
+        margin-bottom: 0;
+
+        * {
+          display: none !important;
+        }
+
+        .table.table-totals {
+          display: table !important;
+          vertical-align: middle;
+          width: calc(~'100% - 20px');
+          margin-right: 20px;
+          margin-bottom: 0;
+          margin-left: 0;
+        }
+
+        .table.table-totals tbody{
+          display: block !important;
+        }
+
+        .grand.totals {
+          * {
+            display: block !important;
+          }
+
+          display: flex !important;
+          flex-wrap: wrap;
+          flex-direction: column;
+          flex-basis: 50%;
+          flex-grow: 0;
+        }
+
+        .grand.totals .amount,
+        .grand.totals .mark {
+          border: 0;
+          padding-top: 0;
+          padding-bottom: 0;
+          margin: 0;
+        }
+
+        .grand.totals .mark {
+          .lib-font-size(11);
+          line-height: 130%;
+          font-weight: @font-weight__regular;
+          text-align: right;
+          text-transform: uppercase;
+          color: @color-black;
+
+          strong {
+            font-weight: inherit;
+          }
+        }
+
+        .grand.totals .amount {
+          .lib-font-size(24);
+          line-height: calc(28 / 24);
+          font-weight: @font-weight__bold;
+          text-align: right;
+          text-transform: uppercase;
+          color: @color-black;
+        }
+      }
+    }
+
+    #cms-block-need_help_support_pl,
+    .modal-header {
+      display: none;
+    }
+
+    .actions-toolbar-trigger button.action.primary {
+      padding-top: 1rem;
+      padding-bottom: .9rem;
+    }
+
+    .modal-content div #custom-continue-to-payment-trigger-wrapper {
+      .lib-vendor-prefix-display();
+      align-items: center;
+      justify-content: center;
+      //width: calc(~'100% - 30px');
+      width: 50%;
+      flex: 1;
+      //max-height: 67px;
+      //min-height: 10px;
+      //margin-left: @indent__xs;
+      margin-right: auto;
+      //margin-top: 14px;
+      z-index: @z-index-10 * 10  + 4;
+
+      > button.action,
+      > .primary {
+        width: 100%;
+        .lib-font-size(14);
+        line-height: calc(16 / 14);
+        font-weight: @font-weight__bold;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+
+        span {
+          font-size: inherit;
+          //.lib-font-size(12);
+          //line-height: 16px;
+          font-weight: inherit;
+        }
+      }
+    }
+  }
+}

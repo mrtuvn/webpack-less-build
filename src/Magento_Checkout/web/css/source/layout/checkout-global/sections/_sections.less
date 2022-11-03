@@ -1,0 +1,146 @@
+& when (@media-common = true) {
+  .checkout-cart-index {
+    .cart-totals {
+      .totals-tax {
+        &-summary {
+          .mark,
+          .amount {
+            cursor: pointer;
+          }
+
+          .amount .price {
+            .lib-icon-font(
+              @icon-down,
+              @_icon-font-size: 18px,
+              @_icon-font-text-hide: true,
+              @_icon-font-position: after,
+              @_icon-font-display: block
+            );
+            padding-right: @indent__m;
+            position: relative;
+
+            &:after {
+              position: absolute;
+              right: 0;
+              top: 0;
+            }
+          }
+
+          &.expanded {
+            .mark,
+            .amount {
+              border-bottom: 0;
+              margin-bottom: 0;
+            }
+
+            .amount .price {
+              .lib-icon-font-symbol(
+                @_icon-font-content: @icon-up,
+                @_icon-font-position: after
+              );
+            }
+          }
+        }
+
+        &-details {
+          display: none;
+
+          &.shown {
+            display: table-row;
+          }
+        }
+      }
+    }
+  }
+
+  .checkout-index-index {
+    .opc-block-summary {
+      .shipping.excl, .shipping.incl {
+        .amount {
+          & .price:after {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 18px;
+            line-height: inherit;
+            color: inherit;
+            content: '\e9fd';
+            font-family: 'LG Icons';
+            vertical-align: middle;
+            display: inline-block;
+            font-weight: normal;
+            overflow: hidden;
+            speak: none;
+            text-align: center;
+            margin-left: 4px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .opc-block-summary {
+      .shipping.excl.expanded, .shipping.incl.expanded {
+        .amount {
+          & .price:after {
+            content: '\ea04';
+          }
+        }
+      }
+    }
+
+    .opc-wrapper {
+      .dr-term {
+        a, span {
+          font-size: 16px;
+        }
+
+        > span {
+          font-size: 9pt;
+        }
+
+        > span a {
+          font-size: 9pt;
+        }
+
+        ul > li {
+          display: inline-block;
+          vertical-align: top;
+
+          a {
+            text-decoration: underline;
+          }
+        }
+
+        ul li:not(:first-child):before {
+          padding: 0 15px;
+          content: ' | ';
+          letter-spacing: -2px;
+          position: relative;
+          top: -1px;
+          color: black;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  .checkout-index-index {
+    .dr-term {
+      .dr-links {
+        li.item {
+          margin-bottom: .7rem;
+        }
+
+        li:not(:last-child) {
+          margin-right: .8rem;
+        }
+
+        li:not(:first-child):before {
+          display: none;
+        }
+      }
+    }
+  }
+}

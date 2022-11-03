@@ -1,0 +1,202 @@
+& when (@media-common = true) {
+  // Text Button
+  .link-text {
+    position:relative;
+    display:inline-block;
+    color:@color-carmine;
+    font-size:14px;
+    line-height:20px;
+    text-decoration:underline;
+    word-break:break-all;
+    cursor: pointer;
+    &:focus, &:hover {color:@color-carmine;}
+    //&:before {
+    //	@include pseudo();
+    //	bottom:3px;left:0;width:100%;height:1px;
+    //	background:@bg-carmine;
+    //}
+    &.bold {
+      .uppercase();
+      text-decoration:none;
+      &:hover, &:focus {text-decoration:underline;}
+      //&:before {
+      //	display:none;
+      //}
+      //&:hover:before,
+      //&:focus:before {
+      //	display:block;
+      //}
+    }
+    &.lg {
+    //@include screen(custom, min, @min-md){
+    //  font-size:16px;
+    //}
+    }
+    //icon
+    &.ico-blank {
+      //&:before {width:calc(100% - 18px);}
+      &:after {
+      .linkicon();
+        background:url('@{baseDir}images/common/icons/blank-carmine.svg') no-repeat 0 0;
+        margin-left:6px;
+      }
+      [dir="rtl"] & {
+        &:after {
+          margin-left:0;
+          margin-right:6px;
+          transform: rotateY(180deg);
+          -moz-transform: rotateY(180deg);
+          -ms-transform: rotateY(180deg);
+          -o-transform: rotateY(180deg);
+        }
+      }
+    }
+    &.ico-popup {
+      //&:before {width:calc(100% - 18px);}
+      &:after {
+      .linkicon();
+        background:url('@{baseDir}images/common/icons/popup-carmine.svg') no-repeat 0 0;
+        margin-left:6px;
+      }
+      [dir="rtl"] & {
+        &:after {
+          margin-left:0;
+          margin-right:6px;
+        }
+      }
+      &.gray-type{
+        &:after {
+        .linkicon();
+          background:url('@{baseDir}images/common/icons/popup-nightrider.svg') no-repeat 0 0;
+          margin-left:6px;
+        }
+      }
+
+    }
+    &.ico-open-send-address{
+      //&:before {width:calc(100% - 18px);}
+      &:after {
+      .linkicon();
+        width: 16px;
+        height: 20px;
+        background:url('@{baseDir}images/common/icons/open-send-address-black.svg') no-repeat 0 0;
+      }
+    }
+    &.ico-right {
+      //&:before {width:calc(100% - 15px);}
+      &:after {
+      .linkicon();
+        background:url('@{baseDir}images/common/icons/link-right-carmine.svg') no-repeat 0 1px;
+        margin-left:3px;
+      }
+      [dir="rtl"] & {
+        &:after {
+          margin-left:0;
+          margin-right:3px;
+          transform:rotateY(180deg);
+          -moz-transform:rotateY(180deg);
+          -ms-transform:rotateY(180deg);
+          -o-transform:rotateY(180deg);
+        }
+      }
+    }
+    &.ico-download {
+      color:@color-dimgray;
+      &:after {
+      .linkicon();
+        background:url('@{baseDir}images/common/icons/download-dimgray.svg') no-repeat 0 0;
+        margin-left:6px;
+      }
+      [dir="rtl"] & {
+        &:after {
+          margin-left:0;
+          margin-right:6px;
+        }
+      }
+    }
+    &.ico-download-carmine {
+      color:@color-carmine;
+      &.bold {
+        text-transform: none;
+      }
+      &:after {
+        width: 14px;
+        height: 14px;
+      .linkicon();
+        background:url('@{baseDir}images/common/icons/download-carmine.svg') no-repeat 0 0;
+        margin-left:6px;
+        vertical-align: -4px;
+        background-size: 100%;
+
+      }
+      [dir="rtl"] & {
+        &:after {
+          margin-left:0;
+          margin-right:6px;
+        }
+      }
+    }
+    &.ico-left-x {
+      &:before {
+      .linkicon();
+        width: 9px;
+        height: 9px;
+        background:url('@{baseDir}images/common/icons/content-delete.svg') no-repeat 0 0;
+        margin-right:6px;
+      }
+      [dir="rtl"] & {
+        &:before {
+          margin-right:0;
+          margin-left:6px;
+        }
+      }
+    }
+
+
+    &.ico-wishlist {
+      font-size:14px;
+      color:@color-dimgray;
+      text-decoration: none;
+      &:before {
+      .linkicon();
+        margin-right:6px;
+        width:20px;
+        height:20px;
+        background:url('@{baseDir}images/common/icons/wishlist.svg') no-repeat 0 0;
+        vertical-align: top;
+      }
+      &.active {
+        &:before {
+          background:url('@{baseDir}images/common/icons/wishlist-on.svg') no-repeat 0 0;
+        }
+      }
+    }
+
+    &.ico-compare {
+      font-size:14px;
+      color:@color-dimgray;
+      text-decoration: none;
+      &:before {
+      .linkicon();
+        margin-right:6px;
+        [dir=rtl] & {margin-right:0;margin-left:6px;}
+        width:20px;
+        height:20px;
+        background:url('@{baseDir}images/common/icons/compare.svg') no-repeat 0 0;
+        vertical-align: top;
+      }
+      .sr-only {
+        display: none !important;
+      }
+      //.remove {display: none;}
+      &.added {
+        &:before {
+          background-image:url('@{baseDir}images/common/icons/compare-added.svg');
+        }
+        //.add {display: none;}
+        //.remove {display: block;}
+      }
+    }
+
+  }
+}

@@ -1,0 +1,40 @@
+<!-- ko if: address() -->
+<div class="shipping-address-item" id="mobile-confirm-shipping-block">
+    <a class="ship-details" role="radio">
+        <p class="ship-name"><text args="address().prefix"/>
+        <text args="address().firstname"/>
+        <text args="address().middlename"/>
+        <text args="address().lastname"/>
+        <text args="address().suffix"/></p>
+        <p class="ship-address"><text args="_.values(address().street).join(', ')"/></p>
+        <p class="ship-location"><text args="address().city "/>
+        <if args="address().region">
+            <text args="', ' + address().region"/>
+        </if>
+        <if args="address().postcode">
+            <text args="', ' + address().postcode"/>
+        </if>
+        <p class="ship-country"><text args="getCountryName(address().countryId)"/></p>
+        <each args="data: address().customAttributes, as: 'element'">
+            <each args="data: Object.keys(element), as: 'attribute'">
+                <if args="typeof element[attribute] === 'object' && attribute !== 'sns_confirmation_status'">
+                    <if args="element[attribute].label">
+                        <text args="element[attribute].label"/>
+                    </if>
+                    <ifnot args="element[attribute].label">
+                        <if args="element[attribute].value">
+                            <text args="element[attribute].value"/>
+                        </if>
+                    </ifnot>
+                </if>
+                <if args="typeof element[attribute] === 'string'">
+                    <if args="element[attribute] !== 'landmark'">
+                        <text args="element[attribute]"/>
+                    </if>
+                </if>
+            </each>
+        </each>
+        <p class="tel"><text args="address().telephone"/></p>
+    </a>
+</div>
+<!-- /ko -->

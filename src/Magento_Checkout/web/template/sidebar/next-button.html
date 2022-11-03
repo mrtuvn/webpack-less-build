@@ -1,0 +1,18 @@
+<!-- ko if: (isVisibleNextButton()) -->
+<div class="actions-toolbar-trigger actions-toolbar" id="custom-continue-to-payment-trigger-wrapper">
+    <div class="primary">
+        <button type="button" id="custom-continue-to-payment-trigger" class="button action continue primary"
+                data-bind="click: next, disable: isDisable">
+            <span data-bind="text: getLable()"></span>
+        </button>
+    </div>
+</div>
+<!-- /ko -->
+
+<!-- ko if: (isVisibleApplyAddressButton()) -->
+<div class="actions-toolbar-trigger actions-toolbar" id="choose-mobile-shipping-address">
+    <button data-bind="click: confirmAddress" type="button" class="button action primary" id="choose-mobile-shipping-address-trigger">
+        <span data-bind="i18n: 'Confirm'"></span>
+    </button>
+</div>
+<!-- /ko -->

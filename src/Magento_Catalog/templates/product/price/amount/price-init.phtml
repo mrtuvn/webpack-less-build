@@ -1,0 +1,41 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$dataHelper = $objectManager->create('\Lg\Core\Helper\Data');
+$catalogHelper = $objectManager->create('\Lg\CatalogHelper\Helper\Data');
+
+$product = $block->getSaleableItem();
+
+$basePrice = $block->getAmount()->getBaseAmount();
+$price = $block->getDisplayValue();
+$currencySymbol = $block->getDisplayCurrencySymbol();
+$rate = $catalogHelper->getCalculatedRate($product);
+
+$configProduct = $objectManager->create('\Magento\Catalog\Model\Product')->load($product->getId());
+if ($configProduct->getTypeId() == 'simple') {
+    $simpleProduct = [$configProduct];
+} else {
+    $simpleProduct = $configProduct->getTypeInstance()->getUsedProducts($configProduct);
+}
+$wee = 0;
+if ($simpleProduct[0]) {
+    $weeTax = $simpleProduct[0]->getPriceInfo()->getPrice('special_price')->getAmount();
+    $array = (array)$weeTax;
+    if (count($array) > 0) {
+        $name = "adjustmentAmounts";
+        $prefix = chr(0).'*'.chr(0);
+        if (isset($array[$prefix . $name]['weee'])) {
+            $wee = $array[$prefix . $name]['weee'];
+        }
+    }
+}
+
+$customerGroupId = 1; // B2C or Not Login
+
+/** @var \Magento\Customer\Model\Session\Proxy $customerSessionProxy */
+$customerSessionProxy = $objectManager->create(\Magento\Customer\Model\Session\Proxy::class);
+$isCustomerLogin = $customerSessionProxy->isLoggedIn();
+
+if($isCustomerLogin) {
+    $customerGroupId = $customerSessionProxy->getCustomer()->getGroupId();
+}
+?>

@@ -1,0 +1,22 @@
+<div class="tel">
+    <!-- ko if: getCountryCode(address().countryId) != '' -->
+    <span class="country-code"><text args="getCountryCode(address().countryId)"/></span>
+    <!-- /ko -->
+    <input name="telephone" class="input-text tel-display" type="text"
+           data-bind="
+                value: tmpValue,
+                name: inputName,
+                id: uid,
+                valueUpdate: 'keyup',
+                hasFocus: focused,
+                css: { 'tel-display': getCountryCode()},
+                attr: {
+                    placeholder: placeholder,
+                    'aria-describedby': getDescriptionId(),
+                    'aria-required': required,
+                    'aria-invalid': error() ? true : 'false',
+                    maxlength: 255,
+                    disabled: disabled
+                }"
+    />
+</div>

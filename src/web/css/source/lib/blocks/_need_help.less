@@ -1,0 +1,60 @@
+& when (@media-common = true) {
+    .need-help-support {
+        h3 {
+            margin-top: 0;
+        }
+        a {
+            color: @color-lg-gray;
+            text-decoration: none;
+
+            &:first-child {
+                //font-family: @font-family__lg-smart-bold;
+                color: @color-lg-carmine !important;
+                text-decoration: underline !important;
+            }
+        }
+    }
+    .need-help-faq {
+        a {
+            text-decoration: none;
+        }
+        .links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            .link {
+                &:before {
+                    content: "";
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: 5px;
+                    height: 5px;
+                    margin-right: 5px;
+                    border-radius: 50%;
+                    background: #a50034;
+                }
+
+                a {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    .checkout-onepage-success {
+        .order-info-wrapper {
+
+            .need-help {
+                .order-info-inner {
+                    a.link {
+                        color: @color-lg-carmine;
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+        }
+    }
+
+}
