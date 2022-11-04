@@ -16,17 +16,17 @@ module.exports = {
      * Path to distribution directory relative to CWD.
      * @type {string}
      */
-    dist: path.resolve('../../app/design/frontend/' + themeInfo.name),
+    dist: path.resolve('../app/design/frontend/' + themeInfo.name),
     /**
      * Path to pub/static/frontend.
      * @type {string}
      */
-    pubStatic: path.resolve('../../pub/static/frontend'),
+    pubStatic: path.resolve('../pub/static/frontend'),
     /**
      * Path to var directory.
      * @type {string}
      */
-    var: path.resolve('../../var'),
+    var: path.resolve('../var'),
     /**
      * Web (url) path to theme's frontend assets (without the language part)
      * @type {String}

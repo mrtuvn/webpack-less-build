@@ -1,7 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-// const jsonImporter = require('node-sass-json-importer');
 const merge = require('webpack-merge');
 
 const SkipUnchangedPlugin = require('../skipUnchangedPlugin');
@@ -66,16 +65,6 @@ const settings = {
                                 options: {
                                     url: false,
                                     sourceMap: environment.development,
-                                },
-                            },
-                            {
-                                loader: 'postcss-loader',
-                                options: {
-                                    sourceMap: environment.development,
-                                    plugins: [
-                                        require('postcss-flexbugs-fixes')(),
-                                        require('autoprefixer')(),
-                                    ],
                                 },
                             },
                             {
